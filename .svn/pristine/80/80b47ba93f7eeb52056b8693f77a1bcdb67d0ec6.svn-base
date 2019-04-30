@@ -1,0 +1,90 @@
+<?php
+/** 
+ * 这个是路由定义  。
+ * 
+ * @author Administrator
+ *
+ */
+class YfjRouteConst
+{
+
+    const index = 'front/home/index'; // 首页
+    const login = 'front/login/index'; // 登陆页
+    const makeCode = 'front/login/make_code'; // 获取条形码图片
+    const loginOut = 'front/home/login_out'; // 登出
+
+    const dashboardWelcome = 'dashboard/dashboard/welcome'; // 欢迎页面
+
+    const initAdminPassword = 'setting/admin_limit/init_admin_password'; // 初始化密码页面
+    const adminChangePassword = 'setting/admin_limit/admin_change_password'; // 修改密码页面
+
+
+    //设置
+    const siteSetting = 'setting/setting/base';
+    const adminLimitAdmin = 'setting/admin_limit/admin_list';
+    const adminLimitAdminAdd = 'setting/admin_limit/admin_add';
+    const adminLimitAdminEdit = 'setting/admin_limit/admin_edit';
+    const adminLimitAdminDelete = 'setting/admin_limit/admin_delete';
+    const adminLimitGroupEdit = 'setting/admin_limit/group_edit';
+    const adminLimitGroupDelete = 'setting/admin_limit/group_delete';
+    const adminLimitGroup = 'setting/admin_limit/group_list';
+    const adminLimitGroupAdd = 'setting/admin_limit/group_add';
+    const adminLimitPermission = 'setting/admin_limit/permission';
+    const adminLimitPermissionAdd = 'setting/admin_limit/permission_add';
+    const adminLimitPermissionEdit = 'setting/admin_limit/permission_edit';
+    const adminLimitPermissionDelete = 'setting/admin_limit/permission_delete';
+    const updateExistsPermission = 'setting/permission/update_exists_permission';
+    const permissionEdit = 'setting/permission/permission_edit';
+    const permissionIndex = 'setting/permission/index';
+    const adminLimitAjax = 'setting/admin_limit/ajax';
+    const adminLimitDelete = 'setting/admin_limit/admin_delete';
+    const adminLimitEdit = 'setting/admin_limit/admin_edit';
+
+
+
+    const putIp = 'timers/ip/put_ip'; // 获取公网ip
+    // 应用首页框架 hyq 2017-06-05
+    const frame = 'goods/banner_frame/frame';      // 应用首页框架列表
+    const frameType = 'goods/banner_frame/frame_type'; // 应用首页框架类型列表
+    const frameTypeAdd = 'goods/banner_frame/frame_type_add'; // 新增应用首页框架类型
+    const frameAdd = 'goods/banner_frame/frame_add';  // 新增应用首页框架
+    const frameEdit = 'goods/banner_frame/frame_edit'; // 编辑应用首页框架
+    const frameUpload = 'goods/banner_frame/upload';    // 上传应用首页框架图片
+    const ajaxUpdateFrameShow = 'goods/banner_frame/ajax_update_frame_show';//更改是否显示
+    const frameDel = 'goods/banner_frame/frame_del';    // 删除广告
+    // banner 广告
+    const apManage = 'banner/banner/ap_manage';     // 广告位管理
+    const apEdit = 'banner/banner/ap_edit';       // 广告位编辑
+    const apAdd = 'banner/banner/ap_add';        // 新增广告位
+    const apCopy = 'banner/banner/ap_copy';       // 广告位代码调用
+    const bannerManage = 'banner/banner/banner_manage'; // 广告管理
+    const bannerAdd = 'banner/banner/banner_add';    // 新增广告
+    const bannerEdit = 'banner/banner/banner_edit';   // 编辑广告
+    const bannerDel = 'banner/banner/banner_del';    // 删除广告
+    const bannerUpload = 'banner/banner/banner_upload'; // banner图片上传
+    //系统管理
+    const setSystemSettings = 'goods/setting/set_system_settings';//设置系统设置
+    const systemSettings = 'goods/setting/system_settings';//验证系统设置名称
+    const addSystemSettings = 'goods/setting/add_system_settings';//添加系统设置名称
+    const addSystemInfo = 'goods/setting/add_system_info';//添加系统消息通知
+    const systemInfo = 'goods/setting/system_info';//展示系统消息通知
+    const deletSystemInfo = 'goods/setting/delet_system_info';//展示系统消息通知
+    const editSystemInfo = 'goods/setting/edit_system_info';//编辑系统消息通知
+    const auditingSystemInfo = 'goods/setting/auditing_system_info';//审核系统消息通知
+    const ajaxCheckSettingName = 'goods/setting/ajax_check_setting_name';
+	
+	
+	//CRM
+	const addClient = 'crm/crm/add_client'; //添加客户
+	const editClient =  'crm/crm/edit_client'; //编辑客户
+	const editBusinessManager = 'crm/crm/edit_business_manager';// 编辑商务经理
+	const addtBusinessManager = 'crm/crm/add_business_manager';// 新增商务经理
+	const editMerchant = 'crm/crm/edit_merchant';// 编辑商户
+	const addtMerchant = 'crm/crm/add_merchant';//新增商户
+	const editMerchantXcx = 'crm/crm/edit_merchant_xcx';// 编辑商户的小程序
+	const merchantDetail = 'crm/crm/merchant_detail';// 商户详情
+	const merchantXcxDetail = 'crm/crm/merchant_xcx_detail';//小程序账号详情
+	
+    
+	
+}

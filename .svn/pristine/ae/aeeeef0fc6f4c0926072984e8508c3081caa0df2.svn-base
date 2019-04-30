@@ -1,0 +1,84 @@
+.subfeed {
+	border-top: 1px solid #eee;
+}
+.subfeed .line {
+	margin-left: 40rpx;
+	padding-right: 40rpx;
+	line-height: 100rpx;
+	align-items: center;
+	border-bottom: 1px solid #eee;
+}
+.subfeed .line text {
+	color: #999; 
+	font-size: 30rpx;
+}
+.subfeed .line input {
+	font-size: 30rpx;
+}
+.subfeed .line .title {
+	width: 560rpx;
+	padding-left: 25rpx;
+}
+.subfeed .line .name {
+	width: 480rpx;
+	padding-left: 25rpx;
+}
+.subfeed .line .tel {
+	width: 450rpx;
+	padding-left: 25rpx;
+}
+.subfeed .tit {
+	display: block;
+	padding: 40rpx 40rpx 0;
+	color: #aaa;
+	font-size: 30rpx;
+}
+.subfeed textarea {
+	margin: 70rpx 0 60rpx;
+	padding: 0 40rpx 0 60rpx;
+	height: 300rpx;
+}
+.subfeed .pictit {
+	display: block;
+	margin-left: 40rpx;
+	padding: 35rpx 0 44rpx;
+	color: #999;
+	font-size: 32rpx;
+	border-top: 1px solid #eee;
+}
+.subfeed .addPic {
+	width: 140rpx; height: 140rpx;
+}
+.subfeed .delete {
+	position: absolute;
+	right: -20rpx; top: -20rpx;
+	width: 44rpx; height: 44rpx;
+}
+.subfeed .picWrap {
+	padding-left: 60rpx;
+  margin-bottom: 150rpx;
+}
+.subfeed .wrap {
+	position: relative;
+	display: inline-block;
+	width: 140rpx; height: 140rpx;
+	margin-right: 30rpx;
+}
+
+.subfeed .fixBtn {
+	width: 690rpx; height: 100rpx;
+	line-height: 100rpx;
+	text-align: center;
+	background: #f63a65;
+	font-size: 30rpx;
+	color: #fff;
+	border-radius: 6px;
+}
+.subfeed .btnWrap {
+  z-index: 9999;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 20rpx 30rpx;
+  background: #fff;
+}

@@ -1,0 +1,343 @@
+[2019-04-28T16:17:29+08:00] -- Start 2019-04-28 Log --
+[2019-04-28T16:17:33+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:17:33
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:18:33+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:18:33
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:28:51+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:28:51
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:29:33+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:29:33
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:29:45+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:29:45
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:30:10+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:30:10
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:31:14+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:31:14
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:34:01+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:34:01
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:34:32+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:34:32
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:34:42+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:34:42
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:35:48+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:35:48
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:35:52+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:35:52
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:35:55+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:35:55
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:59:35+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:59:35
+    [error_number] => 1054 [INSERT INTO `ejs_admin` (`admin_name`,`admin_password`,`admin_mobile`,`admin_group_permission_id`,`merchant_id`,`is_allow_group`) VALUES ('商户1', '7ca103aee24f99c30d4125c1d262342d', '18649754081', 2, 1, 0)], Unknown column 'merchant_id' in 'field list'
+
+    [sql_query] => INSERT INTO `ejs_admin` (`admin_name`,`admin_password`,`admin_mobile`,`admin_group_permission_id`,`merchant_id`,`is_allow_group`) VALUES ('商户1', '7ca103aee24f99c30d4125c1d262342d', '18649754081', 2, 1, 0)
+
+    [query_string] => route=crm/crm/save_add_merchant
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T16:59:36+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 16:59:36
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:02:29+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:02:29
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:04:08+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:04:08
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:05:29+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:05:29
+    [error_number] => 1054 [INSERT INTO `ejs_admin` (`admin_name`,`admin_password`,`admin_mobile`,`admin_group_permission_id`,`merchant_id`,`is_allow_group`) VALUES ('商户2登录', '85b8c12b159953838b64da7ca53cae15', '18649754098', 2, 2, 0)], Unknown column 'merchant_id' in 'field list'
+
+    [sql_query] => INSERT INTO `ejs_admin` (`admin_name`,`admin_password`,`admin_mobile`,`admin_group_permission_id`,`merchant_id`,`is_allow_group`) VALUES ('商户2登录', '85b8c12b159953838b64da7ca53cae15', '18649754098', 2, 2, 0)
+
+    [query_string] => route=crm/crm/save_add_merchant
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:19:34+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:19:34
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:21:10+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:21:10
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,cumulative_settlement,unsettled_amount,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:21:59+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:21:59
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:22:15+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:22:15
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,warehouse_id from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,status,warehouse_id from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:23:10+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:23:10
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,warehouse_id,merchant_contact_name,merchant_contact_phone,business_manager_id,client_id,company_name,remark,login_name,allow_bonded,allow_direct,status from  ejs_merchant where is_delete = 0 and merchant_id = 1 LIMIT 1], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,warehouse_id,merchant_contact_name,merchant_contact_phone,business_manager_id,client_id,company_name,remark,login_name,allow_bonded,allow_direct,status from  ejs_merchant where is_delete = 0 and merchant_id = 1 LIMIT 1
+
+    [query_string] => route=crm/crm/edit_merchant&merchant_id=1
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:24:12+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:24:12
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,warehouse_id,merchant_contact_name,merchant_contact_phone,business_manager_id,client_id,company_name,remark,login_name,allow_bonded,allow_direct,status from  ejs_merchant where is_delete = 0 and merchant_id = 3 LIMIT 1], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,warehouse_id,merchant_contact_name,merchant_contact_phone,business_manager_id,client_id,company_name,remark,login_name,allow_bonded,allow_direct,status from  ejs_merchant where is_delete = 0 and merchant_id = 3 LIMIT 1
+
+    [query_string] => route=crm/crm/edit_merchant&merchant_id=3
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:24:17+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:24:17
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,warehouse_id,merchant_contact_name,merchant_contact_phone,business_manager_id,client_id,company_name,remark,login_name,allow_bonded,allow_direct,status from  ejs_merchant where is_delete = 0 and merchant_id = 3 LIMIT 1], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,warehouse_id,merchant_contact_name,merchant_contact_phone,business_manager_id,client_id,company_name,remark,login_name,allow_bonded,allow_direct,status from  ejs_merchant where is_delete = 0 and merchant_id = 3 LIMIT 1
+
+    [query_string] => route=crm/crm/edit_merchant&merchant_id=3
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:24:25+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:24:25
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,warehouse_id,merchant_contact_name,merchant_contact_phone,business_manager_id,client_id,company_name,remark,login_name,allow_bonded,allow_direct,status from  ejs_merchant where is_delete = 0 and merchant_id = 3 LIMIT 1], Unknown column 'status' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,warehouse_id,merchant_contact_name,merchant_contact_phone,business_manager_id,client_id,company_name,remark,login_name,allow_bonded,allow_direct,status from  ejs_merchant where is_delete = 0 and merchant_id = 3 LIMIT 1
+
+    [query_string] => route=crm/crm/edit_merchant&merchant_id=3
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:31:55+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:31:55
+    [error_number] => 1054 [UPDATE `ejs_merchant` set `merchant_name`='商户3', `merchant_contact_name`='修改', `merchant_contact_phone`='18649676564', `company_name`='商户33该', `client_id`='2', `remark`='真幸福水电费修改', `operator`='黄永绮', `gmt_modify`='2019-04-28 17:31:55' WHERE  merchant_id =  3], Unknown column 'gmt_modify' in 'field list'	
+
+    [sql_query] => UPDATE `ejs_merchant` set `merchant_name`='商户3', `merchant_contact_name`='修改', `merchant_contact_phone`='18649676564', `company_name`='商户33该', `client_id`='2', `remark`='真幸福水电费修改', `operator`='黄永绮', `gmt_modify`='2019-04-28 17:31:55' WHERE  merchant_id =  3	
+
+    [query_string] => route=crm/crm/save_edit_merchant&merchant_id3
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:32:24+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:32:24
+    [error_number] => 1054 [UPDATE `ejs_merchant` set `merchant_name`='商户3', `merchant_contact_name`='修改', `merchant_contact_phone`='18649676564', `company_name`='商户33该', `client_id`='2', `remark`='真幸福水电费修改', `operator`='黄永绮', `gmt_modify`='2019-04-28 17:32:24' WHERE  merchant_id =  3], Unknown column 'gmt_modify' in 'field list'	
+
+    [sql_query] => UPDATE `ejs_merchant` set `merchant_name`='商户3', `merchant_contact_name`='修改', `merchant_contact_phone`='18649676564', `company_name`='商户33该', `client_id`='2', `remark`='真幸福水电费修改', `operator`='黄永绮', `gmt_modify`='2019-04-28 17:32:24' WHERE  merchant_id =  3	
+
+    [query_string] => route=crm/crm/save_edit_merchant&merchant_id3
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:33:11+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:33:11
+    [error_number] => 1054 [UPDATE `ejs_merchant` set `merchant_name`='商户3', `merchant_contact_name`='修改', `merchant_contact_phone`='18649676564', `company_name`='商户33该', `client_id`='2', `remark`='真幸福水电费修改', `operator`='黄永绮', `gmt_modify`='2019-04-28 17:33:11' WHERE  merchant_id =  3], Unknown column 'gmt_modify' in 'field list'	
+
+    [sql_query] => UPDATE `ejs_merchant` set `merchant_name`='商户3', `merchant_contact_name`='修改', `merchant_contact_phone`='18649676564', `company_name`='商户33该', `client_id`='2', `remark`='真幸福水电费修改', `operator`='黄永绮', `gmt_modify`='2019-04-28 17:33:11' WHERE  merchant_id =  3	
+
+    [query_string] => route=crm/crm/save_edit_merchant&merchant_id3
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:37:23+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:37:23
+    [error_number] => 1054 [UPDATE `ejs_merchant` set `allow_bonded`='1', `operator`='黄永绮', `gmt_modify`='2019-04-28 17:37:23' WHERE  merchant_id =  2], Unknown column 'gmt_modify' in 'field list'	
+
+    [sql_query] => UPDATE `ejs_merchant` set `allow_bonded`='1', `operator`='黄永绮', `gmt_modify`='2019-04-28 17:37:23' WHERE  merchant_id =  2	
+
+    [query_string] => route=crm/crm/update_merchant_allow_bonded
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-28T17:40:43+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-28 17:40:43
+    [error_number] => 1054 [UPDATE `ejs_merchant` set `business_manager_id`='2', `operator`='黄永绮', `gmt_modify`='2019-04-28 17:40:43' WHERE  merchant_id =  1], Unknown column 'gmt_modify' in 'field list'
+
+    [sql_query] => UPDATE `ejs_merchant` set `business_manager_id`='2', `operator`='黄永绮', `gmt_modify`='2019-04-28 17:40:43' WHERE  merchant_id =  1
+
+    [query_string] => route=crm/crm/update_merchant_bm
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-29T11:16:04+08:00] -- End 2019-04-28 Log --

@@ -1,0 +1,12 @@
+
+<!--支付失败-->
+<view class='fail-wrap' wx:if="{{flag}}">
+  <image src='../../images/mp_pay_fail@3x.png' class='fail' />
+  <view class='tips1'>请查看订单是否存在，若已存在请勿重复提交。</view>
+  <view class='price'>支付金额：{{order_amount}}元</view>
+  <view class='controlBtn'>
+    <navigator open-type="redirect" url='../order/order?id={{order_sn}}'>
+      <button>查看订单详情</button>
+    </navigator>
+  </view>
+</view>

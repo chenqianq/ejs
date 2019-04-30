@@ -1,0 +1,34 @@
+<?php
+/**
+ * 数据表定义
+ * @author kinsly
+ */
+class TableConst {
+
+    /** ---------------------管理员/权限相关--------------------- */
+
+	const TABLE_ADMIN = 'ejs_admin'; // 管理员表
+	const TABLE_ADMIN_GROUP = 'ejs_admin_group'; // 用户组表
+	const TABLE_ADMIN_PERMISSION = 'ejs_admin_permission'; // 管理员权限表
+	const TABLE_ADMIN_GROUP_TO_PERMISSION = 'ejs_admin_group_to_permission'; // 用户组权限关系表
+	const TABLE_ADMIN_LOG = 'ejs_admin_log'; // 系统管理日志
+	const TABLE_ADMIN_TO_GROUP = 'ejs_admin_to_group'; // 用户跟用户组关系表
+    const TABLE_ADMIN_GROUP_HIERARCHY = 'ejs_admin_group_hierarchy';
+
+    const TABLE_SMS_LOG = 'ejs_sms_log'; // 短信发送记录表
+	const TABLE_EJS_CLIENT = 'ejs_client';//crm中的客户表
+	const TABLE_EJS_BUSINESS_MANAGER = 'ejs_business_manager';//商务经理表
+	const TABLE_EJS_MERCHANT = 'ejs_merchant';//crm中的商户表
+	const TABLE_EJS_MERCHANT_LOG = 'ejs_merchant_log';//crm中的商户日志表
+    const TABLE_SETTING = 'ejs_setting'; // 配置表
+    const TABLE_SETTING_LOG = 'ejs_setting_log'; // 配置操作日志表
+
+    const TABLE_BASE_GOODS = 'base_goods'; // 基础商品信息表
+    const TABLE_BASE_GOODS_IMAGE = 'base_goods_image'; // 基础商品图片表
+    const TABLE_BASE_BRAND = 'base_brand'; // 基础品牌表
+    const TABLE_BASE_CLASS = 'base_class'; // 基础分类表
+    const TABLE_BASE_GOODS_TO_CLASS = 'base_goods_to_class'; // 基础商品同基础分类关联表
+
+	
+	
+}

@@ -1,0 +1,27 @@
+<?php
+if( !defined('IS_ACCESS') ){
+    die('Illegal Access');
+    exit;
+}
+
+class EjsConst
+{
+    /** ----------------管理员和权限相关常量---------------- */
+
+    const AdminIsNewAccount = 1; // 是新管理员账号(登陆跳转修改密码页面)
+    const AdminNotNewAccount = 2; // 不是新管理员账号
+
+    /** ----------------短信发送常量---------------- */
+
+    const SmsTypeAdminBindMobile = 1;
+    const countTimeRefreshTime = 180; //短信重新发送等待秒数
+	/** ----------------crm---------------- */
+	const groupOfBusinessManager = 1;//商务经理的权限分组
+	const groupOfMerchant = 2;//商户经理的权限分组
+	const merchantStatusOfNomal = 1;//商户状态正常
+	const merchantStatusOfFreeze = 2;//商户状态冻结
+	
+	
+	
+	
+}

@@ -1,0 +1,354 @@
+/*
+
+	初始化+自定义
+
+*/
+
+* { margin: 0; padding: 0; font-size: 12px }
+.FL { float: left; }
+.FR { float: right; }
+.clearfix:after {
+	display: block;
+	content: '.';
+	clear: both;
+	line-height: 0;
+	visibility: hidden;
+}
+.COR5 { color: #ff7198; }
+.H10 { height: 10px; background: #eee; }
+a{ text-decoration: none; }
+.one-line {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.two-line {
+	display: -webkit-box;
+	-webkit-line-clamp:2;
+	-webkit-box-orient:vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.three-line {
+	display: -webkit-box;
+	-webkit-line-clamp:3;
+	-webkit-box-orient:vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.box1 {
+	display: inline-block;
+	padding: 1px 2px;
+	border: 1px solid #ff7198;
+	color:#ff7198;
+	border-radius: 3px;
+}
+.DEL{
+	color: #999;
+	text-decoration: line-through;
+}
+
+/*
+	xx 部分
+*/
+
+.preview-btn {
+	margin: 5px 0 0 0px;
+	width: 300px;
+	text-align: center;
+}
+.module-detail {
+	float: left;
+	margin-left: 320px;
+}
+
+/*
+	模块部分
+*/
+.preview {
+	width: 300px; 
+	/*height: auto;*/
+	/*max-height: 600px;*/
+	height: 600px;
+	margin: 10px 10px 0 5px;
+	border: 2px solid #666;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.preview .add img {
+	width: 280px;
+}
+
+.preview .header {
+	height: 45px; line-height: 45px;
+	border-bottom: 1px solid #eee;
+}
+.preview .header h1 {
+	text-align: center;
+	font-size: 18px;
+}
+.preview .one-img img {
+	display: block;
+	width: 100%;
+}
+.preview .two-img img {
+	float: left; 
+	width: 100%;
+}
+.preview .intro {
+	padding: 10px 15px;
+	border-bottom: 1px solid #eee;
+	background: url(../images/special_subject/subject_triangle@3x.png) no-repeat 30px 0;
+	background-size:  10px;
+}
+.preview .intro p {
+	padding: 6px 10px;
+	background: #bababa;
+	color: #fff;
+	border-radius: 4px;
+	font-size: 13px;
+}
+.preview .title {
+	line-height: 40px;
+	text-align: center;
+	color: #877f81;
+	font-size: 14px;
+}
+
+/* list1 单行商品 */
+.preview .list1 .item {
+	display: block;
+	position: relative;
+	border-bottom: 1px solid #eee;
+}
+.preview .list1 .item>img {
+	display: block;
+	width: 100%;
+}
+.preview .list1 .item .info {
+	padding: 10px 58px 10px 20px;
+}
+.preview .list1 .item .info h6{
+	margin-bottom: 5px;
+	font-size: 15px;
+	color: #222;
+}
+.preview .list1 .item .info .tit {
+	height: 50px;
+	color: #999496;
+}
+.preview .list1 .item .info .pri span {
+	margin-right: 4px;
+}
+
+.preview .list1 .item .info .buy {
+	position: absolute;
+	bottom: 10px; right: 27px;
+}
+.preview .list1 .item .info .buy img {
+	width: 22px; height: 20px;
+	cursor: pointer;
+}
+
+/* list2 四个商品 */
+.preview .list2 {
+	width: 300px;
+	padding-left: 20px;
+	overflow-x: scroll; 
+	overflow-y: hidden;
+}
+.preview .list2 .wrap {
+	width: 800px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+}
+.preview .list2 .item {
+	float: left;
+	margin-right: 5px;
+	border-bottom: 1px solid #eee;
+}
+.preview .list2 .item img {
+	width: 100px; height: 100px;
+}
+.preview .list2 .item .tit {
+	width: 85px; height: 32px;
+}
+.preview .list2 .item .COR5 {
+	margin: 5px 0 10px;
+}
+
+/* list 3 两个商品 */
+
+.preview .list3 .item {
+	box-sizing: border-box;
+	position: relative;
+	float: left;
+	width: 50%; height: 225px;
+	padding: 0 20px;
+	border-bottom: 1px solid #eee;
+}
+.preview .list3 .item:nth-child(odd) {
+	border-right: 1px solid #eee;
+}
+.preview .list3 .item img {
+	display: block;
+	width: 120px; height: 120px;
+	margin: auto;
+}
+.preview .list3 .item .three-line{
+	height: 48px;
+	margin: 5px 0 20px;
+}
+.preview .list3 .item .info .DEL {
+	margin-left: 5px;
+}
+.preview .list3 .item .info .buy {
+	position: absolute;
+	bottom: 13px; right: 27px;
+}
+.preview .list3 .item .info .buy img {
+	position: relative;
+	left: 8px;
+	width: 22px; height: 20px;
+	cursor: pointer;
+}
+/* 包邮包税按钮 */
+.preview .list3 .item .tag {
+	position: absolute;
+	bottom: 33px;
+}
+.preview .list3 .item .tag .box1 {
+	padding: 1px 3px;
+}
+
+/* list 4 单栏 */
+
+.preview .list4 .item {
+	display: block;
+	position: relative;
+	width: 100%; height: 140px;
+	border-bottom: 1px solid #eee;
+}
+.preview .list4 .item>img {
+	width: 100px; height: 100px;
+	margin: 18px 10px 0 20px;
+}
+.preview .list4 .item .wrap {
+	width: 160px; margin-top: 17px;
+	margin-right: 20px;
+}
+.preview .list4 .item .tit {
+	font-size: 15px;
+	color: #453f40;
+}
+.preview .list4 .item .des {
+	color: #999;
+}
+.preview .list4 .item .pri {
+	position: absolute;
+	bottom: 11px;
+	width:160px;
+	color: #ff7198;
+}
+.preview .list4 .item .pri img {
+	width: 22px; height: 20px;
+	cursor: pointer;
+}
+.preview .list4 .item .pri .COR5 {
+	font-size: 18px;
+	margin-right: 5px;
+}
+
+/* 固定 nav */
+.preview .FIXED {
+	position: fixed;
+	top: 45px;
+	z-index: 99;
+}
+
+/* 锚点栏 */
+.preview .nav {
+	width: 100%; height: 54px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	border-bottom: 1px solid #eee;
+	background: #fff;
+}
+.preview .nav a {
+	float: left;
+	height: 46px; line-height: 46px;
+	margin: 0 8px 0 20px;
+}
+.preview .nav a:last-child {
+	margin-right: 20px;
+}
+.preview .nav a.active {
+	color: #ff7198;
+	border-bottom: 3px solid #ff7198;
+}
+.preview .end {
+	height: 49px; line-height: 49px;
+	text-align: center;
+	background: #eee;
+	color: #666;
+}
+
+/* module-detail */
+.module-detail {
+	padding-top: 20px; 
+}
+.module-detail .con {
+	display: none;
+}
+
+/* 弹窗样式 */
+.addM-POP {
+	box-sizing: content-box;
+	padding: 20px 40px;
+}
+.addM-POP h6 {
+	font-size: 18px;
+	margin-top: 20px;
+}
+.addM-POP input {
+	margin: 4px 10px;
+	vertical-align: middle;
+}
+.addM-POP span {
+	margin-right: 6px;
+	font-size: 14px;
+	cursor:pointer;
+}
+.addM-POP .img-wrap .one{
+	width: 200px; height: 90px;
+}
+.addM-POP .img-wrap .two{
+	width: 100px; height: 90px;
+}
+.addM-POP .text-wrap img {
+	width: 300px;
+}
+.addM-POP .list-wrap img {
+	width: 250px;
+	border: 1px solid #eee;
+	margin: 20px 20px 0 0;
+}
+.abs { position: absolute; width: 325px; z-index: -1; opacity: 0.3; border: 2px solid #ff7198; }
+
+@media screen and  (min-width: 1200px){
+	.preview {
+		height: 600px;
+	}
+	.module-detail {
+		width: 1020px;
+	}
+}
+@media screen and (min-width: 1602px){
+	.preview {
+		height: 750px;
+	}
+	.module-detail {
+		width: 1320px;
+	}
+}
+

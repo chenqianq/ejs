@@ -1,0 +1,75 @@
+<!--logs.wxml-->
+<view class='wrap' wx:if="{{flag}}">
+  <view class='userInfo' id='userINFO'>
+    <button class="Auth" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取头像</button>
+    <view class='userImg'>
+      <image src="../../images/personal_head_bg@3x1.png" class='imgBg'/>
+      <view class='head'>
+          <image src="{{userInfo.avatarUrl}}" />
+      </view>
+    </view>
+    <view class='userName'>
+      <view class='name'>{{userInfo.nickName}}</view>
+      <!-- <view class='noCertification' wx:if="{{isTrueName}}">
+        <view>还没有实名认证</view>
+        <navigator url='../../pages/certificate/certificate' >
+          <view class='go'>去认证</view>
+        </navigator>
+      </view> -->
+    </view>
+    <view class="feedback">
+      <navigator url="../../pages/feedback/feedback">
+        <image src="../../images/personal_feedback@3x.png"></image>
+      </navigator>
+    </view>
+  </view>
+  <view class='{{scrollMt ? "orderNavFlx" : "orderNav"}}'>
+    <view class='{{sign_key==1 ? "active" : "" }}' data-key="1" bindtap='tabList'>全部</view>
+    <view class='{{sign_key==2 ? "active" : "" }}' data-key="2" bindtap='tabList'>待配货</view>
+    <view class='{{sign_key==3 ? "active" : "" }}' data-key="3" bindtap='tabList'>待收货</view>
+    <view class='{{sign_key==4 ? "active" : "" }}' data-key="4" bindtap='tabList'>已完成</view>
+  </view>
+
+  <view wx:if="{{0}}" class='empty' >
+    <image src="../../images/noorder.png" />
+    <view>您还没有该类订单哦</view>
+  </view>
+  <view wx:else  class='orders {{scrollMt ? "top" : ""}}' id='orderCt' >
+
+    <view class='orderItem' wx:for="{{order_infos}}" wx:key="{{index}}" wx:for-index="parent_index">
+      <navigator url="../order/order?id={{item.order_sn}}" hover-class="none">
+        <view class="orderHead">
+          <view>{{item.create_time}}
+          <image class="isSelf"  wx:if = "{{item.is_self_deliver==1}}" src="../../images/mp_self_pickup@3x.png"></image>
+          </view>
+          
+          <view>{{item.order_sn}}</view>          
+        </view>
+        <scroll-view scroll-x class='goods'>
+          <image wx:for="{{item.goods_info_array}}" wx:key="{{index}}" wx:for-item="it" src="{{it.goods_image}}"></image>
+        </scroll-view>
+      </navigator>
+
+      <view class="orderThree">
+        <view class='price'>订单总额：￥{{item.order_amount}}</view>
+        <view>{{item.fomat_status}}</view>
+      </view>
+
+      <view class='btnS'>
+        <!-- <button class='cancel'>取消订单</button> -->
+        <button wx:for="{{item.action}}" wx:key="{{index}}" wx:for-item="btn"
+           class="{{btn.action_code == 'buy_again'?'ok':''}}"
+           bindtap="doAction" id="{{btn.action_code}}" data-order="{{item.order_sn}}" data-parent_index="{{parent_index}}">
+          {{btn.text}}
+        </button>
+        <!-- <button class='ok'>确认收货</button> -->
+        <navigator wx:if="{{item.share_red_envelop}}" class="ok"
+          url="../bonuses/bonuses?envelope_id={{item.envelope_id}}&order_sn={{item.order_sn}}">分享红包</navigator>
+      </view>
+
+    </view>
+    
+    <view class='pageEnd'>直到世界的尽头</view>
+  </view>
+ 
+</view>

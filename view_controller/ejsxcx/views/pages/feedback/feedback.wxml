@@ -1,0 +1,31 @@
+<view class="feedback">
+	<!-- 反馈咨询为空 -->
+	<view class="empty" wx:if="{{isEmpty}}">
+		<image src="../../images/nulvalue_feedback@3x.png"></image>
+		<view class="tit">暂无记录</view>
+		<view class="tip">若在使用本小程序遇到问题, 困惑或者建议, 可以点击[提交反馈/咨询], 我们会有工作人员对问题进行跟进</view>
+	</view>
+
+	<!-- 反馈咨询列表 -->
+	<view>
+		<navigator class="item" wx:for="{{feedbackList}}" wx:key="{{index}}"
+				url="../../pages/feeddetail/feeddetail?id={{item.id}}">
+			<view class="time">{{item.gmt_create}}</view>
+			<view class="title one-line">{{item.feedback_title}}</view>
+			<!-- 回复为空 -->
+			<view wx:if="{{item.status<1}}" class="noresponse">{{item.feedback_result}}</view>
+			<!-- 有回复 -->
+			<view wx:if="{{item.status>0}}" class="response flex">
+				<view class="one-line"><text>回复: </text>{{item.feedback_result}}</view>
+				<image src="../../images/list_enter@3x.png"></image>
+			</view>
+		</navigator>
+	</view>
+
+	<!-- 提交反馈按钮 -->
+	<view class="subFeed flex">
+		<navigator class="btn" url="../../pages/subfeed/subfeed">
+			提交反馈/咨询
+		</navigator>
+	</view>
+</view>

@@ -1,0 +1,71 @@
+<view class="cart" wx:if="{{flag}}">
+	<!-- 为空 -->
+	<view class="empty flex" wx:if="{{isEmpty}}">
+		<image src="../../images/mp_car@3x.png"></image>
+		<text>你的购物车空空如也, 快去装满它!</text>
+	</view>
+	<!-- 正常 -->
+	<view class="cart-wrap" wx:if="{{!isEmpty}}">
+		<view class="tit" bindtap="edit">
+			<text class="t1" wx:if="{{!isEdit}}">编辑</text>
+			<text class="t2" wx:if="{{isEdit}}">完成</text>
+		</view>
+		<view class="list-wrap">
+			<view class="item flex" wx:for="{{cart_box_info}}" wx:key="index">
+				<view class="isEditCheckBox" wx:if="{{!isEdit}}">
+					<image class="{{checkList[index]?'check hide':'check'}}"
+						bindtap="checkboxChange" data-index="{{index}}" id="{{item.cart_id}}"
+						src="../../images/icon_check_default@3x.png"></image>
+					<image  class="{{checkList[index]?'check':'check hide'}}"
+						bindtap="checkboxChange" data-index="{{index}}" id="{{item.cart_id}}"
+						src="../../images/icon_check_selected@3x.png"></image>
+				</view>
+				<view class="isDeleteCheckBox" wx:if="{{isEdit}}">
+					<image class="{{deleteCheckBoxList[index]?'check hide':'check'}}"
+						   bindtap="deleteCheckboxChange" data-index="{{index}}" id="{{item.cart_id}}"
+						   src="../../images/icon_check_default@3x.png"></image>
+					<image  class="{{deleteCheckBoxList[index]?'check':'check hide'}}"
+							bindtap="deleteCheckboxChange" data-index="{{index}}" id="{{item.cart_id}}"
+							src="../../images/icon_check_selected@3x.png"></image>
+				</view>
+
+				<image class="cover" src="{{item.goods_image}}"></image>
+				<view class="info">
+					<view class="title"><text>{{item.goods_name}}</text></view>
+					<view class="flex price-wrap">
+						<view class="price">
+						  ¥ <text>{{item.final_price}}</text>
+						  <text wx:if="{{item.list_price != ''}}" class="list_price">¥{{item.list_price}}</text>
+						</view>
+
+						<!-- <view wx:if="{{item.list_price != ''}}"><text>{{item.list_price}}</text></view> -->
+
+						<view class="num-wrap">
+							<text class="reduce {{(item.allow_decrease == false)? 'cant_add' : ''}}" bindtap="reduce" data-index="{{index}}" id="{{item.cart_id}}">-</text>
+							<text class="val">{{item.goods_num}}</text>
+							<text class="add {{(item.allow_add == false)? 'cant_add' : ''}}" bindtap="add" data-index="{{index}}" id="{{item.cart_id}}">+</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+    <view class='H90'></view>
+		<view class="fixbar flex">
+			<checkbox-group class="all" bindchange="checkAll">
+				<label><checkbox checked="{{checkAll}}" value="" />全选</label>
+			</checkbox-group>
+			<view class="total flex" wx:if="{{!isEdit}}">
+				<view class='tWrap'>合计<text class="t1">¥{{cartTotal}}</text></view>
+				<text class="t2">{{cartQty}}件</text>
+			</view>
+			<view class="navigatorSub" wx:if="{{!isEdit}}" bindtap="submitCart">提交</view>
+			<view class="btn-wrap flex" wx:if="{{isEdit}}">
+				<button bindtap="delete">删除</button>
+			</view>
+      <view class="visCheckAll {{checkAll?'isClick':''}}">
+        <image wx:if="{{ checkAll }}"src="../../images/icon_check_selected@3x.png"></image>
+      </view>
+		</view>
+	</view>
+
+</view>

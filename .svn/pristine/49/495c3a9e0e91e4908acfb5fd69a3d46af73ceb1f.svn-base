@@ -1,0 +1,273 @@
+<?php
+/**
+ * DB相关的扩展方法,包括字符处理，缓存方法等
+ */
+
+class DbExtend {
+	
+	/**
+	 * 构造函数
+	 */
+	public function __construct() {
+	
+	}
+	
+	
+	/**
+	 * 根据任意类型数据，将其转换成数组形式
+	 * @param unknown_type $mixed
+	 * @return multitype:|Ambigous <multitype:, string>
+	 */
+	public function getArrayByMixed($mixed, $separator=','){
+		if(empty($mixed)){
+			return array();
+		}
+		$mixed = is_array($mixed)? $mixed : explode($separator, $mixed);
+		$mixed = array_unique($mixed);
+		foreach($mixed as $k=>$v){
+			$mixed[$k] = trim($v);
+		}
+		return $mixed;
+	}
+	
+	/**
+	 * 将字符串或者数组转换成可SQL查询中IN后参数,不支持mysql内置函数传值
+	 * @param $mixed 任意参数
+	 * @param $integer 是否是整形
+	 * @param $separator 分隔符
+	 */
+	public function getSqlInFollow($mixed, $integer=false, $separator=','){
+		if(empty($mixed)){
+			return '';
+		}
+		$mixed = is_array($mixed)? $mixed : explode($separator, $mixed);
+		$mixed = array_unique($mixed);
+		foreach($mixed as $k=>$v){
+			if($integer){
+				$mixed[$k] = (int)trim($v);
+			}else{
+				$mixed[$k] = "'".trim($v)."'";
+			}
+		}
+		return implode(",", $mixed);
+	}
+	
+	
+	/**
+	 * 将一位数组转换成表字段表示的字符串
+	 * @param array $fields
+	 * @return string
+	 */
+	public function getSqlFieldsString($fields){
+		if(empty($fields)){
+			return '';
+		}
+		$sql_string = array();
+		foreach($fields as $v){
+			$sql_string[] = "`".$v."`";
+		}
+		return implode(",", $sql_string);
+	}
+	
+	
+	/**
+	 * 比较两个浮点数的大小
+	 * @param $num1  arbitrary precision numbers
+	 * @param $num2  arbitrary precision numbers
+	 * @param $scale  对比精度
+	 * @return 0相等，1左边大，-1右边大
+	 */
+	function compareFloat($num1,$num2,$scale=4){
+		$num1 = (float)$num1;
+		$num2 = (float)$num2;
+		$result = bccomp($num1,$num2,$scale);
+		return $result;
+	}
+	
+	
+	
+	/**
+	 * 将数组按一定方式格式化成部分SQL语句,不支持mysql内置函数传值
+	 * @param string $type ['update','insert']
+	 * @param string $table_fields 表字段
+	 * @param string $data_fields 需要操作的字段
+	 * @param boolean $escape 是否转义
+	 * @return Array
+	 */
+	public function getSqlPartByArray($type, $data_fields){
+		if( !in_array($type, array('update','insert')) || empty($data_fields) ){
+			return false;
+		}
+	
+		//过滤数据源,并SQL格式化
+		$sql_fields = array();
+		foreach($data_fields as $k=>$v){
+			$sql_fields['`'.$k.'`'] = "'". $v ."'";
+		}
+	
+		//生成sql语句
+		$return = array();
+		if(!empty($sql_fields)){
+			if($type == "insert"){
+				$fields_name = array_keys($sql_fields);
+				$fields_values = array_values($sql_fields);
+				$return['part1'] = implode(",", $fields_name);
+				$return['part2'] = implode(",", $fields_values);
+			}
+			if($type == "update"){
+				$update_fields = array();
+				foreach($sql_fields as $k=>$v){
+					$update_fields[] = "{$k}={$v}";
+				}
+				$return['part1'] = implode(", ", $update_fields);
+			}
+		}
+		$return['type'] = $type;
+		return $return;
+	}
+
+	/**
+	 * 数据库查询条件拼接
+	 * @param $array
+	 * @return bool|string
+	 */
+
+	public function getSqlWhereByArray($array){
+		if(empty($array)){
+			return '';
+		}
+		$where = ' ';
+		$m = 1;
+
+		foreach($array as $key =>$value){
+
+			if($m>1){
+				$where .= " and ";
+			}
+
+			if(count($value) > 1){
+				if(count($value) == 2){
+					$where .= $this -> getJointWhereByTwoArray($key,$value);
+				}
+				if(count($value) == 3){
+					$where .= $this -> getJointWhereBySecondArray($key,$value);
+				}
+
+
+			}else{
+
+				$strArray =  explode('|',$key);
+				$count = count($strArray);
+				if($count>1)$where .= " ( ";
+				foreach($strArray as$k=> $v) {
+					$where .= " $v = '$value'";
+					if($k <$count-1)$where .= " or ";
+				}
+				if($count>1)$where .= " ) ";
+
+			}
+
+
+			$m++;
+
+		}
+
+
+		return $where;
+
+
+	}
+
+	/**
+	 * 数据查询条件，数组内容两个
+	 * @param $key
+	 * @param $array
+	 * @return bool|string
+	 */
+
+	public function getJointWhereBySecondArray($key,$array){
+		if(empty($array) || !$key || count($array) != 3){
+			return false;
+		}
+		$return = '';
+		$k = 0;
+		$whereFirst = $this -> getJointWhereByTwoArray($key,$array[0]);
+		$whereSecond = $this -> getJointWhereByTwoArray($key,$array[1]);
+		if($whereFirst)$k++;
+		if($whereSecond)$k++;
+
+		if($k == 2) $return .= " ( ";
+		if($whereFirst)$return .=$whereFirst;
+		if($k == 2)$return .= " $array[2] ";
+		if($whereSecond)$return .=$whereSecond;
+		if($k == 2) $return .= " ) ";
+
+
+		return $return;
+
+
+	}
+
+	/**
+	 * 数据查询条件，数组内容三个
+	 * @param $key
+	 * @param $array
+	 * @return bool|string
+	 */
+
+	public function getJointWhereByTwoArray($key,$array){
+
+		if(empty($array) || !$key || count($array) != 2 || $array[1] === '' || $array[1] === null){
+			return false;
+		}
+		$return = '';
+		$strArray =  explode('|',$key);
+		$count = count($strArray);
+		if($count>1)$return .= " ( ";
+		foreach($strArray as$k=> $value){
+			switch($array[0]){
+				case 'like':
+					$return .= " $value like '$array[1]' ";
+					break;
+				case 'egt':
+					$return .= " $value >= '$array[1]' " ;
+					break;
+				case 'gt' :
+					$return .= " $value > '$array[1]' " ;
+					break;
+				case 'elt':
+
+					$return .= " $value <= '$array[1]' " ;
+					break;
+				case 'lt' :
+
+					$return .= " $value < '$array[1]' " ;
+					break;
+				case 'neq' :
+					$return .= " $value <> '$array[1]' " ;
+					break;
+                case 'in' :
+                    $arr = $this -> getSqlInFollow($array[1]);
+                    $return .= " $value in ($arr) " ;
+                    break;
+                case 'not in' :
+                    $arr = $this -> getSqlInFollow($array[1]);
+                    $return .= " $value not in ($arr) " ;
+                    break;
+			}
+			if($k <$count-1)$return .= " or ";
+
+		}
+		if($count>1)$return .= " ) ";
+
+
+
+
+		return $return;
+
+
+
+	}
+	
+}
+

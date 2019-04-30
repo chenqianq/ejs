@@ -1,0 +1,795 @@
+<?php 
+if( !defined('IS_ACCESS') ){
+    die('Illegal Access');
+    exit;
+}
+
+/**
+ * dao 文件 就负责 与数据库交互，不做任何的业务逻辑处理。
+ * @author Administrator
+ *
+ */
+class AdminDao {
+
+	/**
+	 * 
+	 * @var db
+	 */
+	private $db;
+	
+	/**
+	 * DbExtend
+	 * @var DbExtend
+	 */
+	private $dbExtendHelper;
+
+	private $pageHelper;
+	
+	/**
+	 * 构造函数
+	 */
+	public function __construct () {
+		$this -> db =  Zc::getDb(); 
+		//helper
+		$this -> dbExtendHelper = HelperFactory::getDbExtendHelper();
+
+		$this->pageHelper = HelperFactory::getPageHelper();
+	}
+	
+	
+	/**
+	 * 验证用户密码是否正确
+	 * @param string $adminName
+	 * @param string $adminPassword
+	 * return boolen
+	 */
+	public function checkAdminByMixNameAndPassword($adminName,$adminPassword){
+		if(empty($adminName) || empty($adminPassword)){
+			return false;
+		}
+		
+		$sql = 'select * from '.TableConst::TABLE_ADMIN.' where admin_name = "'.addslashes($adminName).'" and admin_password = "'.addslashes($adminPassword).'"';
+
+		$adminMessage =  $this -> db -> getRow($sql,3600);
+		
+		if(!$adminMessage){
+			return false;
+		}
+		
+		return $adminMessage;
+	}
+
+	/**
+	 * 更新用户表
+	 * @param $data
+	 * @param $adminId
+	 * @return bool|int
+	 */
+	public function updateAdmin($data,$adminId){
+		if(empty($data) && !is_array($data) && empty($adminId)){
+			return false;
+		}
+		$sql = 'update ' . TableConst::TABLE_ADMIN . " set ";
+        foreach ($data as $key => $v) {
+            $sql .= "$key = '$v',";
+        }
+        $sql = substr($sql, 0, -1);
+		$sql .= ' where admin_id = '.intval($adminId);
+		return $this -> db -> exec($sql);
+		
+	}
+
+	/**
+	 * 通过adminid数组删除用户
+	 * @param $adminIdS
+	 * @return bool|int
+	 */
+	public function deleteAdminByAdminIdArray($adminIdArray){
+		if(empty($adminIdArray)){
+			return false;
+		}
+
+		$ids = $this -> dbExtendHelper -> getSqlInFollow($adminIdArray);
+
+		$sql = "delete from " . TableConst::TABLE_ADMIN . " where admin_id in ($ids)";
+
+
+		return $this -> db -> exec($sql);
+	}
+
+	/**
+	 * 获取管理员信息
+	 * @param $condition
+	 * @return array|bool
+	 */
+	public function getAdminByCondition($condition,$isPage=false){
+		if(!is_array($condition) || !is_bool($isPage)){
+			return false;
+		}
+		$sql = "select * from " . TableConst::TABLE_ADMIN;
+		$where =  $this -> dbExtendHelper ->getSqlWhereByArray($condition);
+
+		if($where){
+			$sql .= " where  $where";
+		}
+        $sql .= " order by admin_id desc";
+		if($isPage){
+			$this->pageHelper ->init();
+			$sql =  $this->pageHelper -> getLimit($sql);
+		}
+
+		$adminArray = $this -> db -> getRows($sql,3600);
+
+		if( !$adminArray ){
+			return false;
+		}
+
+		$return = [];
+		foreach ( $adminArray as $admin ){
+			$return[$admin['admin_id']]= $admin;
+		}
+
+		return $return;
+
+
+	}
+
+	/**
+	 * 获取管理员信息数量
+	 * @param $condition
+	 * @return array|bool
+	 */
+	public function getAdminCountByCondition($condition){
+		if(!is_array($condition) ){
+			return false;
+		}
+		$sql = "select count(*) as num from " . TableConst::TABLE_ADMIN;
+		$where =  $this -> dbExtendHelper ->getSqlWhereByArray($condition);
+
+		if($where){
+			$sql .= " where  $where";
+		}
+
+
+
+		$return  = $this -> db -> getRow($sql,3600);
+
+
+
+		return $return['num'];
+
+
+	}
+
+		/**
+	 * 通过用户组ids获取用户
+	 * @param $adminIdArray
+	 * @return array|bool
+	 */
+	public function getAdminByAdminGroupIdArray($adminGroupIdArray,$isPage=false)
+	{
+		if(empty($adminGroupIdArray) || !is_bool($isPage)){
+			return false;
+		}
+		$ids = $this -> dbExtendHelper -> getSqlInFollow($adminGroupIdArray);
+
+		$sql = "select * from " . TableConst::TABLE_ADMIN . " where admin_group_permission_id in ($ids)";
+        $sql .= " order by admin_id desc";
+		if($isPage){
+			$this->pageHelper ->init();
+			$sql =  $this->pageHelper -> getLimit($sql,3600);
+		}
+
+		$adminArray = $this -> db -> getRows($sql);
+
+		if( !$adminArray ){
+			return false;
+		}
+
+		$return = [];
+		foreach ( $adminArray as $admin ){
+			$return[$admin['admin_id']]= $admin;
+		}
+
+		return $return;
+
+
+	}
+
+	/**
+	 * 通过用户组ids获取用户数量
+	 * @param $adminIdArray
+	 * @return array|bool
+	 */
+	public function getAdminByAdminCountGroupIdArray($adminGroupIdArray)
+	{
+		if(empty($adminGroupIdArray) ){
+			return false;
+		}
+		$ids = $this -> dbExtendHelper -> getSqlInFollow($adminGroupIdArray);
+
+		$sql = "select count(*) as num from " . TableConst::TABLE_ADMIN . " where admin_group_permission_id in ($ids)";
+
+
+
+		$return  = $this -> db -> getRow($sql,3600);
+
+
+		return $return['num'];
+
+
+	}
+
+	/**
+	 * 获取用户组信息
+	 * @param $condition
+	 * @return array|bool
+	 */
+	public function getAdminGroupByCondition($condition){
+		if(!is_array($condition)){
+			return false;
+		}
+		$sql = "select * from " . TableConst::TABLE_ADMIN_GROUP;
+		$where =  $this -> dbExtendHelper ->getSqlWhereByArray($condition);
+
+		if($where){
+			$sql .= " where  $where";
+		}
+
+		$adminGroupArray = $this -> db -> getRows($sql);
+
+		if( !$adminGroupArray ){
+			return false;
+		}
+
+		$return = [];
+		foreach ( $adminGroupArray as $adminGroup ){
+			$return[$adminGroup['admin_group_id']]= $adminGroup;
+		}
+
+		return $return;
+
+
+	}
+
+
+	/**
+	 * 插入管理员表
+	 * @param $data
+	 * @return bool
+	 */
+	public function insertAdmin($data)
+	{
+		if (empty($data)) {
+			return false;
+		}
+
+		$rs = $this->db->insert(TableConst::TABLE_ADMIN, $data);
+		if (!$rs) {
+			return false;
+		}
+
+		return $this->db->lastInsertId();
+	}
+
+
+	/**
+	 * 插入用户跟用户组关系表
+	 * @param $data
+	 * @return bool
+	 */
+	public function insertAdminToGroup($data)
+	{
+		if (empty($data)) {
+			return false;
+		}
+
+		$rs = $this->db->insert(TableConst::TABLE_ADMIN_TO_GROUP, $data);
+		if (!$rs) {
+			return false;
+		}
+
+		return $this->db->lastInsertId();
+	}
+
+	/**
+	 * 更新用户跟用户组关系表
+	 * @param $data
+	 * @param $where
+	 * @return bool|false|int
+	 */
+	public function updateAdminToGroupByWhere($data,$where)
+	{
+		if(empty($data) || !$where){
+			return false;
+		}
+
+
+		$res = $this->db->update(TableConst::TABLE_ADMIN_TO_GROUP, $data, $where);
+
+		return $res;
+
+
+	}
+
+
+	/**
+	 * 删除用户跟用户组关系表
+	 * @param $goodsId
+	 * @return bool|int
+	 */
+	public function deleteAdminToGroupByCondition($condition)
+	{
+		if (empty($condition) || !is_array($condition)) {
+			return false;
+		}
+
+
+		$sql = "delete from " . TableConst::TABLE_ADMIN_TO_GROUP ;
+
+		$where =  $this -> dbExtendHelper ->getSqlWhereByArray($condition);
+
+		if($where){
+			$sql .= " where  $where";
+		}
+
+		return $this -> db -> exec($sql);
+
+	}
+
+
+
+	/**
+	 * 更新管理员表
+	 * @param $data
+	 * @param $where
+	 * @return bool|false|int
+	 */
+	public function updateAdminByWhere($data,$where){
+		if(empty($data) || !$where){
+			return false;
+		}
+
+
+		$res = $this->db->update(TableConst::TABLE_ADMIN, $data, $where);
+
+		return $res;
+
+
+	}
+
+
+
+
+	/**
+ * 插入用户组权限表
+ * @param $data
+ * @return bool
+ */
+	public function insertAdminGroupPermission($data)
+	{
+		if (empty($data)) {
+			return false;
+		}
+
+		$rs = $this->db->insert(TableConst::TABLE_ADMIN_GROUP_PERMISSION, $data);
+		if (!$rs) {
+			return false;
+		}
+
+		return $this->db->lastInsertId();
+	}
+
+	/**
+	 * 插入用户组表
+	 * @param $data
+	 * @return bool
+	 */
+	public function insertAdminGroup($data)
+	{
+		if (empty($data)) {
+			return false;
+		}
+
+		$rs = $this->db->insert(TableConst::TABLE_ADMIN_GROUP, $data);
+		if (!$rs) {
+			return false;
+		}
+
+		return $this->db->lastInsertId();
+	}
+
+	/**
+	 * 更新用户组权限表
+	 * @param $data
+	 * @param $where
+	 * @return bool|false|int
+	 */
+	public function updateAdminGroupPermission($data,$where){
+		if(empty($data) || !$where){
+			return false;
+		}
+
+
+		$res = $this->db->update(TableConst::TABLE_ADMIN_GROUP_PERMISSION, $data, $where);
+
+		return $res;
+
+
+	}
+
+	/**
+	 * 获取用户组表
+	 * @param $condition
+	 * @return array|bool
+	 */
+	public function getAdminGroupListByCondition($condition){
+		if(!is_array($condition)){
+			return false;
+		}
+		$sql = "select * from " . TableConst::TABLE_ADMIN_GROUP;
+		$where =  $this -> dbExtendHelper ->getSqlWhereByArray($condition);
+
+		if($where){
+			$sql .= " where  $where";
+		}
+
+		$sql .= " order by admin_group_id  ";
+
+		$groupArray = $this -> db -> getRows($sql);
+
+		if( !$groupArray ){
+			return false;
+		}
+
+		$return = [];
+		foreach ( $groupArray as $group ){
+			$return[$group['admin_group_id']]= $group;
+		}
+
+		return $return;
+
+
+	}
+
+
+	/**
+	 * 获取管理员权限表
+	 * @param $condition
+	 * @return array|bool
+	 */
+	public function getAdminPermissionListByAdminGroupId($adminGroupId =null){
+		$tableAdminGroupToPermission = TableConst::TABLE_ADMIN_GROUP_TO_PERMISSION;
+		$tableAdminPermission = TableConst::TABLE_ADMIN_PERMISSION;
+
+
+		if((int)$adminGroupId >0 && (int)$adminGroupId == $adminGroupId){
+			$sql = "select $tableAdminPermission.* from $tableAdminGroupToPermission left join $tableAdminPermission on $tableAdminGroupToPermission.admin_permission_id = $tableAdminPermission.admin_permission_id where $tableAdminGroupToPermission.admin_group_id = $adminGroupId order by $tableAdminPermission.admin_permission_id";
+		}else{
+			$sql = "select * from $tableAdminPermission order by admin_permission_id";
+		}
+
+		$permissionArray = $this -> db -> getRows($sql);
+
+		if( !$permissionArray ){
+			return false;
+		}
+
+		$return = [];
+		foreach ( $permissionArray as $permission ){
+			$return[$permission['admin_permission_id']]= $permission;
+		}
+
+		return $return;
+
+
+	}
+
+
+	/**
+	 * 删除用户组表
+	 * @param $goodsId
+	 * @return bool|int
+	 */
+	public function deleteAdminGroupByIdArray($idArray){
+		if (!$idArray || !is_array($idArray)) {
+			return false;
+		}
+
+		$ids = $this->dbExtendHelper->getSqlInFollow($idArray, true);
+		$sql = "delete from " . TableConst::TABLE_ADMIN_GROUP . " where admin_group_id in ($ids) ";
+
+
+
+		return $this -> db -> exec($sql);
+
+	}
+
+	/**
+	 * 删除用户组层次表
+	 * @param $goodsId
+	 * @return bool|int
+	 */
+	public function deleteAdminGroupHierarchyByIdArray($idArray){
+		if (!$idArray || !is_array($idArray)) {
+			return false;
+		}
+
+		$ids = $this->dbExtendHelper->getSqlInFollow($idArray, true);
+		$sql = "delete from " . TableConst::TABLE_ADMIN_GROUP_HIERARCHY . " where admin_group_sub_id in ($ids) ";
+
+
+
+		return $this -> db -> exec($sql);
+
+	}
+
+    /**
+     * 删除用户组对应的权限
+     * @param $idArray
+     * @return bool
+     */
+    public function deleteAdminGroupToPermissionByIdArray($idArray){
+        if (!$idArray || !is_array($idArray)) {
+            return false;
+        }
+
+        $ids = $this->dbExtendHelper->getSqlInFollow($idArray, true);
+        $sql = "delete from " . TableConst::TABLE_ADMIN_GROUP_TO_PERMISSION . " where admin_group_id in ($ids) ";
+
+        return $this -> db -> exec($sql);
+    }
+
+	/**
+	 * 通过用户组ids跟权限id删除用户组跟权限关系表
+	 * @param $groupIds
+	 * @param $permissionId
+	 * @return bool|int
+	 */
+	public function deleteAdminGroupToPermissionByGroupIdsAndPermissionId($groupIds,$permissionId)
+	{
+
+		if(empty($groupIds) || (int)$permissionId <=0 || (int)$permissionId != $permissionId){
+			return false;
+		}
+		$ids = $this->dbExtendHelper->getSqlInFollow($groupIds, true);
+		$sql = "delete from " . TableConst::TABLE_ADMIN_GROUP_TO_PERMISSION . " where admin_group_id in ($ids) and admin_permission_id = $permissionId";
+
+		return $this -> db -> exec($sql);
+
+	}
+
+
+	/**
+	 * 插入用户组层次表
+	 * @param $data
+	 * @return bool
+	 */
+	public function insertAdminGroupHierarchy($data)
+	{
+		if (empty($data)) {
+			return false;
+		}
+
+		$rs = $this->db->insert(TableConst::TABLE_ADMIN_GROUP_HIERARCHY, $data);
+		if (!$rs) {
+			return false;
+		}
+
+
+		return $this->db->lastInsertId();
+	}
+
+	/**
+	 * 获取用户组层次表
+	 * @param $condition
+	 * @return array|bool
+	 */
+	public function getAdminGroupHierarchyByCondition($condition){
+		if(!is_array($condition)){
+			return false;
+		}
+		$sql = "select * from " . TableConst::TABLE_ADMIN_GROUP_HIERARCHY;
+		$where =  $this -> dbExtendHelper ->getSqlWhereByArray($condition);
+
+		if($where){
+			$sql .= " where  $where";
+		}
+
+		$sql .= " order by admin_group_id asc";
+
+		$groupHierarchyArray = $this -> db -> getRows($sql);
+
+		if( !$groupHierarchyArray ){
+			return false;
+		}
+
+		$return = [];
+		foreach ( $groupHierarchyArray as $group ){
+			$return[]= $group;
+		}
+
+		return $return;
+
+
+	}
+
+	/**
+	 * 获取用户组跟权限关系表
+	 * @param $condition
+	 * @return array|bool
+	 */
+	public function getAdminGroupToPermissionByCondition($condition){
+		if(!is_array($condition)){
+			return false;
+		}
+		$sql = "select * from " . TableConst::TABLE_ADMIN_GROUP_TO_PERMISSION;
+		$where =  $this -> dbExtendHelper ->getSqlWhereByArray($condition);
+
+		if($where){
+			$sql .= " where  $where";
+		}
+
+		$sql .= " order by admin_group_id asc";
+
+		$groupToPermissionArray = $this -> db -> getRows($sql);
+
+		if( !$groupToPermissionArray ){
+			return false;
+		}
+
+		$return = [];
+		foreach ( $groupToPermissionArray as $group ){
+			$return[]= $group;
+		}
+
+		return $return;
+
+
+	}
+
+
+	/**
+	 * 插入用户组跟权限关系表
+	 * @param $data
+	 * @return bool
+	 */
+	public function insertAdminGroupToPermission($data)
+	{
+		if (empty($data)) {
+			return false;
+		}
+
+		$rs = $this->db->insert(TableConst::TABLE_ADMIN_GROUP_TO_PERMISSION, $data);
+		if (!$rs) {
+			return false;
+		}
+
+
+		return $this->db->lastInsertId();
+	}
+
+
+
+
+	
+	
+/* 	public function insertAdmin($data){
+	    if( empty($data) ){
+	        return false;
+	    }
+	    
+	    $sql = 'insert into ' . TableConst::TABLE_MEMBER . " set ";
+	    foreach ( $data as $key => $v ){
+	        $sql .= "$key = '$v',";
+	    }
+	    
+	    $sql = substr($sql, 0,-1);
+	    $flag = $this -> db -> exec($sql);
+	     
+	    if( !$flag ){
+	        return false;
+	    }
+	     
+	    return $this -> db -> lastInsertId();
+	} */
+
+    /**
+     * 插入系统管理日志
+     * @param $logArr
+     */
+	public function insertSystemMgLog($logArr)
+    {
+        if (empty($logArr) || !is_array($logArr)) {
+            return false;
+        }
+        $sql = "insert into " . TableConst::TABLE_ADMIN_LOG." set ";
+        foreach ($logArr as $field => $value) {
+             $sql .= "$field= '$value',";
+        }
+        $sql = substr($sql,0,-1);
+        return $this -> db -> exec($sql);
+    }
+
+    /**
+     * 获取权限数量
+     * @param string $site
+     * @return int
+     */
+    public function getPermissionNum($site='')
+    {
+        $where = "";
+        if(!empty($site)){
+            $where = " where site = '". $site . "'";
+        }
+        $sql = "select count(*) as num from " . TableConst::TABLE_ADMIN_PERMISSION.$where;
+        $row = $this->db->getRow($sql,3600);
+        if (!$row['num']) {
+            return 0;
+        }
+        return $row['num'];
+    }
+
+    public function updateAdminGroupByAdminGroupId($adminGroupId,$data)
+    {
+        if ((int)$adminGroupId <= 0 || (int)$adminGroupId != $adminGroupId || empty($data)) {
+            return false;
+        }
+        $where = " admin_group_id=$adminGroupId";
+        $rs = $this->db->update(TableConst::TABLE_ADMIN_GROUP,$data, $where);
+        if (!$rs) {
+            return false;
+        }
+        return $rs;
+    }
+
+    /**
+     * 根据管理员名称返回管理员信息
+     * @param string $adminName 管理员名称
+     * @return array
+     */
+    public function getAdminInfoByAdminName($adminName) {
+        
+    	if ( !$adminName ) {
+    		return false;
+    	}
+
+    	$sql = "select admin_id,admin_name from " . TableConst::TABLE_ADMIN . " where admin_name = '" . $adminName . "'";
+
+    	$row = $this -> db -> getRow($sql);
+
+    	if ( !$row ) {
+    		return false;
+    	}
+
+    	return $row;
+
+    }
+	
+	/**
+	 * 检测用户密码是否正确
+	 * @param int     $adminId
+	 * @param string  $password
+	 * @return bool
+	 */
+	public function checkAdminPassword($adminId, $password) {
+		
+		if ( intval($adminId) <= 0 || !$password ) {
+			return false;
+		}
+		
+		$password = md5(strtolower(trim($password)));
+		
+		$sql = "select count(*) cnt from " . TableConst::TABLE_ADMIN . " where admin_id = " . $adminId . " and admin_password = '" . $password . "'";
+		
+		$row = $this -> db -> getRow($sql);
+		
+		if ( !$row || !$row['cnt'] ) {
+			return false;
+		}
+		
+		return true;
+	}
+ 
+}
+	

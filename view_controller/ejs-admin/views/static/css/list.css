@@ -1,0 +1,14 @@
+.news_search{ padding:10px 10px; }
+.news_search .layui-inline{ margin:5px 5px 5px 0; }
+.news_list{ font-size: 12px;}
+.news_list .layui-btn,.news_list .layui-btn+.layui-btn{ margin:2px 5px; }
+
+/*分页*/
+#page{ text-align:right; }
+/*自定义表格样式，编辑的时候使用，去除移到表格上方变色样式*/
+.edit_table{
+    width: 100%;
+    background-color: #fff;
+    color: #666;
+}
+

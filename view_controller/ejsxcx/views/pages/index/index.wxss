@@ -1,0 +1,101 @@
+/**index.wxss**/
+.Index .swiper-wrap {
+	width: 100%; height: 422rpx;
+}
+.Index swipter-item {
+	width: 100%;
+}
+.Index .swiper-wrap image {
+	width: 100%; height: 420rpx;
+}
+.Index .content {
+	width: 690rpx;
+	margin: auto;
+}
+.Index .content .title {
+	margin: 42rpx 0 28rpx;
+	font-size: 36rpx;
+	color: #252525;
+  font-weight: bold;
+}
+.Index .content .time {
+	height: 64rpx; line-height: 64rpx;
+	text-align: right;
+	background: #fcfcfc;
+	padding-right: 20rpx;
+}
+.Index .content .time .t1 {
+	display: inline-block;
+	width: 38rpx; height: 34rpx;
+	line-height: 34rpx;
+	background: #ff7198;
+	color: #fff;
+	border-radius: 6rpx;
+	text-align: center;
+}
+.Index .content .time .t2 {
+	display: inline-block;
+	color: #ff7198;
+	padding: 0 6rpx;
+}
+.Index .content .item {
+	border: 1rpx solid #dadada;
+	border-radius: 12rpx;
+	margin-top: 30rpx;
+  overflow: hidden;
+}
+.Index .content .item .cover {
+	width: 690rpx; height: 264rpx; 
+}
+.Index .content .item .outer-wrap {
+	white-space: nowrap;
+	width: 690rpx;
+	margin-top: 20rpx; 
+}
+.Index .content .item .goods {
+	display: inline-block;
+	width: 200rpx;
+	padding-bottom: 35rpx;
+	text-align: center;
+}
+.Index .content .item .goods image {
+	display: block;
+	width: 180rpx; height: 180rpx;
+	margin-bottom: 14rpx;
+}
+.Index .content .item .goods .pri {
+	font-size: 20rpx;
+	color: #f63a65;
+  font-weight: bold;
+}
+.Index .content .item .goods .pri text {
+	font-size: 30rpx;
+}
+/* 授权弹窗 */
+.Index  .Auth-wrap {
+	position: fixed;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	background: rgba(0,0,0,0.3);
+	z-index: 999;
+	padding-top: 400rpx;
+}
+.Index .Auth-wrap .Auth {
+	width: 400rpx; height: 200rpx;
+	line-height: 200rpx;
+	margin: 0 auto;
+	background: #fff;
+	color: #333;
+}
+.scanCode {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60rpx;
+  height: 60rpx;
+  padding: 25rpx 16rpx;
+}
+.scanCode image {
+  width: 100%;
+  height: 100%;
+}

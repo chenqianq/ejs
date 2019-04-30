@@ -1,0 +1,89 @@
+[2019-04-30T09:27:16+08:00] -- Start 2019-04-30 Log --
+[2019-04-30T09:27:41+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-30 09:27:41
+    [error_number] => 1054 [select business_manager_id,bm_name from ejs_business_manager where is_delete = 0], Unknown column 'business_manager_id' in 'field list'
+
+    [sql_query] => select business_manager_id,bm_name from ejs_business_manager where is_delete = 0
+
+    [query_string] => route=crm/crm/client_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-30T09:27:45+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-30 09:27:45
+    [error_number] => 1054 [select business_manager_id,bm_name from ejs_business_manager where is_delete = 0], Unknown column 'business_manager_id' in 'field list'
+
+    [sql_query] => select business_manager_id,bm_name from ejs_business_manager where is_delete = 0
+
+    [query_string] => route=crm/crm/add_client
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-30T09:27:54+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-30 09:27:54
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,merchant_status,warehouse_id,is_registered,allow_xcx,is_wechat from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'business_manager_id' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,merchant_status,warehouse_id,is_registered,allow_xcx,is_wechat from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-30T09:27:54+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-30 09:27:54
+    [error_number] => 1054 [select business_manager_id,bm_name from ejs_business_manager where is_delete = 0], Unknown column 'business_manager_id' in 'field list'
+
+    [sql_query] => select business_manager_id,bm_name from ejs_business_manager where is_delete = 0
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-30T09:27:57+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-30 09:27:57
+    [error_number] => 1054 [select count(client_id) num,business_manager_id from ejs_client where is_delete = 0 group by business_manager_id], Unknown column 'business_manager_id' in 'field list'
+
+    [sql_query] => select count(client_id) num,business_manager_id from ejs_client where is_delete = 0 group by business_manager_id
+
+    [query_string] => route=crm/crm/business_manager_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-30T09:27:57+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-30 09:27:57
+    [error_number] => 1054 [select count(merchant_id) num,business_manager_id from ejs_merchant where is_delete = 0 group by business_manager_id], Unknown column 'business_manager_id' in 'field list'
+
+    [sql_query] => select count(merchant_id) num,business_manager_id from ejs_merchant where is_delete = 0 group by business_manager_id
+
+    [query_string] => route=crm/crm/business_manager_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-30T09:28:00+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-30 09:28:00
+    [error_number] => 1054 [select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,merchant_status,warehouse_id,is_registered,allow_xcx,is_wechat from ejs_merchant where is_delete =0  limit 0,10], Unknown column 'business_manager_id' in 'field list'
+
+    [sql_query] => select merchant_id,merchant_name,merchant_code,merchant_contact_name,merchant_contact_phone,allow_bonded,allow_direct,business_manager_id,merchant_status,warehouse_id,is_registered,allow_xcx,is_wechat from ejs_merchant where is_delete =0  limit 0,10
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+
+[2019-04-30T09:28:00+08:00] 127.0.0.1 EMERG: Array
+(
+    [access_date] => 2019-04-30 09:28:00
+    [error_number] => 1054 [select business_manager_id,bm_name from ejs_business_manager where is_delete = 0], Unknown column 'business_manager_id' in 'field list'
+
+    [sql_query] => select business_manager_id,bm_name from ejs_business_manager where is_delete = 0
+
+    [query_string] => route=crm/crm/merchant_list
+    [ip_address] => 127.0.0.1
+)
+

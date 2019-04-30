@@ -1,0 +1,579 @@
+<?php
+if (!defined('IS_ACCESS')) {
+    die('Illegal Access');
+    exit;
+}
+
+/**
+ * dao 文件 就负责 与数据库交互，不做任何的业务逻辑处理。
+ * @author Administrator
+ *
+ */
+class SettingDao
+{
+
+    /**
+     *
+     * @var db
+     */
+    private $db;
+
+    /**
+     * DbExtend
+     * @var DbExtend
+     */
+    private $dbExtendHelper;
+
+    private $yfjRedis;
+
+    /**
+     * 构造函数
+     */
+    public function __construct()
+    {
+        $this->db = Zc::getDb();
+        //helper
+        $this->dbExtendHelper = HelperFactory::getDbExtendHelper();
+
+        $this->pageHelper = HelperFactory::getPageHelper();
+        //$this->yfjRedis = new YfjCacheRedis();
+    }
+
+    /**
+     * 获取配置信息
+     * @param $fieldName
+     * @return mixed|string
+     */
+    public function getSettingByName($fieldName, $cacheTime =43200)
+    {
+        $sql = "select * from " . TableConst::TABLE_SETTING . ' where name=' . "'$fieldName'";
+        // echo $sql. "<br>";
+        $setting_row = $this->db->getRow($sql, $cacheTime);
+        if($this->is_serialized($setting_row['value'])){
+            $value =$setting_row['value']? unserialize($setting_row['value']):'';
+        }else{
+            $value =$setting_row['value']?$setting_row['value']:'';
+        }
+        return $value;
+    }
+
+   private function is_serialized($data)
+    {
+        $data = trim($data);
+        if ('N;' == $data) return true;
+        if (!preg_match('/^([adObis]):/', $data, $badions)) return false;
+        switch ($badions[1]) {
+            case 'a' :
+            case 'O' :
+            case 's' :
+                if (preg_match("/^{$badions[1]}:[0-9]+:.*[;}]\$/s", $data)) return true;
+                break;
+            case 'b' :
+            case 'i' :
+            case 'd' :
+                if (preg_match("/^{$badions[1]}:[0-9.E-]+;\$/", $data)) return true;
+                break;
+        }
+        return false;
+    }
+
+    /**
+     * 获取系统的所有配置
+     * @return boolean|unknown[]
+     */
+    public function getAllSetting(){
+        $sql = "select name , value from " . TableConst::TABLE_SETTING ;
+        $settingArray = $this -> db -> getRows($sql,3600);
+        if( !$settingArray ){
+            return false;
+        }
+        
+        $return = [];
+        foreach ( $settingArray as $setting ){
+            $return[$setting['name']] = $setting['value'];
+        }
+        
+        return $return;
+    }
+
+
+    /**
+     * 获取系统所有配置信息
+     */
+
+    public  function getAllSystemList(){
+
+        $sql  =  'select * from ' . TableConst::TABLE_SETTING . "  where type  != 2 or type is NUll order by create_time desc";
+
+        $this-> pageHelper ->init();
+
+        $sql =  $this->pageHelper -> getLimit($sql);
+
+        $settingList = $this -> db -> getRows($sql);
+
+        return $settingList;
+    }
+
+    /**
+     * 根据系统设置名获得信息
+     */
+    public  function  getSettingInfoByName($settingName){
+
+        if(empty($settingName)){
+
+            return false;
+
+        }
+
+        $sql = 'select * from ' . TableConst::TABLE_SETTING . " where name = '$settingName'";
+
+        $settingInfo = $this -> db -> getRow($sql);
+
+        return $settingInfo;
+    }
+    /**
+     * 保存系统配置
+     */
+
+    public  function saveSettingInfo($data){
+
+        if(empty($data)){
+
+            return false;
+
+        }
+
+        $sql = "update " . TableConst::TABLE_SETTING . " set title = '$data[settingtTitle]',value = '$data[settingValue]' where name = '$data[settingName]'";
+
+        $result = $this -> db -> exec($sql);
+
+        return $result;
+    }
+
+    /**
+     * 根据系统配置名称修改配置的值
+     * @param array  $data array('title'=>xxxx,'value'=>xxxx)
+     * @param string $name 系统配置名称
+     */
+    public function updateSettingInfoByName($data, $name) {
+        
+        if ( !$name || !$data || !is_array($data) ) {
+            return false;
+        }
+
+        $where = " name = '". $name . "'";
+
+        return $this -> db -> update(TableConst::TABLE_SETTING, $data, $where);
+
+    }    
+
+    /**
+     * 保存App系统配置
+     */
+
+    public  function saveAppSettingInfo($data){
+
+        if(empty($data)){
+
+            return false;
+
+        }
+
+        $sql = "update " . TableConst::TABLE_SETTING . " set title = '$data[settingtTitle]',value = '$data[settingValue]',modife_time='$data[modifeTime]',start_time=' $data[startTime]',end_time='$data[endTime]' where name = '$data[settingName]'";
+
+        $result = $this -> db -> exec($sql);
+
+        return $result;
+    }
+
+
+    /**
+     * 验证添加的系统设置是否存在
+     */
+    public  function checkSettingName($name){
+
+        if(empty($name)){
+
+            return false;
+
+        }
+
+        $sql = " select count(*) num from " . TableConst::TABLE_SETTING . " where name = '$name'";
+
+        $result = $this -> db -> getRow($sql);
+
+        return $result['num'];
+    }
+
+    /**
+     * 添加系统设置 
+     * @param array $data
+     * @return bool
+     */
+    public function insertSetting($data) {
+
+        if ( !$data || !is_array($data) ) {
+            return false;
+        }
+
+        return $this -> db -> insert(TableConst::TABLE_SETTING, $data);
+        
+    }
+
+    /**
+     * 添加系统消息
+     */
+    public  function addSystemInfo($data){
+
+        if(empty($data)){
+
+            return false;
+
+        }
+
+        $sql = " insert into " . TableConst::TABLE_SYSTENM_NOTIFY . "(system_notify_title,content,status,operator,gmt_create,gmt_start,gmt_end)value('$data[notice_tile]','$data[notice_cotent]','$data[status]','$data[oeprator]','$data[gmt_create]','$data[notice_start_time]','$data[notice_end_time]')";
+
+        $result = $this -> db -> exec($sql);
+
+        return $result;
+
+    }
+
+    /**
+     * 获取系统消息
+     */
+    public function getAllSystemInfo(){
+
+        $sql = 'select * from ' . TableConst::TABLE_SYSTENM_NOTIFY . " where status != '3' order by gmt_create desc";
+
+        $this-> pageHelper ->init();
+
+        $sql =  $this->pageHelper -> getLimit($sql);
+
+        $result = $this -> db -> getRows($sql);
+
+        return $result;
+    }
+
+    /**
+     * 删除系统消息通知
+     */
+    public function deletSystemInfo($noticId){
+
+        if(empty($noticId)){
+
+            return false;
+
+        }
+
+        $sql = " update " . TableConst::TABLE_SYSTENM_NOTIFY . " set status = 3 where system_notify_id = $noticId";
+
+        $result = $this -> db -> exec($sql);
+
+        return $result;
+    }
+
+    /**
+     * 根据通知信息id获取通知信息
+     */
+    public function getSystemInfoById($noticeId){
+
+        if(empty($noticeId)){
+
+            return false;
+
+        }
+
+        $sql = " select * from " . TableConst::TABLE_SYSTENM_NOTIFY . " where system_notify_id= '$noticeId'";
+
+        $result = $this -> db -> getRow($sql);
+
+        return $result;
+
+    }
+
+    /**
+     * 保存通知信息
+     */
+    public  function saveNoticeInfo($data){
+
+        if(empty($data)){
+
+            return false;
+
+        }
+
+        $sql = "update " . TableConst::TABLE_SYSTENM_NOTIFY . " set system_notify_title = '$data[notice_tile]' , content= '$data[notice_cotent]',operator='$data[oeprator]',gmt_modified= '$data[gmt_modified]' where system_notify_id = '$data[notify_id]'";
+
+        $result = $this -> db -> exec($sql);
+
+        return $result;
+    }
+
+    /**
+     * 保存审核状态
+     */
+    public  function saveAuditing($data){
+
+        if(empty($data)){
+
+            return false;
+
+        }
+
+
+        $sql = "update " . TableConst::TABLE_SYSTENM_NOTIFY . " set status = '$data[status]',operator='$data[oeprator]',gmt_modified= '$data[gmt_modified]' where system_notify_id = '$data[notify_id]'";
+
+        $result = $this -> db -> exec($sql);
+
+        return $result;
+    }
+
+    /**
+     * 保存系统信息数量
+     */
+    public  function getSystemInfoNum(){
+
+        $sql  = 'select count(*) num from ' . TableConst::TABLE_SYSTENM_NOTIFY .' where status !=3';
+        $result = $this -> db -> getRow($sql);
+
+        return $result['num'];
+    }
+
+    /**
+     * 获取系统设置数量
+     */
+    public  function getSystemSettingNum(){
+
+        $sql = "select count(*) num from " . TableConst::TABLE_SETTING  ." where type  != 2 or type is NUll";
+
+        $result = $this -> db -> getRow($sql);
+
+        return $result['num'];
+    }
+
+    /**
+     * 根据名称获得配置信息
+     */
+
+    public  function getSettingInfoByNameArray($name){
+
+        if(empty($name)){
+            return false;
+        }
+
+
+        $sql = 'select * from ' . TableConst::TABLE_SETTING . " where name in $name";
+
+        $result = $this -> db -> getRows($sql);
+
+        return $result;
+
+    }
+
+    /**
+     * 根据名称数据返回配置信息
+     * @param array $nameArray
+     * @return array 
+     */
+    public function getSettingListByNameArray($nameArray) {
+        
+        if ( !$nameArray || !is_array($nameArray) ) {
+            return false;
+        }
+
+        $names = $this -> dbExtendHelper -> getSqlInfollow($nameArray);
+
+        $sql = "select * from " . TableConst::TABLE_SETTING . " where name in (" . $names . ") order by field(name, " . $names . ")";
+
+        $settingList = $this -> db -> getRows($sql);
+
+        if ( !$settingList ) {
+            return false;
+        }
+
+        return $settingList;
+    }
+
+    /**
+     * 添加检索配置信息
+     */
+    public function addHotSearch($data){
+
+        if(empty($data) || !is_array($data)){
+            return false;
+        }
+
+        $sql = " insert into " . TableConst::TABLE_HOT_SEARCH . " (hot_search_name,hot_search_add_red_box,hot_search_weight,operator,gmt_create)values('$data[searchName]','$data[searchIsRed]','$data[searchWeight]','$data[operator]','$data[time]')";
+
+        return $this -> db -> exec($sql);
+    }
+
+    /**
+     * 保存检索信息编辑
+     */
+    public  function editeSearchSave($data){
+        if(empty($data) || !is_array($data)){
+            return false;
+        }
+
+        $sql = " update " . TableConst::TABLE_HOT_SEARCH . " set hot_search_name = '$data[searchName]',hot_search_weight = '$data[searchWeight]',hot_search_add_red_box = '$data[searchIsRed]',gmt_modified = '$data[time]',operator = '$data[operator]' where hot_search_id = '$data[searchId]'";
+        return $this -> db -> exec($sql);
+    }
+    /**
+     * 获取热搜词汇
+     */
+    public function getHotSearch(){
+
+        $sql = 'select * from ' . TableConst::TABLE_HOT_SEARCH . " where hot_search_status !=1 order by hot_search_weight desc";
+
+        $result  = $this -> db -> getRows($sql);
+
+        return $result;
+    }
+    /**
+     * 根据Id获取热搜词汇
+     */
+    public function getHotSearchBySearchId($id){
+        if(empty($id)){
+            return false;
+        }
+
+        $sql = 'select * from ' . TableConst::TABLE_HOT_SEARCH . " where hot_search_status !=1 and hot_search_id= $id order by hot_search_weight desc";
+
+        $result  = $this -> db -> getRow($sql);
+
+        return $result;
+    }
+    /**
+     * 删除热搜词汇
+     */
+    public function deleteHotSearch($searchId){
+
+        if(empty($searchId)){
+            return false;
+        }
+
+        $sql = 'delete from ' . TableConst::TABLE_HOT_SEARCH . " where hot_search_id = '$searchId'";
+
+        return $this -> db -> exec($sql);
+    }
+
+    /**
+     * 红框选择
+     */
+    public function addRedBox($data){
+        if(empty($data) || !is_array($data)){
+            return false;
+        }
+
+        $sql = "update " . TableConst::TABLE_HOT_SEARCH . " set hot_search_add_red_box = '$data[isRedBox]' where hot_search_id = '$data[searchId]'";
+        return $this -> db -> exec($sql);
+    }
+    /**
+     * 获得错误日志
+     */
+    public function getError(){
+
+        $sql = "select * from monitor_log";
+
+        $this-> pageHelper ->init();
+
+        $sql =  $this->pageHelper -> getLimit($sql);
+
+        $data = $this -> db -> getRows($sql, 0 ,'log' );
+
+        return $data;
+    }
+
+    /**
+     * 获取错误总条数
+     */
+
+    public function getErrorNum(){
+        $sql = "select count(*) num from monitor_log";
+
+        $data = $this -> db -> getRow($sql, 0 ,'log' );
+        if(!$data){
+            return false;
+        }
+        return $data['num'];
+    }
+    /**
+     * 插入错误信息
+     */
+    public function insertMonitorLog($data){
+        if(empty($data) || !is_array($data)){
+            return false;
+        }
+        $sql = " insert into monitor_log(error_level_id,error_level_value,error_contents,is_notify,gmt_create,client)values('$data[errorLevelId]','$data[errorLevelValue]','$data[errorContents]','$data[isNotify]','$data[gmtCreate]','$data[client]')";
+        $result = $this -> db -> useDbIdOnce('log') -> exec($sql);
+        return $result;
+    }
+
+    /**
+     * 获取APP版本号
+     */
+    public function getAppVersion(){
+        
+        $sql = "select * from " . TableConst::TABLE_SETTING . " where name = 'android_version' or name = 'ios_version' or name = 'ios_minimum_available_version' or name = 'android_minimum_available_version' or name='open_ios_update_tips' or name='ios_update_tips' or name='ios_update_tips' or name='open_android_update_tips' or name='android_update_tips' or name='android_update_tips' ";
+        
+        $rs = $this -> db -> getRows($sql, 3600);
+
+        if ( !$rs ) {
+            return false;
+        }
+
+        return $rs;
+    }
+
+    /**
+     * 获取热搜词汇名称
+     */
+    public  function getHotSearchName(){
+
+        $sql = " select hot_search_name,hot_search_add_red_box from " . TableConst::TABLE_HOT_SEARCH . " where hot_search_status !=1 order by hot_search_weight asc";
+
+        $result = $this -> db -> getRows($sql);
+
+        return $result;
+    }
+
+    /**
+     * 根据设置名称获取搜索栏文案
+     */
+    public function getSearchBar($data){
+        if(empty($data)){
+            return false;
+        }
+        $sql = " select value from " . TableConst::TABLE_SETTING . " where name = '$data'";
+        return $this -> db -> getRow($sql);
+    }
+
+    /**
+     * 插入汇率日志
+     * @param $data
+     */
+    public function insertExchangeRateLog($data)
+    {
+
+        if (empty($data) || !is_array($data)) {
+            return false;
+        }
+        $rs = $this->db->insert(TableConst::TABLE_SETTING_LOG, $data);
+        if (!$rs) {
+            return false;
+        }
+        return $rs;
+    }
+
+    public function getExchangeLog()
+    {
+        $sql = "select * from " . TableConst::TABLE_SETTING_LOG . " where name = 'yfj_huilv' or name = 'huilv' order by gmt_create desc";
+        $row = $this->db->getRows($sql);
+        if (!$row) {
+            return false;
+        }
+        return $row;
+    }
+}

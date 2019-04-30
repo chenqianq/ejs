@@ -1,0 +1,21 @@
+.site-text{position:relative;}
+.site-block{padding: 20px;}
+.site-title{ margin: 30px 0 20px;}
+.site-title fieldset{border: none; padding: 0; border-top: 1px solid #eee;}
+.site-title fieldset legend{margin-left: 20px;  padding: 0 10px; font-size: 22px; font-weight: 300;}
+tr.no_data td{ font-size:14px; line-height: 120px; color: #09C; text-align:center; font-weight: bold;}
+.itemsSelectBgPart{ display: none; position: fixed; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.29);  }
+.userTypePart{ top: 30%; width: 400px; height: auto; padding:15px; }
+.align-center {text-align:center;}
+.w40{width: 40px!important;}
+.w60{width: 60px!important;}
+.w80{width: 80px!important;}
+.w100{width: 100px!important;}
+.w120{width: 120px!important;}
+.w140{width: 140px!important;}
+.w160{width: 160px!important;}
+.w180{width: 180px!important;}
+.w200{width: 200px!important;}
+.w240{width: 240px!important;}
+.w280{width: 280px!important;}
+.w500{width: 500px!important;}

@@ -1,0 +1,19 @@
+<view class="feeddetail" wx:if="{{flag}}">
+	
+	<!-- 反馈咨询详情 -->
+	<view class="noresponse" wx:if="{{isEmpty}}">等待官方回答中...</view>
+	<view class="response" wx:if="{{!isEmpty}}">
+		<view>二加三官方于 {{detail.gmt_modified}} 回答 </view>
+		<view class="con">{{detail.feedback_result}}</view>
+	</view>
+
+	<view class="question">
+		<view>
+			<view class="tit">用户于 {{detail.gmt_create}} 提交的问题</view>
+			<view class="con">{{detail.feedback_title}}</view>
+			<view class="description">{{detail.feedback_details}}</view>
+			<image wx:for="{{detail.feedback_image}}" src="{{item}}" wx:key="imgGroup"></image>
+		</view>
+	</view>
+
+</view>

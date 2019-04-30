@@ -1,0 +1,56 @@
+.success-wrap {
+  width: 670rpx;
+  margin: auto;
+}
+.success-wrap .success {
+  display: block;
+  width: 306rpx;
+  height: 100rpx;
+  margin-top: 120rpx;
+  margin: 120rpx auto;  
+}
+.success-wrap .tips2 ,
+.success-wrap .tips1 {
+  font-size: 24rpx;
+  color: #211111;
+  margin-left: 47rpx;
+}
+.success-wrap .tips2 {
+  margin-top: 40rpx;
+  margin-bottom: 120rpx;
+}
+.success-wrap .price {
+  width: 100%;
+  height: 104rpx;
+  line-height: 104rpx;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 24rpx;
+  color: #444444;
+  text-indent: 47rpx;
+}
+.success-wrap .controlBtn {
+  width: 512rpx;
+  margin: auto;
+  margin-top: 36rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.success-wrap button::after{
+  border: none;
+}
+.success-wrap .controlBtn button {
+  width: 220rpx;
+  height: 72rpx;
+  background: none;
+  line-height: 70rpx;
+  font-size: 24rpx;
+  color: #999999;
+  border: 1px solid #d8d8d8;
+  border-radius: 36rpx;
+  margin: 0;
+}
+.success-wrap .controlBtn .shop {
+  color: #ff658f;
+  border: 1px solid #ff8ead;
+}

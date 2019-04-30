@@ -1,0 +1,89 @@
+<?php 
+if( !defined('IS_ACCESS') ){
+    die('Illegal Access');
+    exit;
+}
+
+/**
+ * dao 文件 就负责 与数据库交互，不做任何的业务逻辑处理。
+ * @author Administrator
+ *
+ */
+class SystemNotifyDao {
+
+	/**
+	 * 
+	 * @var db
+	 */
+	private $db;
+	
+	/**
+	 * DbExtend
+	 * @var DbExtend
+	 */
+	private $dbExtendHelper;
+	
+	/**
+	 * 构造函数
+	 */
+	public function __construct () {
+		$this -> db =  Zc::getDb(); 
+		//helper
+		$this -> dbExtendHelper = HelperFactory::getDbExtendHelper();
+	}
+	/**
+	 * 根据ID 获取系统消息
+	 * @param unknown $systemNotifyId
+	 */
+	public function getSystemNotifyById($systemNotifyId) {
+	    if( (int)$systemNotifyId || (int)$systemNotifyId != $systemNotifyId ){
+	        return false;
+	    }
+	    
+	    $sql = "select system_notify_id,system_notify_title,content,sort,gmt_start,gmt_end,status,operator,gmt_create,gmt_modified from " . TableConst::TABLE_SYSTENM_NOTIFY . " where  system_notify_id = $systemNotifyId  ";
+	    $notifyArray = $this -> db -> getRow($sql,3600);
+	    if( !$notifyArray ){
+	        return false;
+	    }
+	     
+	    return $notifyArray;
+	}
+	
+	/**
+	 * 获取最新的系统消息
+	 */
+	public function getSystemNotifyLatestNotify(){
+	    $currentTime = date('Y-m-d H:i:s');
+	    $sql = "select system_notify_id,system_notify_title,content,sort,gmt_start,gmt_end  from " . TableConst::TABLE_SYSTENM_NOTIFY . " where status =  ".YfjConst::aduitPass." and gmt_start <= '$currentTime' and '$currentTime' <= gmt_end order by sort desc , system_notify_id desc limit 1 ";
+	    $latestNotifyArray = $this -> db -> getRow($sql);
+	    if( !$latestNotifyArray ){
+	        return false;
+	    }
+	    
+	    return $latestNotifyArray;
+	}
+
+
+    /**
+     * 获取最新的有效通知
+     * @return bool|array
+     */
+    public function getValidSystemNotify() {
+
+        $currentTime = date('Y-m-d H:i:s');
+
+        $sql = "select system_notify_id, system_notify_title, content from " . TableConst::TABLE_SYSTENM_NOTIFY;
+        $sql .= " where gmt_start <= '$currentTime' and gmt_end >= '$currentTime' and status = " . YfjConst::aduitPass;
+        $sql .= " order by  gmt_create desc";
+
+        $notifyArray = $this -> db -> getRows($sql,3600);
+
+        if (!$notifyArray) {
+            return false;
+        } 
+
+        return $notifyArray;
+
+    }
+}
+	

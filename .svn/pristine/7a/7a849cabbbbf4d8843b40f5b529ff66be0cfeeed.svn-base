@@ -1,0 +1,522 @@
+<?php
+if( !defined('IS_ACCESS') ){
+    die('Illegal Access');
+    exit;
+}
+ 
+class ServiceFactory
+{
+
+    //缓存对象仓库
+    private static $object_repos = array();
+
+    /**
+     * 获取Service类对象
+     * @param  $module
+     * @param  $service_class
+     * @throws Exception
+     */
+    private static function innerGetService($module, $class_name, $singleton, $parameterArray = array())
+    {
+
+        $php_path = Zc::C('services.dir.fs') . $module . "/class." . $class_name . ".php";
+        //定义单例的key
+        $php_path_key = md5($php_path);
+
+        //如果是单例的，并且已经缓存该对象了，直接返回
+        if ($singleton && isset(self::$object_repos[$php_path_key])) {
+            return self::$object_repos[$php_path_key];
+        }
+
+
+        if (require_once($php_path)) {
+
+            if (!$singleton && $parameterArray) {
+                $obj = new $class_name($parameterArray);
+            } else {
+                $obj = new $class_name();
+            }
+
+            //如果是单例的，需要缓存对象
+            if ($singleton) {
+                self::$object_repos[$php_path_key] = $obj;
+            }
+            return $obj;
+        } else {
+            throw new Exception ($class_name . ' not found');
+        }
+
+        /*
+        if (require_once ($php_path)) {
+
+            $obj =  new $class_name;
+
+            //如果是单例的，需要缓存对象
+            if ($singleton) {
+                self::$object_repos[$php_path_key] = $obj;
+            }
+            return $obj;
+        } else {
+            throw new Exception ($class_name . ' not found');
+        } */
+    }
+
+    /**
+     *
+     * @param bool $singleton
+     * @return CouponService
+     */
+    public static function getCouponService($singleton = true)
+    {
+        return self::innerGetService('user', 'CouponService', $singleton);
+    }
+
+    /**
+     * 广告
+     * @param string $singleton
+     * @return unknown
+     */
+    public static function getAdvertisementService($singleton = true)
+    {
+        return self::innerGetService('advertisement', 'AdvertisementService', $singleton);
+    }
+
+
+    /**
+     * 用户
+     * @param string $singleton
+     * @return UserService
+     */
+    public static function getUserService($singleton = true)
+    {
+        return self::innerGetService('user', 'UserService', $singleton);
+    }
+
+    /**
+     * b端用户
+     * @param string $singleton
+     * @return BUserService
+     */
+    public static function getBUserService($singleton = true)
+    {
+        return self::innerGetService('user', 'BUserService', $singleton);
+    }
+
+    /**
+     * 用户
+     * @param string $singleton
+     * @return AuthenticationService
+     */
+    public static function getAuthenticationService($singleton = true)
+    {
+        return self::innerGetService('user', 'AuthenticationService', $singleton);
+    }
+
+    /**
+     * banner
+     * @param string $singleton
+     * @return BannerService
+     */
+    public static function getBannerService($singleton = true)
+    {
+        return self::innerGetService('advertisement', 'BannerService', $singleton);
+    }
+
+    /**
+     * ProductService
+     * @param string $singleton
+     * @return ProductService
+     */
+    public static function getProductService($singleton = true)
+    {
+        return self::innerGetService('product', 'ProductService', $singleton);
+    }
+
+    /**
+     * CategorieService
+     * @param string $singleton
+     * @return unknown
+     */
+    public static function getCategorieService($singleton = true)
+    {
+        return self::innerGetService('product', 'CategorieService', $singleton);
+    }
+
+
+    /**
+     * 获取ShoppingCartService
+     * @return ShoppingCartService
+     */
+    public static function getShoppingCartService($ssid, $customersID = '', $cartType = 'co')
+    {
+        if (empty($ssid)) {
+            return false;
+        }
+
+        return self::innerGetService('order', 'ShoppingCartService', false, array('pt_1' => $ssid, 'pt_2' => $customersID, 'pt_3' => $cartType));
+    }
+
+    /**
+     * OrderService
+     * @param string $singleton
+     * @return OrderService
+     */
+    public static function getOrderService($singleton = true)
+    {
+        return self::innerGetService('order', 'OrderService', $singleton);
+    }
+
+
+    /**
+     * ArticleService
+     * @param string $singleton
+     * @return unknown
+     */
+    public static function getArticleService($singleton = true)
+    {
+        return self::innerGetService('article', 'ArticleService', $singleton);
+    }
+
+    /**
+     * AdminService
+     * @param string $singleton
+     * @return AdminService
+     */
+    public static function getAdminService($singleton = true)
+    {
+        return self::innerGetService('admin', 'AdminService', $singleton);
+    }
+
+    /**
+     * RefundService
+     * @param string $singleton
+     * @return RefundService
+     */
+    public static function getRefundService($singleton = true)
+    {
+        return self::innerGetService('order', 'RefundService', $singleton);
+    }
+
+    /**
+     * LogisticsService
+     * @param string $singleton
+     * @return RefundService
+     */
+    public static function getLogisticsService($singleton = true)
+    {
+        return self::innerGetService('order', 'LogisticsService', $singleton);
+    }
+
+    /**
+     * SystemService
+     * @param string $singleton
+     * @return SystemService
+     */
+    public static function getSystemService($singleton = true)
+    {
+        return self::innerGetService('system', 'SystemService', $singleton);
+    }
+
+    /**
+     * AlbumService
+     * @param string $singleton
+     * @return SystemService
+     */
+    public static function getAlbumService($singleton = true)
+    {
+        return self::innerGetService('product', 'AlbumService', $singleton);
+    }
+
+    /**
+     * 限时
+     * XianshiService
+     * @param bool $singleton
+     * @return XianshiService
+     */
+    public static function getXianshiService($singleton = true)
+    {
+        return self::innerGetService('operation', 'XianshiService', $singleton);
+    }
+
+    //折扣
+    public static function getDiscountService($singleton = true)
+    {
+        return self::innerGetService('operation', 'DiscountService', $singleton);
+    }
+
+
+    /**
+     * 品牌
+     * @param bool $singleton
+     * @return BrandService
+     */
+    public static function getBrandService($singleton = true)
+    {
+        return self::innerGetService('product', 'BrandService', $singleton);
+    }
+
+    
+    /**
+     * 售后
+     * PreSale
+     * @param bool $singleton
+     * @return mixed
+     */
+    public static function getPreSaleService($singleton = true) {
+        return self::innerGetService('order', 'PreSaleService', $singleton);
+    }
+    /**
+     * 推广系统
+     * AdminService
+     * @param string $singleton
+     * @return unknown
+     */
+    public static function getCpaAdminService($singleton = true)
+    {
+        return self::innerGetService('cpa', 'CpaAdminService', $singleton);
+    }
+
+
+    /**
+     * 推广系统推广员管理
+     * PromoterService
+     * @param string $singleton
+     * @return unknown     
+     */
+    public static function getPromoterService($singleton = true) {
+        return self::innerGetService('cpa', 'PromoterService',$singleton);
+    }
+    /**
+     * 推广系统订单数据管理
+     * PromoterService
+     * @param string $singleton
+     * @return unknown
+     */
+    public static function getOrderListService($singleton = true) {
+        return self::innerGetService('cpa', 'OrderListService',$singleton);
+    }
+    
+    /**
+     * DeclarationCenter
+     * @param bool $singleton
+     * @return mixed
+     */
+    public static function getDeclarationCenterService($singleton = true) {
+        return self::innerGetService('declaration', 'DeclarationCenterService', $singleton);
+    }
+    /**
+     * 获得榜单数据
+     * @param bool $singleton
+     * @return mixed
+     */
+    public static function getHonorListService($singleton = true) {
+        return self::innerGetService('cpa', 'HonorListService', $singleton);
+    }
+
+    /**
+     * 佣金明细
+     * @param bool $singleton
+     * @return mixed     
+     */
+    public static function getCommissionService($singleton = true) {
+        return self::innerGetService('cpa', 'CommissionService', $singleton);
+    }
+
+    /**
+     * 邀请金额等级
+     * @param bool $singleton
+     * @return mixed
+     */
+    public static function getCpaTaskService($singleton = true) {
+        return self::innerGetService('cpa', 'TaskService', $singleton);
+    }
+
+    /**
+     * 全民推广用户数据
+     * @param bool $singleton
+     * @return mixed
+     */
+    public static function getCpaWholePeopleInviteService($singleton = true) {
+        return self::innerGetService('cpa', 'WholePeopleInviteService', $singleton);
+    }
+
+ 	/**
+     * Recommend
+     * @param bool $singleton
+     * @return mixed
+     */
+    public static function getRecommendService($singleton = true) {
+        return self::innerGetService('recommend', 'RecommendService', $singleton);
+    }
+
+    /**
+     * bannerFrame
+     * @param string $singleton
+     * @return unknown
+     */
+    public static function getSmsService($singleton = true)
+    {
+        return self::innerGetService('operation', 'SmsService', $singleton);
+    }
+
+    /**
+     * BusinessManager
+     * @param string $singleton
+     * @return unknown
+     */
+    public static function getBusinessManagerService($singleton = true)
+    {
+        return self::innerGetService('business', 'BusinessManagerService', $singleton);
+    }
+    
+    /**
+     * YfjApi
+     * @param string $singleton
+     * @return unknown
+     */
+    public static function getYfjApiService($singleton = true)
+    {
+        return self::innerGetService('api', 'YfjApiService', $singleton);
+    }
+    
+    /**
+     * Statistics
+     * @param string $singleton
+     * @return StatisticsService
+     */
+    public static function getStatisticsService($singleton = true)
+    {
+        return self::innerGetService('statistics', 'StatisticsService', $singleton);
+    }
+    
+
+    /**
+     * Point
+     * @param string $singleton
+     * @return unknown
+     */
+    public static function getPointService($singleton = true)
+    {
+        return self::innerGetService('point', 'PointService', $singleton);
+    }
+
+    /**
+     * Favorites
+     * @param string $singleton
+     * @return unknown
+     */
+    public static function getFavoritesService($singleton = true)
+    {
+        return self::innerGetService('product', 'FavoritesService', $singleton);
+    }
+
+    /**
+     * SettingLogService
+     * @param string $singleton
+     * @return SettingLogService
+     */
+    public static function getSettingLogService($singleton = true)
+    {
+        return self::innerGetService('system', 'SettingLogService', $singleton);
+    }
+
+    /**
+     * StorageService
+     * @param string $singleton
+     * @return StorageService
+     */
+    public static function getStorageService($singleton = true)
+    {
+        return self::innerGetService('storage', 'StorageService', $singleton);
+    }
+
+    /**
+     * BLockOrderService
+     * @param bool $singleton
+     * @return LockOrderService
+     */
+    public static function getLockOrderService($singleton = true) {
+        return self::innerGetService('order', 'LockOrderService', $singleton);
+    }
+
+    /**
+     * DrpCategorieService
+     * @param string $singleton
+     * @return DrpCategorieService
+     */
+    public static function getDrpCategorieService($singleton = true)
+    {
+        return self::innerGetService('product', 'DrpCategorieService', $singleton);
+    }
+
+    /**
+     * DrpProductService
+     * @param string $singleton
+     * @return DrpProductService
+     */
+    public static function getDrpProductService($singleton = true)
+    {
+        return self::innerGetService('product', 'DrpProductService', $singleton);
+    }
+
+    /**直邮发货系统
+     * @param bool $singleton
+     * @return mixed
+     */
+    public static function getDirectMailService($singleton = true) {
+        return self::innerGetService('direct', 'DirectMailService', $singleton);
+    }
+	
+	/**
+     * 欣日淘商品管理
+	 * @param bool $singleton
+	 * @return XrtGoodsService
+	 */
+	public static function getXrtGoodsService($singleton = true) {
+		return self::innerGetService('product', 'XrtGoodsService', $singleton);
+	}
+	
+	/**
+	 * 云仓管理
+	 * @param bool $singleton
+	 * @return XrtGoodsService
+	 */
+	public static function getCloudStoreHouseService($singleton = true) {
+	    return self::innerGetService('product', 'CloudStoreHouseService', $singleton);
+	}
+	
+	
+	/**小程序的反馈与咨询
+	 * @param bool $singleton
+	 * @return FeedbackService
+	 */
+	public static function getFeedbackService($singleton = true) {
+		return self::innerGetService('feedback', 'FeedbackService', $singleton);
+	}
+
+	/**
+	 * @param bool $singleton
+	 * @return WinningOrderService
+	 */
+	public static function getWinningOrderService($singleton = true) {
+		return self::innerGetService('order', 'WinningOrderService', $singleton);
+	}
+	
+	/**优惠券的管理（包括红包）
+	 * @param bool $singleton
+	 * @return BVoucherService
+	 */
+	public static function getBvoucherService($singleton = true) {
+		return self::innerGetService('user', 'BVoucherService', $singleton);
+	}
+
+    /**
+     * QinkaintService
+     * @param string $singleton
+     * @return QinkaintService
+     */
+    public static function getQinkaintService($singleton = true)
+    {
+        return self::innerGetService('order', 'QinkaintService', $singleton);
+    }
+}

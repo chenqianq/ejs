@@ -1,0 +1,72 @@
+.certificate {
+  width: 690rpx;
+  height: 120rpx;
+  border: 1px solid #eee;
+  border-radius: 8rpx;
+  margin: auto;
+  position: relative;
+}
+.certificate.hide {
+  display: none;
+}
+.certificate .name {
+  font-size: 30rpx;
+  colro: #222;
+  font-weight: bold;
+  margin: 20rpx 0 0 36rpx;
+}
+.certificate .number {
+  font-size: 26rpx;
+  color: #666;
+  margin: 12rpx 0 0 36rpx;
+}
+.certificate .wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  justify-content: space-between;
+}
+.certificate .wrap .content {
+  width: 100%;
+  margin-left: -130rpx;
+  margin-right: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(130rpx);
+  transform: translateX(130rpx);
+}
+.certificate .wrap .del {
+  width: 130rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #fff;
+  position: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF0000;
+  -webkit-transform: translateX(130rpx);
+  transform: translateX(130rpx);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.certificate .touch-move-active .content,
+.certificate .touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+.tips {
+  font-size: 24rpx;
+  color: #aba7a8;
+  padding: 0 60rpx;
+}
+.tips .title {
+  font-size: 28rpx;
+  font-weight: bold;
+  text-align: center;
+  color: #7d7d7d;
+  margin-bottom: 30rpx;
+  margin-top: 50rpx;
+}

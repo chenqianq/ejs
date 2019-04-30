@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh">
+<head>
+    <meta charset="UTF-8" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	
+<title>一番街-专注精品日货海淘</title>
+<meta name="keywords" content="日本代购，日本海外代购，日淘网，一番街"/>
+<meta name="description" content="一番街是一家专注于日本优品的跨境电商，100%官方直采，直击海淘底价！经营业务包含美容护肤、彩妆香水、家居日用、健康保养、母婴用品等。对接一级货源，保税仓极速发货，日本直邮发货。想知道必购日货清单；想购买正品日货，就上一番街！一番街带您，购霓虹优品，享精致生活！"/>
+<meta property="wb:webmaster" content="005b1e79537c4172"/>
+<meta name="360-site-verification" content="1c9910fae73a3a12c80bcf0e00682a27"/>
+<meta name="sogou_site_verification" content="2kWPXbO7KH"/>
+ 
+<link rel="shortcut icon" href="http://m.yifanjie.com/favicon.ico"/>
+ <script>
+ var jpOrderAmountLimit =  parseInt(1000,10);
+ var bsOrderAmountLimit = parseInt(2000,10);
+ </script>
+<link rel="stylesheet" href="http://m.yifanjie.com/view_controller/yifanjie-mobile/views/static/css/new/news/yfj-font.css?20171204" />
+<link rel="stylesheet" href="http://m.yifanjie.com/view_controller/yifanjie-mobile/views/static/css/new/news/Y-common.css?20171204" />
+<link rel="stylesheet" href="http://m.yifanjie.com/view_controller/yifanjie-mobile/views/static/css/new/news/Y-popup.css?20171204" />
+ <script src="http://m.yifanjie.com/view_controller/yifanjie-mobile/views/static/jscript/new/news/jquery.js?20171204"></script>
+ <script src="http://m.yifanjie.com/view_controller/yifanjie-mobile/views/static/jscript/new/news/Y-common.js?20171204"></script>
+ <script src="http://m.yifanjie.com/view_controller/yifanjie-mobile/views/static/jscript/configure.js?20171204"></script>
+ <script src="http://m.yifanjie.com/view_controller/yifanjie-mobile/views/static/jscript/new/news/helper.js?20171204"></script>
+ <script src="http://m.yifanjie.com/view_controller/yifanjie-mobile/views/static/jscript/new/news/layer.js?20171204"></script>
+ <script src="http://m.yifanjie.com/view_controller/yifanjie-mobile/views/static/jscript/new/news/echo.min.js?20171204"></script>
+ <script src="http://m.yifanjie.com/view_controller/yifanjie-mobile/views/static/jscript/new/news/TouchSlide.1.1.js?20171204"></script>
+ <script src="http://m.yifanjie.com/view_controller/yifanjie-mobile/views/static/jscript/new/news/page-popup.js?20171204"></script>
+ <script src="http://m.yifanjie.com/view_controller/yifanjie-mobile/views/static/jscript/new/news/cart.js?20171204"></script>
+</head>
+
+<body style="background: #eee;">
+<div id="wrapper">
+    <div id="content">
+        <!-- header -->
+<div class="header1 clearfix">
+    <a href="http://m.yifanjie.com/zc/front/home/index.html" class="FL">
+        <i class="icon icon-fanhui"></i>
+    </a>
+    <h1></h1>
+</div>
+
+<div class="Error">
+
+    <img src="http://m.yifanjie.com//view_controller/yifanjie-mobile/views/static/images/923/errot_sick@3x.png" />
+    <p>糟糕迷路啦~</p>
+    <a href="http://m.yifanjie.com/zc/front/home/index.html"><span id="surplus_second">10</span>s后返回首页</a>
+
+</div>
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            window.location.href = "http://m.yifanjie.com/zc/front/home/index.html";
+            return false;
+        }, 10000);
+        second = 10;
+        setInterval(function () {
+            second--;
+             $("#surplus_second").text(second);
+        },1000);
+    });
+</script>    </div>
+    <div class="tongji">
+    <script src="https://s13.cnzz.com/z_stat.php?id=1263918885&web_id=1263918885" language="JavaScript"></script>
+</div>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script></div>
+</body>
+</html>

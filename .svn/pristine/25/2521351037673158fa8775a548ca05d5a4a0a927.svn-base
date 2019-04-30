@@ -1,0 +1,354 @@
+
+.checkout {
+  padding-bottom: 110rpx;
+}
+.checkout .isAuthentication ,
+.checkout .authentication ,
+.checkout .address {
+	width: 690rpx; height: 90rpx;
+	line-height: 90rpx;
+	border: 1rpx solid #eee;
+	border-radius: 12rpx;
+	margin: 30rpx auto;
+}
+.checkout .isAuthentication {
+  justify-content: space-between;
+  position: relative;
+}
+.checkout .authentication {
+  height: 120rpx;
+  position: relative;
+}
+.checkout .aCSwitch {
+  width: 160rpx;
+  height: 60rpx;
+  border: 1px solid #eee;
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  border-radius: 33rpx;
+}
+.checkout .aCSwitch view {
+  width: 80rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+.checkout .aCSwitch .is {
+  background-color: #f63a65;
+  color: #fff;
+  border-radius: 40rpx;
+}
+.checkout .isAuthentication .t2 {
+  width: 152rpx;
+  font-size: 28rpx;
+  color: #211111;
+}
+.checkout .isAuthentication .icon {
+  position: absolute;
+  right:28rpx;
+  top:28rpx;
+  width:20rpx;
+  height:34rpx;
+}
+.checkout .authentication .t1 .v1 {
+  color: #211111;
+  font-size: 28rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  margin-top: 30rpx;
+}
+.checkout .authentication .t1 .v2 {
+  color: #f63a65;
+  font-size: 22rpx;
+  height: 22rpx;
+  line-height: 22rpx;
+  margin-top: 6rpx;
+}
+.checkout .isAuthentication .t1 ,
+.checkout .authentication .t1 ,
+.checkout .address .t1 {
+	width:350rpx;
+	margin-left:30rpx;
+	font-weight: bold;
+}
+.checkout .address .text2 {
+  position: absolute;
+  top:33rpx;
+  right:90rpx;
+  margin-right: 14rpx;
+}
+
+.checkout .address .icon {
+	width: 20rpx; height: 34rpx;
+	line-height: 90rpx;
+	margin: 30rpx 0 0 30rpx;
+  position: absolute;
+  top:33rpx;
+  right:63rpx;
+
+}
+
+.checkout .list-wrap {
+	width: 690rpx;
+	margin: auto;
+	padding-bottom: 120rpx;
+	border: 2rpx solid #eee;
+	border-radius: 12rpx;
+}
+
+.checkout .list-wrap .title {
+	height: 90rpx; line-height: 90rpx;
+	margin: 0 30rpx;
+	border-bottom: 2rpx solid #eee;
+	color: #120609;
+}
+.text3 {
+  width: 120rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.checkout .list-wrap .item {
+	height: 160rpx; width: 100%;
+	margin: 20rpx 0;
+}
+.checkout .list-wrap image {
+	width: 160rpx; height: 160rpx;
+}
+.checkout .list-wrap .info {
+	position: relative;
+	width: 500rpx;
+	margin-top: 10rpx;
+	flex-direction: column;
+}
+.checkout .list-wrap .tit{
+	color: #120609;
+	font-size: 28rpx;
+}
+.checkout .list-wrap .size {
+	margin-top: 8rpx;
+}
+.checkout .list-wrap .price-wrap {
+	position: absolute;
+	bottom: 20rpx;
+	width: 500rpx;
+}
+.checkout .list-wrap .price-wrap .t1 {
+	font-weight: bold;
+	flex: 1;
+}
+.checkout .list-wrap .price-wrap .t2 {
+	color: #999;
+	flex: 1;
+	text-align: right;
+}
+
+.checkout .list-wrap .total {
+	height: 100rpx; line-height: 100rpx;
+	margin: 0 30rpx;
+	font-weight: bold;
+	border-top: 2rpx solid #eee;
+}
+.checkout .list-wrap .total text {
+	flex: 1;
+	color: #000;
+}
+.checkout .list-wrap .total .t2 {
+	text-align: right;
+}
+
+.checkout .pay-wrap {
+	position: fixed;
+	bottom: 0;
+	width: 100%; height: 100rpx;
+	line-height: 100rpx;
+	border-top: 2rpx solid #eee;
+	background: #fff;
+	z-index: 99;
+}
+.checkout .pay-wrap .pay {
+	width: 400rpx;
+	margin-left: 40rpx;
+	line-height: 46rpx;
+}
+.checkout .pay-wrap .pay .t1 {
+	color: #000;
+	font-weight: bold;
+  margin: 12rpx 0 2rpx;
+}
+.checkout .pay-wrap .pay .t2 {
+	color: #ff658f;
+	font-size: 36rpx;
+}
+.checkout .pay-wrap .pay .t3 {
+	color: #999;
+	font-weight: bold;
+  line-height: 23rpx;
+}
+.checkout .pay-wrap button {
+	width: 260rpx; height: 80rpx;
+	line-height: 80rpx;
+	margin: 10rpx;
+	color: #fff;
+	background: #f63a65;
+	border-radius: 12rpx;
+	font-size: 28rpx;
+}
+.checkout .inviteCode ,
+.checkout .voucher {
+	width: 690rpx; height: 90rpx;
+	line-height: 86rpx;
+	border: 1rpx solid #eee;
+	border-radius: 12rpx;
+	margin: 30rpx auto;
+}
+.checkout .inviteCode {
+  justify-content: space-between;
+}
+
+.checkout .inviteCode .t1 ,
+.checkout .voucher .t1 {
+	width: 130rpx;
+	font-weight: bold;
+	text-align: center;
+}
+.checkout .voucher .t2 {
+	width: 540rpx;
+	text-align: right;
+}
+.checkout .inviteCode .t2 {
+  width: 280rpx;
+}
+.checkout .inviteCode input {
+  width: 240rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  text-align: right;
+}
+.checkout .inviteCode .phStyle {
+  color: #aba7a8;
+  font-size: 28rpx;
+}
+.checkout .voucher .t2 text {
+	font-size: 30rpx; 
+	color: #f63a65;
+	font-weight: bold;
+}
+.checkout .voucher .icon {
+	vertical-align: middle;
+	width: 20rpx; height: 34rpx;
+	line-height: 90rpx;
+	margin-left: 30rpx;
+}
+.checkout .shade {
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.3);
+  z-index: 9998;
+}
+.checkout .box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 560rpx;
+  height: 610rpx;
+  background-color: #fff;
+  padding: 0 22rpx;
+  z-index: 9999;
+  box-sizing: border-box;
+  border-radius: 8rpx;
+}
+.checkout .box .closeIcon {
+  width: 42rpx;
+  height: 42rpx;
+  position: absolute;
+  top: 20rpx;
+  right: 17rpx;
+}
+.checkout .box .title {
+  text-align: center;
+  font-size: 36rpx;
+  color: #211111;
+  margin: 50rpx 0 18rpx;
+  font-weight: bold;
+}
+.checkout .inputBox .flex {
+  justify-content: space-between;
+}
+.checkout .inputBox {
+  border-top: 1px solid #eee;
+}
+.checkout .inputBox .nameBox{
+  margin-top: 37rpx;
+}
+.checkout .inputBox input {
+  width: 416rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: 1px solid #aba7a8;
+  font-size: 24rpx;
+  padding: 0 14rpx;
+  box-sizing: border-box;
+  border-radius: 8rpx;
+}
+.checkout .inputBox .phStyle {
+  color: #aba7a8;
+}
+.checkout .inputBox text {
+  line-height: 60rpx;
+  height: 60rpx;
+  width: 84rpx;
+  color: #665d5f;
+  font-size: 26rpx;
+  text-align: justify;
+}
+
+/* 文字两端对齐 */
+.checkout .inputBox text:after { content: " "; display: inline-block; width: 100%;}
+
+.checkout .inputBox .numberBox {
+  margin-top: 18rpx;
+}
+.checkout .inputBox .errorInfo {
+  margin-top: 10rpx;
+  width: 100%;
+  height: 22rpx;
+  line-height: 22rpx;
+  text-indent: 120rpx;
+}
+.checkout .inputBox .errorInfo view {
+  width: auto;
+  height: 22rpx;
+  line-height: 22rpx;
+  font-size: 20rpx;
+  color: #f63a65;
+}
+.checkout .inputBox .tips {
+  font-size: 22rpx;
+  color: #aba7a8;
+  margin-top: 16rpx;
+}
+.checkout .box .noSubmitAc ,
+.checkout .box .submitAc {
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  background-color: #f63a65;
+  color: #fff;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  border: 1px solid #f63a65;
+}
+.checkout .box .noSubmitAc {
+  color: #f63a65;
+  background-color: #fff;
+  border: 1px solid #f63a65;
+}

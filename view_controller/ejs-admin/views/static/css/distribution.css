@@ -1,0 +1,460 @@
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+}
+html,body {
+    background-color: #f3f3f6;
+}
+input {
+    border-radius: 0;
+}
+.control {
+    width: 7.5rem;
+    height: .9rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+    background-color: #ffffff;
+    box-shadow: 0 1px 10px rgba(0,0,0,0.2);
+    line-height: .9rem;
+}
+.control .logout ,
+.control .title ,
+.control .toIndex {
+    width: 20%;
+    float: left;
+}
+.control .toIndex {
+    font-size: .32rem;
+    color: #2e89e6;
+    padding-left: .7rem;
+    background-image: url(../images/mp_sd_back_blue@3x.png);
+    background-size: .2rem .35rem;
+    background-repeat: no-repeat;
+    background-position: .32rem center;
+}
+.control .logout {
+    font-size: .32rem;
+    color: #2e89e6;
+    text-align: right;
+    padding-right: .4rem;
+}
+.control .title {
+    width: 60%;
+    font-size: .36rem;
+    font-weight: bold;
+    text-align: center;
+}
+.selectHead {
+    margin-top: .9rem;
+    background-color: #ffffff;
+    padding-top: .3rem;
+}
+.selectHead .search ,
+.selectHead .selectAddr {
+    margin: 0 .3rem;
+    border: 1px solid #dadada;
+    border-radius: .08rem;
+    font-size: .28rem;
+    color: #484848;
+    height: .9rem;
+    line-height: .9rem;
+}
+.selectHead .selectAddr .text {
+    float: left;
+    font-weight: bold;
+    padding-left: .4rem;
+}
+.selectHead .selectAddr .activeAddr {
+    width: 4.5rem;
+    text-align: right;
+    float: right;
+    padding-right: .66rem;
+    color: #222222;
+    background-image: url("../images/mp_sd_enter@3x.png");
+    background-size: .12rem .22rem;
+    background-repeat: no-repeat;
+    background-position: 4rem center;
+}
+.selectHead .search {
+    margin: .2rem .3rem 1px;
+    position: relative;
+}
+.selectHead .search select {
+    outline: none;
+    height: .86rem;
+    border: none;
+    border-radius: 0;
+    width: 2.86rem;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.selectHead .search .selectVis {
+    box-sizing: content-box;
+    width: 2rem;
+    padding: 0 .5rem 0 .4rem;
+    line-height: .9rem;
+    font-size: .26rem;
+    font-weight: bold;
+    color: #999999;
+    background-image: url("../images/mp_class_down@3x.png");
+    background-size: .2rem .2rem;
+    background-repeat: no-repeat;
+    background-position: 2.52rem center;
+    float: left;
+}
+.selectHead .search .searchInput {
+    height: .32rem;
+    border-left: 2px solid #dadada;
+    float: left;
+    margin-top: .28rem;
+    padding-left: .6rem;
+    line-height: .3rem;
+
+    background-image: url("../images/mp_sd_search_magnifier@3x.png");
+    background-size: .25rem .25rem;
+    background-repeat: no-repeat;
+    background-position: .2rem center;
+}
+.selectHead .searchInput input {
+    font-size: .26rem;
+    color: #222222;
+    width: 2.7rem;
+    margin-top: -.06rem;
+}
+.selectHead .search .clearInput {
+    position: absolute;
+    top: .29rem;
+    right: .18rem;
+    width: .28rem;
+    height: .28rem;
+    background-image: url("../images/mp_sd_sraech_cancel@3x.png");
+    background-size: .28rem .28rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: none;
+}
+.selectHead .statusSelect {
+    padding: 0 .78rem;
+    background-color: #ffffff;
+    height: .98rem;
+    text-align: center;
+}
+.selectHead .statusSelect input {
+    width: 1.1rem;
+    height: .98rem;
+    line-height: .98rem;
+    background-color: #ffffff;
+    font-size: .28rem;
+    font-weight: bold;
+    margin: 0 .9rem;
+    text-align: center;
+}
+.selectHead .statusSelect input.active {
+    color: #f63e65;
+    border-bottom: .08rem solid #f63e65;
+}
+.pages {
+    margin-bottom: .46rem;
+    padding: 0 .54rem;
+}
+.pages .nPage ,
+.pages .pPage {
+    width: 1.72rem;
+    height: .72rem;
+    background-color: #ffffff;
+    border-radius: .08rem;
+    text-align: center;
+    font-size: .3rem;
+    color: #2e89e6;
+    line-height: .72rem;
+    margin-right: .24rem;
+    float: left;
+}
+.pages .page {
+    float: left;
+    width: 2.5rem;
+    height: .72rem;
+    border: 1px solid #2e89e6;
+    border-radius: .08rem;
+    background-color: #ffffff;
+    position: relative;
+    background-image: url("../images/mp_sd_choose_page@3x.png");
+    background-size: .22rem .12rem;
+    background-repeat: no-repeat;
+    background-position: 2.04rem center;
+}
+.pages .page div {
+    line-height: .72rem;
+    font-size: .3rem;
+    color: #2e89e6;
+    padding-left: .24rem;
+}
+.pages .page select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.pages .nPage {
+    margin: 0 0 0 .24rem;
+}
+.pages .noPage {
+    color: #d6d6d6;
+}
+.addrList {
+    width: 100%;
+    height: 6.3rem;
+    overflow: scroll;
+}
+.addrList .item {
+    margin-bottom: .34rem;
+    font-size: .26rem;
+    color: #999999;
+    cursor: pointer;
+}
+.addrList .item:first-child {
+    font-weight: bold;
+    color: #000000;
+}
+.addrList .item:last-child{
+    margin-bottom: 0;
+}
+.orderList {
+    padding: 0 .3rem;
+    background-color: #f3f3f6;
+}
+.orderList .orderItem {
+    margin: .3rem 0;
+    background-color: #ffffff;
+    border-radius: .08rem;
+}
+.orderList .header {
+    font-size: .24rem;
+    line-height: .9rem;
+    color: #484848;
+    border-bottom: 1px solid #eee;
+    margin: 0 .3rem;
+}
+.orderList .orderTime {
+    float: left;
+    padding-left: .1rem;
+}
+.orderList .orderNumber {
+    float: right;
+}
+.orderList .userInfo {
+    font-size: .28rem;
+    font-weight: bold;
+    color: #222222;
+    padding: .4rem .7rem;
+    position: relative;
+    border-bottom: 1px solid #999999;
+    margin: 0 .3rem;
+}
+.orderList .phone ,
+.orderList .name {
+    float: left;
+}
+.orderList .phone {
+    margin-left: .48rem;
+}
+.orderList .addr {
+    width: 5rem;
+    font-size: .24rem;
+    color: #333333;
+    margin-top: .3rem;
+    font-weight: normal;
+}
+.orderList .addrIcon {
+    position: absolute;
+    top: .7rem;
+    left: .1rem;
+    width: .31rem;
+    height: .36rem;
+    background-image: url("../images/confirm_icon_address@3x.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.orderList .goods {
+    padding: .5rem .3rem 0 .4rem;
+    border-bottom: 1px solid #eee;
+}
+.orderList .good div {
+    font-size: .26rem;
+    font-weight: bold;
+    color: #333333;
+}
+.orderList .good {
+    padding-bottom: .4rem;
+}
+.orderList .good .goodName {
+    float: left;
+    width: 4rem;
+}
+.orderList .good .goodNumber {
+    float: left;
+    font-size: .22rem;
+    margin-left: .5rem;
+    font-weight: normal;
+    line-height: .36rem;
+}
+.orderList .good .goodPrice {
+    float: right;
+    color: #484848;
+}
+.orderList .good .specification {
+    font-size: .22rem;
+    color: #333333;
+    margin-top: .04rem;
+    font-weight: normal;
+}
+.orderList .remarks {
+    height: .9rem;
+    line-height: .9rem;
+    font-size: .26rem;
+    color: #ff6c64;
+    padding: 0 .3rem;
+    border-bottom: 1px solid #eee;
+}
+.orderList .remarks .text {
+    float: left;
+    font-weight: bold;
+    padding-left: .1rem;
+}
+.orderList .remarks .content {
+    font-size: .24rem;
+    color: #333333;
+    float: right;
+    width: 3rem;
+    text-align: right;
+}
+.orderList .lastLine {
+    height: 1.1rem;
+    margin: 0 .2rem;
+    font-size: .26rem;
+    color: #666666;
+    line-height: 1.1rem;
+}
+.orderList .lastLine .totalPrice {
+    color: #f63e65;
+    font-weight: bold;
+    padding-left: .2rem;
+    float: left;
+}
+.orderList .lastLine .btnGroup {
+    float: right;
+    margin-top: .26rem;
+}
+.orderList .btnGroup input {
+    display: block;
+    float: left;
+    height: .6rem;
+    padding: 0 .2rem;
+    // line-height: .6rem;
+    background-color: #ffffff;
+    border-radius: .06rem;
+    border: 1px solid #aaaaaa;
+    color: #666666;
+    margin-left: .2rem;
+}
+.orderList .btnGroup .success {
+    background-color: #f63e65;
+    color: #ffffff;
+    border-color: #f63e65;
+}
+.markWrap {
+    // width: 100%;
+    height: 4.74rem;
+    background-color: #fafafa;
+    font-size: .28rem;
+    color: #333333;
+    border-radius: .08rem;
+    padding: .4rem .3rem .7rem;
+}
+.markWrap textarea {
+    font-size: .28rem;
+    color: #333333;
+}
+.markWrap .fontLen {
+    font-size: .2rem;
+    color: #999999;
+    text-align: right;
+    margin-top: .06rem;
+}
+.inputMark {
+    width: 100%;
+    height: 100%;
+    background-color: #fafafa;
+}
+.markBtn {
+    margin-top: .3rem;
+    text-align: center;
+}
+.markBtn input {
+    width: 2.62rem;
+    height: .8rem;
+    background-color: #ffffff;
+    font-size: .3rem;
+    color: #666666;
+    border: 1px solid #aaaaaa;
+    border-radius: .08rem;
+    float: left;
+}
+.markBtn .submitMark {
+    background-color: #f63e65;
+    border-color: #f63e65;
+    color: #ffffff;
+    float: right;
+}
+.layui-m-layersection .layui-m-layercont {
+    padding: 0;
+}
+/* 新增 */
+.selectHead .search .selectVis {
+    width: 1.96rem;
+    padding: 0 .3rem 0 .4rem;
+    background-position: 2.34rem center;
+}
+.selectHead .search select {
+    width: 2.66rem;
+}
+.selectClick {
+    color: #484848!important;
+}
+.selectHead .search .searchInput {
+    background-image: none;
+    padding-left: .16rem;
+    border-right: 2px solid #dadada;
+    padding-right: .6rem;
+}
+.selectHead .search .clearInput {
+    right: .88rem;
+    top: .31rem;
+}
+.selectHead .search .searchIcon {
+    box-sizing: content-box;
+    position: absolute;
+    top: .14rem;
+    right: .1rem;
+    width: .31rem;
+    padding: .12rem;
+    height: .33rem;
+    background-image: url(../images/mp_sd_search_magnifier@3x.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: .31rem .33rem;
+    cursor: pointer;
+}
+.orderList .remarks .content {
+    width: 4.5rem;
+}
+
+.selectHead .searchInput input::-webkit-input-placeholder {
+    font-size: .26rem;
+}

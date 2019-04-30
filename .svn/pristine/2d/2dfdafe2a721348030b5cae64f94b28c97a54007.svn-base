@@ -1,0 +1,89 @@
+
+<view wx:if="{{flag}}">
+
+  <!-- 红包失效 -->
+  <view class="flex empty" wx:if="{{status==4}}">
+    <image src="../../images/nulvalue_coupon@3x.png"></image>
+    <view>很遗憾, 红包失效啦</view>
+    <navigator url="../index/index" bindtap="toIndex">去逛逛吧</navigator>
+  </view>
+
+  <!-- 红包有效 -->
+  <view class="red" wx:else>
+    <image class="banner" src="../../images/toImage@3x.png"></image>
+    <!-- 优惠券 -->
+    <view class="coupon">
+      <view class="item">
+        <image class="bg" src="../../images/mp_coupon@3x.png"></image>
+        <!-- 红包信息 -->
+        <view class="flex con" wx:if="{{status<3}}">
+          <view class="detail flex">
+            <view class="price">
+              <text class="t1">¥</text>
+              <text class="t2">{{voucherInfo.amount}}</text>
+            </view>
+            <view class="type">
+              <view class="v1">{{voucherInfo.title}}</view>
+              <view class="v2">{{voucherInfo.condition}}</view>
+              <view class="v3 flex">
+                <text>{{voucherInfo.valid_time}}日前有效</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 红包领完 -->
+        <view class="late" wx:if="{{status == 3}}">来迟了, 红包已被领完</view>
+        <view class="late" wx:if="{{status == 5}}">您今日获得红包数量已达到上限</view>
+      </view>
+
+      <view class="desc">
+        <view wx:if="{{ status<3 }}">
+          <view>恭喜你获得一张优惠券!</view>
+          <view>登录二加三小程序即可使用</view>
+        </view>
+        <view wx:if="{{status == 3 || status == 5}}">
+          <view>再接再厉!</view>
+          <view>也许下一个就是大红包!</view>
+        </view>
+      </view>
+
+    </view>
+    <!-- 列表 -->
+    <view class="list">
+      <view class="title">
+        <view class="line"></view>
+        <text>好友手气</text>
+      </view>
+      <view class="item flex" wx:for="{{logArr}}" wx:key="{{index}}">
+        <image src="{{item.click_avatar}}"></image>
+        <view class="info flex">
+          <view class="name">
+            <text>{{item.click_name}}</text>
+            <text class="big" wx:if="{{item.is_super_red_envelope == 1}}">大红包!</text>
+          </view>
+          <text class="time">{{item.gmt_create}}</text>
+        </view>
+        <view class="pri">{{item.price}}元</view>
+      </view>
+    </view>
+    <!-- 规则 -->
+    <view class="rule">
+      <view class="title">
+        <view class="line"></view>
+        <text>活动规则</text>
+      </view>
+      <view>1. 红包新老用户同享</view>
+      <view>2. 好友助力商品不可使用红包</view>
+      <view>3. 红包仅限在二加三下单结算时候使用,红包无法折现</view>
+      <view>4. 部分用户可领取大额“红包”</view>
+      <view>5. 其他未尽事宜，请咨询客服</view>
+      <view>6. 若发现使用红包作弊或者利用系统漏洞者，二加三有权回收用户非法所得红包</view>
+    </view>
+
+    <!-- 分享红包 -->
+    <view class="btn-wrap" wx:if="{{is_self}}">
+      <button open-type="share">分享红包</button>
+    </view>
+  </view>
+
+</view>

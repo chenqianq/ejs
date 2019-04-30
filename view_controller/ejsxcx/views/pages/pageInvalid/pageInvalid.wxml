@@ -1,0 +1,7 @@
+<view class='invalid'>
+  <image class="icon"  src='../../images/nulvalue_page@3x.png'></image>
+  <view class='tips'>很抱歉,该页面暂时不可用</view>
+  <navigator url="../index/index" open-type="switchTab" hover-class="none">
+    <button>去逛逛吧</button>
+  </navigator>
+</view>

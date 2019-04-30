@@ -1,0 +1,230 @@
+page {
+  background-color: #f3f3f6;
+}
+.userInfo {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;  
+  width: 100%;
+  height: 280rpx;
+  border-bottom: 1px solid #eeeeee;
+  background-color: #ffffff;
+}
+
+/* 授权按钮 */ 
+.userInfo .Auth {
+  position: absolute;
+  width: 160rpx; height: 160rpx;
+  left: 60rpx;
+  z-index: 2;
+  opacity: 0;
+}
+
+.userImg {
+  width: 162rpx;
+  height: 208rpx;
+  margin: 0 28rpx 0 75rpx;
+  align-content: center;
+  position: relative;  
+}
+.userImg .imgBg {
+  width: 100%;
+  height: 100%;
+}
+.userInfo .head {
+  position: absolute;
+  top: 23rpx;
+  left: 0;
+  width: 162rpx;
+  height: 162rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.userInfo .head image {
+  width: 100%;
+  height: 100%;
+}
+.userInfo .feedback navigator {
+  position: relative;
+  bottom: 80rpx;
+}
+.userInfo .feedback image {
+  width: 44rpx; height: 44rpx;
+}
+.userName {
+  width: 410rpx;
+  height: 92rpx;
+  position: relative;
+}
+.userName .name {
+  font-size: 38rpx;
+  font-weight: bold;
+  line-height: 38rpx;
+}
+.userName .noCertification {
+  position: absolute;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #211111;
+  bottom: 0;
+  left: 0;
+  display: flex;
+}
+.userName .noCertification .go  {
+  margin-left: 24rpx;
+  color: #3883c5;
+}
+.orderNavFlx ,
+.orderNav {
+  width: 100%;
+  height: 88rpx;
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffffff;
+}
+.orderNavFlx {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+.orderNavFlx view ,
+.orderNav view {
+  font-size: 28rpx;
+  color: #665d5f;
+  font-weight: bold;
+  line-height: 88rpx;
+  box-sizing: border-box;
+  
+}
+.orderNavFlx .active ,
+.orderNav .active {
+  border-bottom: 6rpx solid #ff658f;
+  color: #ff658f;
+}
+.orders {
+  width: 690rpx;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.orders.top{
+  margin-top: 88rpx;
+}
+.orders .orderItem {
+  width: 690rpx;
+  height: 476rpx;
+  background-color: #ffffff;
+  border-radius: 14rpx;
+  position: relative;
+  margin-top: 30rpx;
+}
+.orders .orderItem:last-child {
+  margin-bottom: 0;
+}
+.orderItem .orderThree ,
+.orderItem .orderHead {
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #332d2e;
+  width: 100%;
+  padding: 0 23rpx 0 30rpx;
+  box-sizing: border-box;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom: 1px solid #eee; 
+}
+.orderItem .goods {
+  width: 100%;
+  height: 130rpx;
+  white-space: nowrap; 
+  margin: 31rpx 0;
+}
+.orderItem .goods image {
+  width: 130rpx;
+  height: 130rpx;
+}
+.orderItem .orderThree {
+  border-bottom: none;
+  border-top: 1px solid #eee; 
+}
+.orderItem .orderThree view {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #ff658f;
+}
+.orderItem .orderThree .price {
+  font-size: 24rpx;
+  font-weight: normal;
+  color: #120609;
+}
+.btnS {
+  width: 100%;
+  height: 60rpx;
+  /* background-color: red; */
+  position: absolute;
+  bottom: 35rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+.btnS button,
+.btnS navigator {
+  width: 148rpx;
+  margin:0 20rpx 0 0;
+  padding: 0;
+  background-color: #ffffff; 
+  line-height: 60rpx;
+  color: #665d5f;
+  font-size: 28rpx;
+  border-radius: 6rpx;
+  box-sizing: content-box;
+  border: 1px solid #aba7a8;
+  text-align: center;
+}
+button::after {
+  border: none;
+}
+.btnS .ok {
+  background-color: #f63a65;
+  color: #fff;
+  border: 1px solid #f63a65;
+}
+.btnS .cancel {
+  position: absolute;
+  left: 22rpx;
+  top: 0;
+}
+.pageEnd {
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  color: #aaaaaa;
+  font-size: 24rpx;
+  text-align: center;
+}
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+.empty {
+  margin-top: 240rpx;
+  text-align: center;
+}
+.empty image{
+  width: 160rpx;
+  height: 160rpx;
+}
+.empty view {
+  font-size: 30rpx;
+  text-align: center;
+  color: #999999;
+  margin-top: 44rpx; 
+}
+.isSelf{
+  width: 64rpx;
+  height: 32rpx;
+  margin: -8rpx 0 0 16rpx;
+  vertical-align: middle;
+}

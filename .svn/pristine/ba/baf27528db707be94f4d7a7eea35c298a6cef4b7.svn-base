@@ -1,0 +1,147 @@
+/**index.wxss**/
+.tlBanner {
+  width: 750rpx;
+  height: 420rpx;
+  vertical-align: top;
+}
+.items {
+  margin-top: 24rpx;
+}
+.item {
+  display: flex;
+  height: 237rpx;
+  margin-bottom: 44rpx;
+}
+.item image {
+  width: 240rpx;
+  height: 237rpx;
+}
+.item .goodsInfo {
+  position: relative;
+}
+.item .goodsName {
+  width: 474rpx;
+  font-size: 30rpx;
+  color: #333333;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  margin-top: 40rpx;
+}
+.item .standard {
+  color: #999496;
+  font-size: 28rpx;
+  margin-top: 6rpx;
+}
+.item .price {
+  position: absolute;
+  color: #ff658f;
+  font-size: 32rpx;
+  left: 0;
+  bottom: 40rpx;
+  font-weight: bold;
+}
+.item .car {
+  width: 45rpx;
+  height: 41rpx;
+  position: absolute;
+  bottom: 44rpx;
+  right: 20rpx;
+}
+navigator {
+  display: flex;
+}
+.pageEnd {
+  color: #aaaaaa;
+  font-size: 24rpx;
+  text-align: center;
+  margin-bottom: 54rpx;
+}
+.noCar {
+  position: absolute;
+  bottom: 30rpx;
+  right: 10rpx;
+  font-size: 28rpx;
+  color: #bbbbbb;
+}
+.Nlist_price {
+  font-size: 22rpx;
+  color: #bbbbbb;
+  text-decoration: line-through;
+  margin-left: 16rpx;
+  font-weight: normal;
+}
+
+/* 助力活动 */
+.friend-help .item .goodsName {
+  margin-top: 20rpx;
+  font-size: 30rpx;
+}
+.friend-help .item .wrap {
+  position: absolute;
+  bottom: 30rpx; left: 0;
+  width: 460rpx;
+  justify-content: space-between;
+}
+.friend-help .item .wrap .pri {
+  width: 280rpx;
+}
+.friend-help .item .wrap .pri text {
+  color: #333;
+  font-weight: bold;
+}
+.friend-help .item .wrap .pri .t2 {
+  font-size: 36rpx;
+}
+.friend-help .item .wrap .pri .t3 {
+  color: #666;
+  font-weight: normal;
+}
+.friend-help .item .wrap .btn-wrap {
+  position: relative;
+  width: 180rpx;
+}
+.friend-help .item .wrap .btn-wrap .btn {
+  position: relative;
+  width: 180rpx; height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  background: #f63e65;
+  border-radius: 4px;
+}
+.friend-help .item .wrap .btn-wrap .success {
+  width: 180rpx; height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  background: #fcfffa;
+  border: 2px solid #57c621;
+  color: #57c621;
+  border-radius: 2px;
+}
+.friend-help .item .wrap .btn-wrap .success image {
+  width: 20rpx; height: 20rpx;
+  margin-left: 6rpx;
+  line-height: 64rpx;
+}
+
+.friend-help .item .wrap .btn-wrap .t1 {
+  font-size: 28rpx;
+  color: #f63e65;
+}
+.friend-help .item .wrap .btn-wrap .dot {
+  position: absolute;
+  width: 20rpx; height: 20rpx;
+  top: 54rpx; left: -2rpx;
+  border-radius: 50%;
+  background: #f63e65;
+}
+.friend-help .item .wrap .btn-wrap progress {
+  padding-top: 20rpx;
+}

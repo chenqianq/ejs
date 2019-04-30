@@ -1,0 +1,1035 @@
+<?php
+/**
+ * 数据表定义
+ * @author kinsly
+ */
+class TableConst {
+
+    /** ---------------------管理员/权限相关--------------------- */
+
+	const TABLE_ADMIN = 'ejs_admin'; // 管理员表
+	const TABLE_ADMIN_GROUP = 'ejs_admin_group'; // 用户组表
+	const TABLE_ADMIN_PERMISSION = 'ejs_admin_permission'; // 管理员权限表
+	const TABLE_ADMIN_GROUP_TO_PERMISSION = 'ejs_admin_group_to_permission'; // 用户组权限关系表
+	const TABLE_ADMIN_LOG = 'ejs_admin_log'; // 系统管理日志
+	const TABLE_ADMIN_TO_GROUP = 'ejs_admin_to_group'; // 用户跟用户组关系表
+    const TABLE_ADMIN_GROUP_HIERARCHY = 'ejs_admin_group_hierarchy';
+
+    const TABLE_SMS_LOG = 'ejs_sms_log'; // 短信发送记录表
+
+    const TABLE_SETTING = 'ejs_setting'; // 配置表
+    const TABLE_SETTING_LOG = 'ejs_setting_log'; // 配置操作日志表
+
+
+	/**
+	 * 身份证表
+	 * @var unknown
+	 */
+	const TABLE_AUTHENTICATION = 'yfj_authentication';
+
+	const TABLE_AUTHENTICATION_PASS = 'yfj_authentication_pass';
+	
+	 
+	const TABLE_MEMBER_COMMON = 'yfj_member_common';
+	
+	const TABLE_MEMBER_MSG_SETTING = 'yfj_member_msg_setting';
+	
+	const TABLE_MEMBER_MSG_TLP = 'yfj_member_msg_tpl';
+	
+	const TABLE_MEMBER_APP_EQUIPMENT = 'yfj_member_app_equipment';
+
+    const TABLE_VOUCHER_TEMPLETE = 'yfj_voucher_template';
+
+    const TABLE_VOUCHER = 'yfj_voucher';
+
+    const TABLE_VOUCHER_CODE = 'yfj_voucher_code';
+
+	const TABLE_VOUCHER_TEMPLETE_NEW = 'voucher_template';
+
+    const TABLE_VOUCHER_TEMPLETE_ACTIVITY = 'yfj_voucher_t_activity';      //活动优惠券
+
+    const TABLE_VOUCHER_TEMPLETE_ACTIVITY_NEW = 'voucher_template_activity';      //活动优惠券
+
+    const TABLE_VOUCHER_TEMPLETE_CLASSSIFY = 'yfj_voucher_t_classify';      //分类优惠券
+
+    const TABLE_VOUCHER_TEMPLETE_CLASSSIFY_NEW = 'voucher_template_classify';      //分类优惠券
+
+    const TABLE_VOUCHER_TEMPLETE_ITEM_NEW = 'voucher_template_item';                //单品优惠券
+
+    const TABLE_VOUCHER_GIVE_OUT_NEW = 'voucher_give_out';                            //优惠券发放
+
+    const TABLE_VOUCHER_SELECT_NEW = 'voucher_select';                               //优惠券选择
+
+	const TABLE_VOUCHER_NEW = 'voucher';
+	const TABLE_VOUCHER_CODE_NEW = 'voucher_code';
+
+	const TABLE_ORDER_VOUCHER = 'order_voucher';                                      //订单优惠券
+
+    const TABLE_ORDER_GOODS_VOUCHER = 'order_goods_voucher';                          //订单商品优惠券
+
+    const TABLE_VOUCHER_LOG_NEW = 'voucher_log';
+
+    const TABLE_VOUCHER_OLD_USER_LIMIT = 'voucher_old_user_limit';   // 限制老用户兑换优惠券表
+
+    const TABLE_VOUCHER_RECEIVE = 'voucher_receive'; // 优惠券领取管理
+
+	const TABLE_ADV = 'yfj_adv';
+
+	const TABLE_ADV_POSITION = 'yfj_adv_position';
+
+	const TABLE_ADV_SITE = 'yfj_adv_site'; // 广告显示站点表
+
+	
+	/**
+	 * 限时与活动
+	 * @var unknown
+	 */
+	const TABLE_P_XIANSHI = 'yfj_p_xianshi';
+
+    const TABLE_P_XIANSHI_PREVIEW_MODE = 'yfj_p_xianshi_preview_mode';
+
+    const TABLE_P_XIANSHI_COUPON = 'yfj_p_xianshi_coupon';
+
+    const TABLE_P_XIANSHI_RANGE = 'yfj_p_xianshi_range';
+
+    const TABLE_P_XIANSHI_ENTRY_PIC = 'yfj_p_xianshi_entry_pic';
+
+    const TABLE_P_XIANSHI_HEAD_PIC = 'yfj_p_xianshi_header_pic';
+
+    const TABLE_P_XIANSHI_GOODS_PIC = 'yfj_p_xianshi_goods_pic';
+
+	/**
+	 * 包税区
+	 * @var unknown
+	 */
+	const TABLE_FREE_ZONE = 'yfj_free_zone';
+	
+	/**
+	 * 限时产品
+	 * @var unknown
+	 */
+	const TABLE_P_XIANSHI_GOODS = 'yfj_p_xianshi_goods';
+
+	/**
+	 * 收藏表
+	 * @var unknown
+	 */
+	const TABLE_FAVORITES = 'yfj_favorites';
+	
+	/**
+	 * 产品sku主表
+	 * @var unknown
+	 */
+	const TABLE_GOODS_COMMON = 'yfj_goods_common';
+
+	/**
+	 * 产品sku具体表
+	 * @var unknown
+	 */
+	const TABLE_GOODS = 'yfj_goods';
+
+	/**
+	 * 商品与属性对应表
+	 * @var unknown
+	 */
+	const TABLE_GOODS_ATTR_INDEX = 'yfj_goods_attr_index';
+
+	/**
+	 * 商品类型表
+	 * @var unknown
+	 */
+	const TABLE_TYPE = 'yfj_type';
+
+	/**
+	 * 商品规格值列表
+	 * @var unknown
+	 */
+	const TABLE_GOODS_SPEC_LIST = 'yfj_goods_spec_list';
+	/**
+	 * 商品规格对应表
+	 * @var unknown
+	 */
+	const TABLE_GOODS_SPEC_VALUE = 'yfj_goods_spec_value';
+
+    /**
+     * 商品规格
+     * @var unknown
+     */
+    const TABLE_GOODS_SPEC = 'goods_spec';
+
+
+    /**
+     * 商品对应商品规格表
+     * @var unknown
+     */
+    const TABLE_GOODS_TO_SPEC = 'goods_to_spec';
+	/**
+	 * 商品浏览历史表
+	 * @var unknown
+	 */
+	const TABLE_GOODS_BROWSE = 'yfj_goods_browse';
+ 
+	
+	/**
+	 * 产品sku主图表
+	 * @var unknown
+	 */
+	const TABLE_GOODS_MAIN_IMAGES = 'yfj_goods_main_images';
+/**
+	 * 产品sku主图表
+	 * @var unknown
+	 */
+	const TABLE_GOODS_IMAGES = 'yfj_goods_images';
+	/**
+	 * 产品实拍图表
+	 * @var unknown
+	 */
+	const TABLE_GOODS_REAL_IMAGES = 'yfj_goods_real_images';
+	
+	/**
+	 * 类目表
+	 * @var unknown
+	 */
+	const TABLE_GOODS_CLASS = 'yfj_goods_class';
+
+	/**
+	 * 常用分类表
+	 * @var unknown
+	 */
+	const TABLE_GOODS_CLASS_STAPLE = 'yfj_goods_class_staple';
+
+	/**
+	 * 分类tag表
+	 * @var unknown
+	 */
+	const TABLE_GOODS_CLASS_TAG = 'yfj_goods_class_tag';
+
+	/**
+	 * 店铺绑定分类表
+	 * @var unknown
+	 */
+	const TABLE_STORE_BIND_CLASS = 'yfj_store_bind_class';
+	
+	/**
+	 * 评价商品表
+	 * @var unknown
+	 */
+	const TABLE_EVALUATE_GOODS = 'yfj_evaluate_goods';
+
+
+	/**
+	 * 评价统计表
+	 * @var unknown
+	 */
+	const TABLE_EVALUATE_STATIS = 'yfj_evaluate_statis';
+
+	/**
+	 * 商品规格表
+	 * @var unknown
+	 */
+	const TABLE_SPEC = 'yfj_spec';
+
+	/**
+	 * 商品规格值表
+	 * @var unknown
+	 */
+	const TABLE_SPEC_VALUE = 'yfj_spec_value';
+
+	/**
+	 * 商品类型与规格对应表
+	 * @var unknown
+	 */
+	const TABLE_TYPE_SPEC = 'yfj_type_spec';
+
+	/**
+	 * 商品日本汇率税率表
+	 * @var unknown
+	 */
+	const TABLE_HUILV_SHUILV = 'yfj_huilv_shuilv';
+
+	/**
+	 * 快递公司
+	 * @var unknown
+	 */
+	const TABLE_EXPRESS = 'yfj_express';
+
+	/**
+	 * 品牌表
+	 * @var unknown
+	 */
+	const TABLE_BRAND = 'yfj_brand';
+
+
+	/**
+	 * 商品类型与品牌对应表
+	 * @var unknown
+	 */
+	const TABLE_TYPE_BRAND = 'yfj_type_brand';
+
+
+    /**
+     * 品牌推荐商品表
+     */
+    const TABLE_BRAND_RECOMMEND_GOODS = 'brand_recommend_goods';    
+	 
+    /**
+     * 首页展示品牌
+     */
+    const TABLE_HOME_BRAND = 'home_brand';
+	
+	/**
+	 * 购物车表
+	 * @var unknown
+	 */
+	const TABLE_CART = 'yfj_cart';
+	
+	/**
+	 * 文章表
+	 * @var unknown
+	 */
+	const TABLE_ARTICLE = 'yfj_article';
+	
+	/**
+	 * 文章分类表
+	 * @var unknown
+	 */
+	const TABLE_ARTICLE_CLASS = 'yfj_article_class';
+
+    /**
+     * FAQ
+     * @var unknown
+     */
+    const TABLE_ARTICLE_FAQ = 'yfj_article_faq';
+	
+	/**
+	 * 地址表
+	 * @var unknown
+	 */
+	const TABLE_ADDRESS = 'yfj_address';
+	
+	/**
+	 * 区域表
+	 * @var unknown
+	 */
+	const TABLE_AREA = 'yfj_area';
+	
+	/**
+	 * 运费表
+	 * @var unknown
+	 */
+	const TABLE_ENTREPOT_POSTAGE = 'yfj_entrepot_postage';
+	 
+	/**
+	 * 包邮表
+	 * @var unknown
+	 */
+	const TABLE_P_POSTAGE_RULE = 'yfj_p_postage_rule';
+	
+	/**
+	 * 订单支付表
+	 * @var unknown
+	 */
+	const TABLE_ORDER_PAY = 'yfj_order_pay';
+	
+	/**
+	 * 订单表
+	 * @var unknown
+	 */
+	const TABLE_ORDER = 'yfj_order';
+
+
+	/**
+     * 订单主表
+     * @var unknown
+     */
+    const TABLE_MAIN_ORDER = 'main_order';
+
+	/**
+ * 退款表
+ * @var unknown
+ */
+	const TABLE_REFUND_RETURN = 'yfj_refund_return';
+
+	/**
+	 * 退款表
+	 * @var unknown
+	 */
+	const TABLE_REFUND_RETURN_GOODS = 'yfj_refund_return_goods';
+
+
+	/**
+	 * 退款日志表
+	 * @var unknown
+	 */
+	const TABLE_REFUND_RETURN_LOG = 'yfj_refund_return_log';
+
+	/**
+	 * 退款原因表
+	 * @var unknown
+	 */
+	const TABLE_REFUND_REASON = 'yfj_refund_reason';
+	
+	/**
+	 * 订单公共表
+	 * @var unknown
+	 */
+	const TABLE_ORDER_COMMON = 'yfj_order_common';
+	/**
+	 * 订单状态表
+	 * @var unknown
+	 */
+	const TABLE_ORDER_STATUS = 'yfj_order_status';
+	/**
+	 * 订单公共表
+	 * @var unknown
+	 */
+	const TABLE_ORDER_LOG = 'yfj_order_log';
+	
+	/**
+	 * 订单商品表
+	 * @var unknown
+	 */
+	const TABLE_ORDER_GOODS = 'yfj_order_goods';
+
+	
+	
+	/**
+	 * 物流表
+	 * @var unknown
+	 */
+	const TABLE_DELIVERY_ORDER = 'yfj_delivery_order';
+	
+	/**
+	 * 支付申报中心表
+	 * @var unknown
+	 */
+	const TABLE_ORDER_PAYMENT_DECLARATION = 'yfj_order_payment_declaration';
+
+
+
+	
+	
+	/**
+	 *支付宝
+	 * @var unknown
+	 */
+	const TABLE_PAYMENT = 'yfj_payment';
+
+	/**
+	 *相册表
+	 * @var unknown
+	 */
+	const TABLE_ALBUM_CLASS = 'yfj_album_class';
+
+	/**
+	 *相册图片表
+	 * @var unknown
+	 */
+	const TABLE_ALBUM_PIC = 'yfj_album_pic';
+	
+	/**
+	 * 捆绑销售表
+	 * @var unknown
+	 */
+	const TABLE_BUNDLING_SPECIAL_ITEMS = 'yfj_binding_special_items';
+
+
+	/**
+	 * 代金卷可以使用的商品
+	 * @var unknown
+	 */
+	const TABLE_VOUCHER_ITEMS_SCOPE = 'yfj_voucher_items_scope';
+	
+	/**
+	 * 代金卷可以使用的分类
+	 * @var unknown
+	 */
+	const TABLE_VOUCHER_CLASSIFY_SCOPE = 'yfj_voucher_classify_scope';
+	
+	/**
+	 * 代金卷不可以使用的分类
+	 * @var unknown
+	 */
+	const TABLE_VOUCHER_CLASSIFY_EXCLUDE_BRAND = 'yfj_voucher_classify_exclude_brand';
+	
+	/**
+	 * 代金卷不可以使用的产品
+	 * @var unknown
+	 */
+	const TABLE_VOUCHER_CLASSIFY_EXCLUDE_SKU = 'yfj_voucher_classify_exclude_sku';
+	
+	/**
+	 * 买几件后优惠多少
+	 * @var unknown
+	 */
+	const TABLE_XIANSHI_CLASSIFY_ITEMS_DISCOUNT = 'yfj_xianshi_classify_items_discount';
+	
+	
+	/**
+	 * 买几件后优惠多少 , 产品
+	 * @var unknown
+	 */
+	const TABLE_XIANSHI_SPECIFIC_ITEMS_DISCOUNT_GOODS = 'yfj_xianshi_specific_items_discount_goods';
+	
+	/**
+	 * 买几件后优惠多少 , 分类
+	 * @var unknown
+	 */
+	const TABLE_XIANSHI_CLASSIFY_DISCOUNT = 'yfj_xianshi_classify_discount';
+	/**
+	 * 评论图片
+	 * @var unknown
+	 */
+	const TABLE_EVALUATE_IMAGES = 'yfj_evaluate_images';
+
+	
+    /*
+     * 捆绑销售
+     */
+    const TABLE_BINDING_SPECIAL_ITEMS = 'yfj_binding_special_items';
+
+
+    const TABLE_XIANSHI_CLASSIFY_DISCOUNT_EXCLUDE_BRAND = 'yfj_xianshi_classify_discount_exclude_brand';
+
+    const TABLE_XIANSHI_CLASSIFY_DISCOUNT_EXCLUDE_GOODS = 'yfj_xianshi_classify_discount_exclude_goods';
+
+    const TABLE_XIANSHI_CLASSIFY_ITEMS_DISCOUNT_RANGE_SITE= 'yfj_xianshi_classify_items_discount_range_site';
+
+    /**
+     * 优惠劵模板站点范围表
+     */
+    const TABLE_VOUCHER_TEMPLATE_RANGE_SITE = 'yfj_voucher_template_range_site';
+
+    /**
+     * 优惠劵模板站点范围表
+     */
+    const TABLE_BINDING_SPECIAL_ITEMS_RANGE_SITE = 'yfj_binding_special_items_range_site';
+
+    
+    const TABLE_SYSTENM_NOTIFY = 'yfj_system_notify';
+    /**
+     * 售后新表
+     */
+    //售后原因表
+    const TABLE_PRE_SALE_REASON = 'yfj_pre_sale_reason';
+    //售后主表
+    const TABLE_PRE_SALE = 'yfj_pre_sale';
+    //售后主表
+    const TABLE_PRE_SALE_GOODS = 'yfj_pre_sale_goods';
+    //售后日志
+    const TABLE_PRE_SALE_LOG = 'yfj_pre_sale_log';
+    //售后日志图片
+    const TABLE_PRE_SALE_PICTURE = 'yfj_pre_sale_picture';
+/**
+	 * 评论以及回复内容
+	 * @var unknown
+	 */
+	const TABLE_EVALUATE_CONTENT = 'yfj_evaluate_content';
+
+    /**
+     * 产品sku主表
+     * @var unknown
+     */
+    const TABLE_GOODS_COMMON_NEW = 'yfj_goods_common_new';
+    /**
+     * 产品sku具体表 hyq
+     * @var unknown
+     */
+    const TABLE_GOODS_NEW = 'yfj_goods_new';
+
+    /**
+     * 商品点击数量表
+     * @var unknown
+     */
+    const TABLE_GOODS_CLICK = 'yfj_goods_click';
+
+    /**
+     * 商品与属性对应表 hyq
+     */
+    const TABLE_GOODS_ATTR = 'yfj_goods_attr';
+
+    
+    
+    
+    
+    
+    
+    //////报关中心表结构
+    /**
+     * 报关中心订单支付表
+     * @var unknown
+     */
+    const TABLE_DC_ORDER_PAYMENT = 'dc_order_payment';
+    const TABLE_DC_ORDER = 'dc_order';
+    const TABLE_DC_ORDER_GOODS = 'dc_order_goods';
+    const TABLE_DC_ORDER_GOODS_TAX = 'dc_order_goods_tax';
+    const TABLE_DC_BASE_TRANSFER = 'dc_base_transfer';
+    const TABLE_DC_LOGISTIC = 'dc_logistic';
+    const TABLE_DC_IMPORT_LIST = 'dc_import_list';
+    const TABLE_DC_LOG = 'dc_log';
+    const TABLE_DC_ORDER_PAYMENT_DECLARATION = 'dc_order_payment_declaration';
+    const TABLE_DC_OPERATE_LOG = 'dc_operate_log';
+    const TABLE_DC_COP_NO = 'dc_cop_no';
+
+    const TABLE_DC_CUSTOMS_GOODS = 'dc_customs_goods';
+    const TABLE_DC_GUID = 'dc_guid';
+    const TABLE_DC_HS_CODE = 'dc_hs_code';
+    const TABLE_DC_UNIT = 'dc_unit';
+
+    const TABLE_DC_PAY_EXCHANGE_INFO = 'dc_pay_exchange_info';
+    const TABLE_DC_PAY_EXCHANGE_ORDER = 'dc_pay_exchange_order';
+
+
+    /////推广系统表定义
+	const TABLE_CPA_ORDER = 'cpa_order';
+    const TABLE_CPA_CUSTOMER = 'cpa_customer'; // 发展客户表
+    const TABLE_CPA_USER = 'cpa_user';         // 推广员表 
+    const TABLE_CPA_BANK_CARD = 'cpa_bank_card'; // 银行卡信息表
+    const TABLE_CPA_COMMISSION_RATE = 'cpa_commission_rate'; // 
+    const TABLE_CPA_COMMISSION = 'cpa_commission'; // 佣金明细
+    const TABLE_CPA_BANK_CARD_LOG = 'cpa_bank_card_log'; // 推广员表 // 发展客户表
+    const TABLE_CPA_ADMIN_GROUP = 'cpa_user_role'; // 推广员表 // 发展客户表
+    const TABLE_USER_GROUP_TO_PERMISSION = 'cpa_user_role_to_permission'; // 推广员表 // 发展客户表
+    const TABLE_USER_PERMISSION = 'cpa_user_permission'; // 推广员表 // 发展客户表
+    const TABLE_STAT_COMMISSION = 'cpa_stat_commission'; // 推广员表 // 发展客户表
+    const TABLE_MOTHLY_STAT_COMMISSION = 'cpa_monthly_stat_commission'; // 推广员表 // 发展客户表
+    const TABLE_WEEKLY_STAT_COMMISSION = 'cpa_weekly_stat_commission'; // 推广员表 // 发展客户表
+    const TABLE_USER_STATE_CHANGE_LOG= 'cpa_user_state_change_log'; //用户状态修改记录表
+    const TABLE_TASK= 'cpa_task'; //邀请任务金额明细表
+    const TABLE_CPA_INVITER_CODE_LOG = 'cpa_inviter_code_log'; // 记录发展客户填写的邀请码表
+    const TABLE_INVITE = 'cpa_invite'; // 记录发展客户填写的邀请码表
+    const TABLE_WHOLE_PEOPLE_INVITE = 'cpa_whole_people_invite'; // 记录全民推广邀请用户
+    const TABLE_CPA_USER_TYPE = 'cpa_user_type'; // 推广员分类表
+    const TABLE_CPA_COOPERATION_MODEL = 'cpa_cooperation_model'; // 渠道用户合作模式表
+
+
+    ///新品推荐
+    const TABLE_FM_DIG = 'fm_dig';
+    const TABLE_FM_EXCLUSIVE_BENEFITS = 'fm_exclusive_benefits';
+    
+    const TABLE_FM_LABEL = 'fm_label';
+    const TABLE_FM_NEW_ITEMS_RECOMMEND = 'fm_new_items_recommend';
+    const TABLE_FM_NEW_ITEMS_RECOMMENED_ITEMS = 'fm_new_items_recommend_items';
+    
+    const TABLE_FM_RECOMMEND_ITEMS_DEMO = 'fm_recommend_items_demo';
+    const TABLE_FM_RECOMMEND_SITE = 'fm_recommend_site';
+    
+    const TABLE_FM_RECOMMENED_ITEMS = 'fm_recommened_items';
+    const TABLE_FM_REVIEW = 'fm_review';
+    const TABLE_FM_RECOMMEND_IMAGES = 'fm_recommend_images';
+    const TABLE_FM_NEW_ITEMS_RECOMMEND_LOG = 'fm_new_items_recommend_log';
+    const TABLE_FM_TEXT_PROMPT = 'fm_text_prompt';
+
+    const TABLE_DOUCMENT = 'yfj_document';
+
+    const TABLE_BANNER_FRAME_TYPE = 'yfj_banner_frame_type';
+    const TABLE_BANNER_FRAME_SITE = 'yfj_banner_frame_site';
+    const TABLE_BANNER_FRAME_DETAIL = 'yfj_banner_frame_detail';
+    const TABLE_BANNER_FRAME = 'yfj_banner_frame';
+
+    /**
+     * solr 增量表
+     */
+    const TABLE_SOLR_INCREMENT = 'yfj_solr_increment';
+
+	/**
+	 * 检索配置表
+	 */
+	const TABLE_HOT_SEARCH = 'yfj_hot_search';
+
+	/**
+	 * 订购人表
+	 */
+	const  TABLE_CONTACT_PERSON = 'yfj_contact_person';
+	/**
+	 * 短信营销记录表
+	 */
+	const  TABLE_SMS_SEND_RECORD= 'yfj_sms_send_record';
+
+    //////////////////////////b端数据库表
+	/**
+	 * 用户类型表
+	 */
+	const TABLE_B_MEMBER_TYPE = 'b_member_type';
+
+    /**
+     * 订单
+     */
+    const TABLE_B_ORDER = 'b_order';
+
+    /**
+     * 订单主表
+     */
+    const TABLE_B_ORDER_COMMON = 'b_order_common';
+
+    /**
+     * 订单商品表
+     */
+    const TABLE_B_ORDER_GOODS = 'b_order_goods';
+
+    /**
+     * 订单日志
+     */
+    const TABLE_B_ORDER_LOG = 'b_order_log';
+
+    /**
+     * b端商品表
+     */
+    const TABLE_B_GOODS = 'b_goods';
+
+    /**
+     * b端汇率日志
+     */
+    const TABLE_B_EXCHANGE_RATE_LOG = 'b_exchange_rate_log';
+
+    /**
+     * 合并付款表
+     */
+    const TABLE_B_MERGE_PAYMENT = 'b_merge_payment';
+
+
+    /**
+     * B端用户属性表
+     */
+    const TABLE_B_MEMBER_ATTRIBUTE = 'b_member_attribute';
+
+
+    /**
+     * b端商务经理表
+     */
+    const TABLE_B_BUSINESS_MANAGER = 'b_business_manager';
+
+    /**
+     * b端商务经理表
+     */
+    const TABLE_B_COMMISSION_RATE= 'b_commission_rate';
+
+    /**
+     * b端商务经理佣金明细表
+     */
+    const TABLE_B_COMMISSION= 'b_commission';    
+
+    /**
+     * 
+     */
+    const TABLE_B_SETTLEMENT_LOG = 'b_settlement_log';
+
+
+    /**
+     * b端佣金策略日志表
+     */
+    const TABLE_B_COMMISSION_RATE_LOG= 'b_commission_rate_log';
+
+    /**
+     * TABLE_B_TIMER_ORDER
+     */
+    const TABLE_B_TIMER_ORDER = 'b_timer_order';
+
+    /**
+     * 订单商品佣金表
+     */
+    const TABLE_B_COMMISSION_ORDER_GOODS = 'b_commission_order_goods';
+
+    /**
+     * 商务经理状态变更记录表
+     */
+    const TABLE_B_BUSINESS_MANAGER_STATE_LOG = 'b_business_manager_state_log';
+
+    /**
+     * 发放积分明细表
+     */
+    const TABLE_POINT_INTEGRAL_LOG = 'point_integral_log';
+
+    /**
+     * 用户积分明细表
+     */
+    const TABLE_POINT_USER_INTEGRAL_DETAIL = 'point_user_integral_detail';
+
+    /**
+     * 积分商城商品表
+     */
+    const TABLE_POINT_GOODS = 'point_goods';
+
+    /**
+     * 积分商城图片表
+     */
+    const TABLE_POINT_GOODS_IMAGE = 'point_goods_image';
+
+    /**
+     * 任务积分配置表
+     */
+    const TABLE_POINT_INTEGRAL_TASK = 'point_integral_task';
+
+    /**
+     * 抽奖概率表
+     */
+    const TABLE_POINT_LOTTERY = 'point_lottery';
+
+    /**
+     * 积分订单表
+     */
+    const TABLE_POINT_ORDER = "point_order";
+
+    /**
+     * 积分订单商品表
+     */
+    const TABLE_POINT_ORDER_GOODS = "point_order_goods";
+
+    /**
+     * 积分事件表
+     */
+    const TABLE_POINT_EVENTS = 'point_events';
+
+    /**
+     * 签到推荐商品表
+     */
+    const TABLE_POINT_SIGN_RECOMMEND = 'point_sign_recommend';
+
+    /**
+     * 签到积分配置表
+     */
+    const TABLE_POINT_SIGN = 'point_sign';
+
+    /**
+     * 支付单号表
+     */
+    const TABLE_PAY_SN = 'pay_sn';
+
+    /**
+     * 我的收藏表
+     * @var unknown
+     */
+    const TABLE_FAV_FAVORITES = 'fav_favorites';
+
+    /**
+     *  商品统计
+     */
+    const TABLE_STATS_GOODS ='stats_goods';
+
+    /**
+     * 入库单表
+     */
+    const TABLE_WAREHOUSE_ENTRY = 'warehouse_entry';
+    
+    /**
+     * 入库单明细表
+     */
+    const TABLE_WAREHOUSE_DETAIL = 'warehouse_detail';
+    
+    /**
+     * 商品属性表
+     */
+    const TABLE_ATTRIBUTE= 'attribute';            
+    
+    /**
+     * 商品与属性对应表
+     */
+    const TABLE_ATTRIBUTE_TO_GOODS= 'attribute_to_goods';   
+    
+    /**
+     * 商品价格表
+     */
+    const TABLE_GOODS_PRICE_STORAGE = "goods_price_storage";
+    
+    /**
+     * 商品与分类对应表
+     */
+    const TABLE_GOODS_TO_CLASS= 'goods_to_class';       
+    
+    /**
+     * 商品标签表
+     */
+    const TABLE_GOODS_LABEL = 'goods_label';         
+    
+    /**
+     * 商品服务表
+     */
+    const TABLE_GOODS_SERVICE= 'goods_service';        
+    
+    /**
+     * 商品与服务对应表
+     */
+    const TABLE_GOODS_TO_SERVICE= 'goods_to_service';     
+    
+    /**
+     * 商品库存表
+     */
+    const TABLE_GOODS_STORAGE= 'goods_storage';   
+
+    /**
+     * b端商品价格表
+     */     
+    const TABLE_B_GOODS_PRICE = 'b_goods_price';
+    
+    /**
+     * 单品推荐
+     */
+    const TABLE_GOODS_RECOMMEND = 'mt_goods_recommend';
+
+    /**
+     * 首页模块
+     */
+    const TABLE_HOME_PAGE_MODULE = 'home_page_module';
+
+    /**
+     * 专题表
+     */
+    const TABLE_SPECIAL_SUBJECT = 'special_subject';
+
+    /**
+     * 活动展示站点表
+     */
+    const TABLE_DISPLAY_SITE = 'display_site';
+
+    /**
+     * 活动模块表
+     */
+    const TABLE_ACTIVITY_MODULAR = 'activity_modular';
+    
+    /**
+     * 图片模块表
+     */
+    const TABLE_ACTIVITY_MODULAR_IMAGE = 'activity_modular_image';
+
+    /**
+     * 列表模块表
+     */
+    const TABLE_ACTIVITY_MODULAR_LIST = 'activity_modular_list';
+
+    /**
+     * 列表模块详情表
+     */
+    const TABLE_ACTIVITY_MODULAR_LIST_DETAIL = 'activity_modular_list_detail';
+
+    /**
+     * TAB模块表
+     */
+    const TABLE_ACTIVITY_MODULAR_TAB = 'activity_modular_tab';
+
+    /**
+     * 多行文本模块详情表
+     */
+    const TABLE_ACTIVITY_MODULAR_TEXT = 'activity_modular_text';
+
+    /**
+     * 锚点tab表
+     */
+    const TABLE_ACTIVITY_MODULAR_ANCHOR = 'activity_modular_anchor';
+
+    /**
+     * 云仓商品锁定记录表
+     */
+    const TABLE_LOCK_ORDER = 'b_lock_order';
+
+    /**
+     * 云仓商品个人表
+     */
+    const TABLE_LOCK_PERSONAL_GOODS = 'b_lock_personal_goods';
+
+    /**
+     * 库存操作记录表
+     */
+    const TABLE_STORAGE_OPERATION_NOTE = 'storage_operation_note';
+    /**
+     * cpa操作日志
+     */
+    const TABLE_CPA_ADMIN_LOG = 'cpa_admin_log';
+
+    /**
+     * 锁定推送金额表
+     */
+    const TABLE_LOCK_PUSH_AMOUNT = 'b_lock_push_amount';
+
+    /**
+     * b端商品分类表
+     */
+    const TABLE_B_GOODS_CLASS = 'b_goods_class';
+
+    /**
+     * b端商品分类表
+     */
+    const TABLE_GOODS_TO_B_CLASS = 'goods_to_b_class';
+
+    /**
+     *支付流水表
+     */
+    const TABLE_PAYMENT_STREAM = 'payment_stream';
+    
+    /**
+     * 售后回复表
+     */
+    const TABLE_PRE_SALE_REPLY = 'yfj_pre_sale_reply';
+    /**
+     * 直邮
+     */
+    const TABLE_DIR_GOODS = 'dir_goods'; //直邮商品管理表
+
+    const TABLE_DIR_ORDER = 'dir_order';//直邮订单表
+
+    const TABLE_DIR_GOODS_LOG = 'dir_goods_log';//直邮商品日志表
+
+    const TABLE_DIR_WAREHOUSE_ENTRY = 'dir_warehouse_entry'; // 直邮入库单表
+
+    const TABLE_DIR_WAREHOUSE_DETAIL = 'dir_warehouse_detail';//直邮入库单明细表
+
+    const TABLE_DIR_WEIGHT_SHIPPINGFEE = 'dir_weight_shippingfee';//直邮重量-运费表
+
+	const TABLE_APP_GOODS_IMAGES = 'b_wx_goods_images';//小程序图片
+
+	const TABLE_B_WX_ACTIVITY = 'b_wx_activity'; //小程序活动
+
+	const TABLE_B_WX_ACTIVITY_GOODS = 'b_wx_activity_goods'; //小程序活动商品
+
+    const TABLE_B_WX_USER_INFO = 'b_wx_user_info';  // b端小程序用户授权登录表
+	
+	const TABLE_B_WX_ADV = 'b_wx_adv';//小程序广告表
+
+	const TABLE_B_WX_DISTRIBUTION_ADDRESS = 'b_wx_distribution_address';//小程序地址
+	
+	const TABLE_B_WX_COMMON_ADDRESS = 'b_wx_common_address';//小程序常用收货地址
+	
+	const TABLE_B_WX_FEEDBACK = 'b_wx_feedback';//小程序反馈
+	const TABLE_B_WX_FEEDBACK_IMAGE = 'b_wx_feedback_image';//小程序反馈图片
+
+    const TABLE_B_WX_WINNING_ORDER_LIST = 'b_wx_winning_order_list'; // 小程序抽奖纪录
+	
+	/**
+	 * 分配单
+	 * @var unknown
+	 */
+	const TABLE_B_CLOUD_CASE = 'b_cloud_case';
+	/**
+	 * 云仓商品
+	 * @var unknown
+	 */
+	const TABLE_B_CLOUD_GOODS = 'b_cloud_goods';
+	/**
+	 * 云仓商品日志
+	 * @var unknown
+	 */
+	const TABLE_B_CLOUD_GOODS_LOG = 'b_cloud_goods_log';
+	
+	
+	/**
+	 * 小程序红包策略的表
+	 */
+	
+	const TABLE_B_WX_RED_ENVELOPE = 'b_wx_red_envelope';//红包策略表
+	const TABLE_B_WX_RED_ENVELOPE_DETAIL = 'b_wx_red_envelope_detail';//用户领取红包的详情表
+	const TABLE_B_WX_RED_ENVELOPE_TEMPLATE = 'b_wx_red_envelope_template';//用户分享时时生成的红包模板表
+	const TABLE_B_WX_VOUCHER = 'b_wx_voucher';//用户的优惠券表
+	const TABLE_B_WX_VOUCHER_SKU_RANGE = 'b_wx_voucher_sku_range';//红包场的sku使用的范围
+	const TABLE_B_WX_VOUCHER_CLASS_RANGE = 'b_wx_voucher_class_range';//红包场的分类使用范围
+	const TABLE_B_WX_VOUCHER_ACTIVITY_RANGE = 'b_wx_voucher_activity_range';//红包场的活动使用范围
+	
+	//助力场的表
+	const TABLE_B_WX_GOODS_BOOST = 'b_wx_goods_boost';//用户助力表
+	const TABLE_B_WX_GOODS_BOOST_LOG = 'b_wx_goods_boost_log';//用户助力日志表
+	
+	/**
+	 * 邀请码表
+	 */
+	const TABLE_B_WX_INVITATION_CODE = 'b_wx_invitation_code';
+	
+	
+}

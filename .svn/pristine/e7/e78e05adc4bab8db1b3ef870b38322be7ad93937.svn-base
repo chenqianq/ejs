@@ -1,0 +1,17 @@
+<view wx:if="{{flag}}">
+  <view class="certificate {{isShow ? 'hide' : ''}}">
+
+    <view class="wrap flex {{item.isTouchMove ? 'touch-move-active' : ''}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="" data-index="{{index}}"  >
+      <view class='content'>
+        <view class='name'>{{item.name}}</view>
+        <view class='number'>{{item.number}}</view>
+      </view>
+      <view class="del" catchtap="del" data-index="{{index}}">删除</view>
+    </view>
+
+  </view>
+  <view class='tips'>
+    <view class='title'>实名认证</view>
+    通过实名认证可享受本平台货到付款的权益，本平台承诺拒绝向第三方泄露您的信息，请放心使用。
+  </view>
+</view>

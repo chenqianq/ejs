@@ -1,0 +1,9 @@
+<view class="success">
+	
+	<!-- 反馈咨询提交成功 -->
+	<image src="../../images/mp_pay_success@3x.png"></image>
+	<view class="tip">您的问题将会在 1~3个工作日内得到相应答复, 请耐心等待, 感谢您的支持</view>
+	<view class="wrap">
+		<button bindtap="gotoIndex">回到首页</button>
+	</view>
+</view>

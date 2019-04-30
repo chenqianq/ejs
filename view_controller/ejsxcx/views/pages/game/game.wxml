@@ -1,0 +1,1 @@
+<web-view src="{{winningGameUrl}}" binderror="binderrorFunction"></web-view>

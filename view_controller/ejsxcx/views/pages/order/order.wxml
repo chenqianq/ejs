@@ -1,0 +1,52 @@
+<view class="order" wx:if="{{flag}}">
+
+	<view class="state-wrap">
+		<image src="../../images/mp_order_bg@3x.png"></image>
+		<view class="state">
+			<view class="v1">{{order_state}}: <text>{{order_sn}}</text></view>
+			<view>支付金额: ¥{{order_amount}}</view>
+		</view>
+	</view>
+ <view class='is_shelf' wx:if="{{is_self_deliver==1}}">
+    
+      <view class="v1">
+        <image src="../../images/confirm_icon_person@3x.png"></image>
+        <view class="t1">{{shipping_name}} {{shipping_phone}}</view>
+       
+      </view>
+    
+      <view class="v1">
+        <image src="../../images/confirm_icon_cabinet@3x.png"></image>
+        <view class="t2 c-red">请与二加三工作人员联系提货事宜</view>
+      </view>
+ </view>
+	<view  wx:else class="site flex">
+      <view class="v1">
+        <image src="../../images/confirm_icon_address@3x.png"></image>
+      </view>
+      <view class="v2">
+        <view class="t1">{{shipping_name}} {{shipping_phone}}</view>
+        <view class="t2">{{shipping_address}}</view>
+      </view>
+	</view>
+
+	<view class="H10"></view>
+
+	<view class="list-wrap">
+		<view class="title flex">
+      <text>商品明细</text>
+      <text class='orderNum'>{{invitation_code}}</text>
+    </view>
+		<view class="item flex" wx:for="{{goods_info}}" wx:key="index">
+			<image src="{{item.goods_image}}"></image>
+			<view class="info flex">
+				<text class="tit one-line">{{item.goods_name}}</text>
+				<view class="price-wrap flex">
+					<text class="t1">¥{{item.goods_price}}</text>
+					<text class="t2">x{{item.goods_num}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+
+</view>

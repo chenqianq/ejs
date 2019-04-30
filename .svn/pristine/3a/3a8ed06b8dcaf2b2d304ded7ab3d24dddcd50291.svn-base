@@ -1,0 +1,65 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/goods/goods",
+    "pages/cart/cart",
+    "pages/user/user",
+    "pages/detail/detail",
+    "pages/checkout/checkout",
+    "pages/consignee/consignee",    
+    "pages/activity/activity",
+    "pages/certificate/certificate",
+    "pages/order/order",
+    "pages/payfail/payfail",
+    "pages/paysuccess/paysuccess",
+    "pages/feedback/feedback",
+    "pages/feeddetail/feeddetail",
+    "pages/subfeed/subfeed",
+    "pages/feedsuccess/feedsuccess",
+    "pages/coupon/coupon",
+    "pages/friendHelp/friendHelp",
+    "pages/bonuses/bonuses",
+    "pages/authorize/authorize",
+    "pages/h5/h5",
+    "pages/noResult/noResult",
+    "pages/pageInvalid/pageInvalid",
+    "pages/game/game"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "二加三",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list":[
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/mp_home@3x.png",
+        "selectedIconPath": "images/mp_home_hl@3x.png"
+      },
+      {
+        "pagePath": "pages/goods/goods",
+        "text": "商品",
+        "iconPath": "images/mp_commodity@3x.png",
+        "selectedIconPath": "images/mp_commodity_hl@3x.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "images/mp_car@3x.png",
+        "selectedIconPath": "images/mp_car_hl@3x.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "images/mp_person@3x.png",
+        "selectedIconPath": "images/mp_person_hl@3x.png"
+      }
+    ],
+    "color": "#999",
+    "selectedColor": "#f63a65",
+    "backgroundColor": "#fff"
+  }
+}

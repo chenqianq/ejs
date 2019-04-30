@@ -1,0 +1,145 @@
+<form bindsubmit="addressform">
+<view wx:if="{{flag}}">
+  <view class="shade" wx:if="{{ showProvince || showDetail || showAddressType }}" bindtap="closeAll"></view>
+  <view class='selectType' bindtap="showAddressType">
+  
+    <text class='selectTypeTitle'>选择派送方式</text>
+    <input class='selectTypeName'  type='text' placeholder="" placeholder-class="phStyle" maxlength='20'
+            value="{{addressTypeName}}" name="addressTypeName" disabled='disabled' />
+  
+    <image class="icon" src="../../images/list_enter@3x.png"></image>
+    <!-- 弹窗 -->
+  </view>
+  <view class="site-wrap flex" wx:if="{{showAddressType}}">
+    <scroll-view scroll-y class="getType">
+    <view wx:for="{{addressType}}" wx:key="index" data-index="{{index}}"
+        bindtap="selectAddressType" class="{{index==addressTypeIndex?'active':''}}">
+      {{addressType[index]}}
+    </view>
+    </scroll-view>
+  </view>
+  <!--以下是二加三配送的样式-->
+  <view class="xinritao" wx:if="{{addressTypeIndex == 0 }}" >
+    <view class='wrap' >
+      <view id='FIXH'>
+      <view class='copyTips'>若收货地址不在福州市内，省市区选择为“其他-其他-其他”，若有疑问请添加微信号{{wx_code}}<text bindtap='copy'>复制</text></view>
+      <view class='user'>
+        <view class='name'>
+          <input type='text' placeholder="请输入姓名" placeholder-class="phStyle" maxlength='20'
+            value="{{name}}" name="shipping_name" />
+        </view>
+      </view>
+
+      <view class='user'>
+        <view class='phone'>
+          <input type='number' placeholder="请输入手机或固话" placeholder-class="phStyle" maxlength='11'
+           value="{{tel}}"  name="shipping_phone"/>
+        </view>
+      </view>
+
+      <!-- 选择省市区 -->
+      <view class='selectAdd'>
+       <input type='text' placeholder="请选择省市区"  bindtap="showProvince" placeholder-class="phStyle" 
+           value="{{province}}"  name="pro_city_area" disabled='disabled'/>
+        <image src='../../images/mp_address_down@3x.png' bindtap="showProvince"/>
+        <!-- 弹窗 -->
+        <view class="site-wrap flex" wx:if="{{showProvince}}">
+          <scroll-view scroll-y class="province">
+            <view wx:for="{{select_address}}" wx:key="index" data-index="{{index}}"
+                bindtap="selectAdd" class="{{index==provinceIndex?'active':''}}">
+              {{item.address}}
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+
+      <!-- 选择详细地址 -->
+      <view class='twoSelectAdd' >
+        <input type='text' placeholder="选择院校/社区/商场"  bindtap="showDetail" placeholder-class="phStyle" 
+           value="{{area}}"  name="shipping_address" disabled='disabled'/>
+        <image src='../../images/mp_address_down@3x.png' bindtap="showDetail" />
+        <!-- 弹窗 -->
+        <view class="site-wrap flex" wx:if="{{showDetail}}">
+          <scroll-view scroll-y class="province">
+            <view wx:for="{{select_address[provinceIndex].detail}}" wx:key="index"
+                data-index="{{index}}" bindtap="selectDetail"
+                class="{{ index==detailIndex?'active':''}}">
+              {{item}}
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+
+      <!-- 填写详细地址 -->
+      <view class='threeSelectAdd'>
+        <input type='text' placeholder="请填写详细地址" placeholder-class="phStyle"
+           value="{{detail}}" name="shipping_detail_address" />
+      </view>
+      <view class='saveUser' bindtap='selectUs'>
+        保存到常用收货人
+        <image wx:if='{{is_usual}}' src='../../images/mp_often_chosed@3x.png' />
+        <image wx:else  src='../../images/mp_often@3x.png' />      
+      </view>
+    </view>
+
+    <view class='selectUser {{scrollMt ? "FIX" : ""}}'>选择常用收货人</view>
+
+    <view class='userS {{scrollMt ? "top" : ""}}'>
+
+    <navigator open-type="redirect" wx:for="{{common_address}}" wx:key="index" bindtap="choose"
+            class="{{ item.is_delete ? 'userItem invalid':'userItem'}}"
+            url="../checkout/checkout?id={{item.b_wx_common_address_id}}&name={{item.shipping_name}}&type=0&typeName=二加三配送&invitation={{invitationCode}}&authen={{authen}}" >
+        <view class='userInfo'>
+          <text class='name'>{{item.shipping_name}}</text>
+          <text class='phone'>{{item.shipping_phone}}</text>
+          <text class='invalidBk' wx:if="{{item.is_delete}}" >失效</text>
+        </view>
+        <view class='address'>{{item.shipping_address_info}}</view>
+        <view class='deleteItem' id="{{item.b_wx_common_address_id}}" data-index="{{index}}" catchtap="delete">删除</view>
+      </navigator>
+
+    </view>
+
+    <view class='pageEnd'>直到世界尽头~</view>
+  
+    <view class='selectDataW'>
+         <button class="selectData" form-type="submit" >选定收货人</button>
+    </view> 
+
+    </view>
+  </view>
+
+  <!-- 自提 -->
+  <view class='bySelf' wx:if="{{addressTypeIndex == 1 }}">
+    <view class='parting'>  </view>
+    <view class='shipping_name'>
+     <input type='text' placeholder="请输入姓名" placeholder-class="phStyle" maxlength='20' value="{{name}}" name="shipping_name"/>
+      </view>  
+    <view class='shipping_phone'>
+     <input type='number'  placeholder="请输入手机或固话" placeholder-class="phStyle" maxlength='11'
+           value="{{tel}}" name="shipping_phone"/>
+    </view>    
+
+    <view class='tips'>
+      <view class='title'>现场提货须知：</view>
+
+      <view class='content'>1.若非特意告知，请勿选择自提；</view>
+
+      <view class='content'>2.下单后将订单页面出示给二加三工作人员，他们会指引
+        付款交货事宜；</view>
+
+      <view class='content'>3.仅支持部分院校、商场、社区；</view>
+
+      <view class='content'>4.该规则可能会根据现场情况作出相应调整，敬请谅解。</view>
+    </view>    
+  <view class='selectDataW'>
+    <button class="selectData" form-type="submit" >提交</button>
+  </view> 
+
+
+  </view>
+
+
+
+</view>
+</form>

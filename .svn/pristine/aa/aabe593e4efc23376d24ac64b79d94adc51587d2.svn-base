@@ -1,0 +1,106 @@
+<?php
+if( !defined('IS_ACCESS') ){
+    die('Illegal Access');
+    exit;
+}
+ 
+class ServiceFactory
+{
+
+    //缓存对象仓库
+    private static $object_repos = array();
+
+    /**
+     * 获取Service类对象
+     * @param  $module
+     * @param  $service_class
+     * @throws Exception
+     */
+    private static function innerGetService($module, $class_name, $singleton, $parameterArray = array())
+    {
+
+        $php_path = Zc::C('services.dir.fs') . $module . "/class." . $class_name . ".php";
+        //定义单例的key
+        $php_path_key = md5($php_path);
+
+        //如果是单例的，并且已经缓存该对象了，直接返回
+        if ($singleton && isset(self::$object_repos[$php_path_key])) {
+            return self::$object_repos[$php_path_key];
+        }
+
+
+        if (require_once($php_path)) {
+
+            if (!$singleton && $parameterArray) {
+                $obj = new $class_name($parameterArray);
+            } else {
+                $obj = new $class_name();
+            }
+
+            //如果是单例的，需要缓存对象
+            if ($singleton) {
+                self::$object_repos[$php_path_key] = $obj;
+            }
+            return $obj;
+        } else {
+            throw new Exception ($class_name . ' not found');
+        }
+
+        /*
+        if (require_once ($php_path)) {
+
+            $obj =  new $class_name;
+
+            //如果是单例的，需要缓存对象
+            if ($singleton) {
+                self::$object_repos[$php_path_key] = $obj;
+            }
+            return $obj;
+        } else {
+            throw new Exception ($class_name . ' not found');
+        } */
+    }
+	
+    /**
+     * AdminService
+     * @param string $singleton
+     * @return AdminService
+     */
+    public static function getAdminService($singleton = true)
+    {
+        return self::innerGetService('admin', 'AdminService', $singleton);
+    }
+
+	
+    /**
+     * SystemService
+     * @param string $singleton
+     * @return SystemService
+     */
+    public static function getSystemService($singleton = true)
+    {
+        return self::innerGetService('system', 'SystemService', $singleton);
+    }
+
+
+	
+    /**
+     * SettingLogService
+     * @param string $singleton
+     * @return SettingLogService
+     */
+    public static function getSettingLogService($singleton = true)
+    {
+        return self::innerGetService('system', 'SettingLogService', $singleton);
+    }
+	
+	/**CRM
+	 * @param bool $singleton
+	 * @return crmService
+	 */
+	public static function getCrmService($singleton = true)
+	{
+		return self::innerGetService('crm', 'crmService', $singleton);
+	}
+ 
+}

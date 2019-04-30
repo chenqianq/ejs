@@ -1,0 +1,35 @@
+
+.authorization {
+  margin-top: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.authorization .bg {
+  width: 500rpx;
+  height: 440rpx;
+  background-color: #fff;
+}
+.authorization .logo {
+  display: flex;
+  justify-content: center;
+}
+.authorization .logo image {
+  width: 136rpx;
+  height: 136rpx;
+  margin: 60rpx 0 50rpx;
+}
+.authorization .bg .text {
+  font-size: 30rpx;
+  color: #333;
+  text-align: center;
+}
+.authorization .bg .btn-auth {
+  width: 430rpx;
+  height: 100rpx;
+  background-color: #f63e65;
+  font-size: 36rpx;
+  color: #fff;
+  margin-top: 40rpx;
+  line-height: 100rpx;
+}

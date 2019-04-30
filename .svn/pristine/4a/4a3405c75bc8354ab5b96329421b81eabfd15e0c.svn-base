@@ -1,0 +1,82 @@
+
+<view class="saleDetail" hidden="{{is_hidden}}">
+  
+  <view class="wrap flex">
+    <image class="user" src="{{goods_info.user_avatar}}"></image>
+    <view class="time">
+
+      <text wx:if="{{!isFail}}" class="weight">{{remaining_time[0].day}}天 </text>
+      <text wx:if="{{!isFail}}" class="t1">{{remaining_time[0].hour}}</text>
+      <text wx:if="{{!isFail}}" class="t2">:</text>
+      <text wx:if="{{!isFail}}" class="t1">{{remaining_time[0].min}}</text>
+      <text wx:if="{{!isFail}}" class="t2">:</text>
+      <text wx:if="{{!isFail}}" class="t1">{{remaining_time[0].sec}}</text>
+      <text wx:if="{{!isFail}}" class="weight">后结束</text>
+
+      <text class="weight" wx:if="{{isSuccess}}">赶紧下单吧</text>
+      <text class="fail" wx:if="{{isFail}}">很遗憾, 未能在规定时间内助力成功</text>
+    </view>
+    <image wx:if="{{isSuccess}}" class="success" src="../../images/mp_hel_suc_icon@3x.png"></image>
+  </view>
+
+  <!-- 商品信息 -->
+  <view class="goods">
+    <image src="{{goods_info.main_image_array}}"></image>
+    <view class="title">{{goods_info.goods_name}}</view>
+    <view class="pri-wrap flex">
+      <view class="pri">当前价: ¥ {{goods_info.boost_after_price}}</view>
+      <view class="final-pri">目标价: <text class="t1">¥{{goods_info.boost_target_price}}</text></view>
+    </view>
+  </view>
+
+  <view class="progress">
+    <view class="boostPrice">
+      <view class="moveBlock" style="left:{{moveLeft}}">
+        <view class="spreadPrice">已减￥{{goods_info.original_boost_spread}}</view>
+        <image src='../../images/mp_hel_progress@3x.png'></image>
+      </view>
+    </view>
+    <view class="circle"></view>
+    <progress percent="{{goods_info.spread*100}}" color="#f63e65" />
+    <view class="circle right" style="background: {{completeColor}}"></view>
+    <view class='startPrice'>￥0</view>
+    <view class='targetPrice'>￥{{goods_info.original_target_spread}}</view>
+  </view>
+  <view class="H20"></view>
+
+  <!-- 历史 -->
+  <view class="history">
+    <view class="title">助力历史</view>
+    <view class="his-wrap" wx:if="{{boost_log[0]}}">
+      <view class="item" wx:for="{{boost_log}}" wx:key="index">
+        <image class="user" src="{{item.click_user_avatar}}"></image>
+        <text class="t1">{{item.click_user_name}}</text>
+        <text class="t2">{{item.gmt_create}} 助力</text>
+        <text class="t3">{{item.boost_price}}</text>元
+      </view>
+    </view>
+    <view class="no-his" wx:else>还没有助力, 快去邀请好友吧</view>
+  </view>
+
+  <!-- 活动规则 -->
+  <view class="rule">
+    <view class="title">活动规则</view>
+    <view class="rule-wrap">
+      <view>1. 同一个微信用户在同一个助力活动场中每个商品只能助力一次</view>
+      <view>2. 若助力发起者达成目标则可以通过目标价格购买该商品，但只能购买1个</view>
+      <view>3. 每个好友助力的金额是完全随机的</view>
+      <view>4. 若在活动期限内未完成助力目标，则助力失败，只有助力成功的商品且在活动时限内可以以目标价购买</view>
+      <view>5. 用户也可以将商品加入购物车以初始价格直接购买</view>
+      <view>6. 助力商品库存有限，先到先得</view>
+      <view>7. 二加三对本次活动拥有最终解释权，商品可能会根据实际情况做出调整</view>
+      <view>8. 若通过非常规手段获取目标价购买，二加三有权取消相关订单</view>
+    </view>
+  </view>
+
+  <!-- 按钮 -->
+  <view class="btn-wrap">
+    <button open-type="share" class="btn {{isFail==true?'isFail':''}}" wx:if="{{goods_info.is_self==1}}">邀请好友助力</button>
+    <button bindtap="help" class="btn {{isFail==true?'isFail': goods_info.able_attend == 0 ? 'isFail': '' }}">助ta一臂之力</button>
+  </view>
+
+</view>

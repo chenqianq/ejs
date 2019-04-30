@@ -1,0 +1,212 @@
+page {
+  background: #f5f5f9;
+}
+.red {
+  background: #fd414d;
+}
+
+.banner {
+	width: 100%;
+  height: 520rpx;
+}
+
+.coupon {
+  width: 670rpx;
+  margin: 30rpx auto 90rpx;
+  border-radius: 12rpx;
+  background: rgba(0,0,0,0.12);
+  padding: 30rpx 0 40rpx;
+}
+.coupon .item {
+  position: relative;
+  padding: 0 30rpx;
+}
+.coupon .item .bg {
+  position: absolute; right: 20rpx;
+  width: 630rpx; height: 180rpx;
+  z-index: 1;
+}
+.coupon .item .con {
+	position: relative;
+	z-index: 99;
+}
+.coupon .item .icon {
+  width: 40rpx; height: 40rpx;
+  margin-top: 70rpx;
+  margin-right: 20rpx;
+}
+.coupon .item .detail {
+  width: 630rpx; height: 180rpx;
+}
+.coupon .item .detail .price {
+  width: 220rpx; height: 180rpx;
+  line-height: 180rpx;
+  text-align: center;
+}
+.coupon .item .detail .price text {
+  color: #f63e65;
+  font-weight: bold;
+}
+.coupon .item .detail .t1 {
+  position: relative;
+  font-size: 30rpx;
+  bottom: 32rpx;
+}
+.coupon .item .detail .t2 {
+  font-size: 66rpx;
+}
+.coupon .item .detail .type {
+  width: 410rpx;
+  margin-top: 40rpx;
+}
+.coupon .item .detail .type .v1 {
+  margin-bottom: 20rpx;
+  font-weight: bold;
+  font-size: 30rpx;
+  color: #333;
+}
+.coupon .item .detail .type .v2,
+.coupon .item .detail .type .v3 {
+  color: #999;
+  font-size: 22rpx;
+}
+.coupon .item .detail .type .v3{
+  justify-content: space-between;
+}
+
+/* 红包没了 */
+.coupon .item .late {
+  height: 180rpx; line-height: 180rpx;
+  position: relative;
+  z-index: 99;
+  text-align: center;
+  font-size: 40rpx;
+  color: #aaa;
+  font-weight: bold;
+}
+
+.coupon .desc {
+  padding:40rpx 0 0 240rpx;
+  color: #fff;
+  opacity: 0.86;
+  font-size: 22rpx;
+}
+
+.title {
+  position: relative;
+  width: 630rpx; height: 60rpx;
+  line-height: 60rpx;
+  margin: auto;
+  color: #fff;
+  text-align: center;
+}
+.title .line {
+  position: absolute;
+  width: 100%; height: 1rpx;
+  bottom: 30rpx;
+  border-top: 1px solid #fea0a6;
+  z-index: 1;
+}
+.title text {
+  padding: 0 20rpx;
+  background: #fd414d;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+}
+
+.list {
+	margin-bottom: 70rpx;
+}
+.list .item {
+ 	width: 630rpx; height: 120rpx;
+ 	margin: auto;
+}
+.list .item image {
+	width: 80rpx; height: 80rpx;
+	margin: 20rpx 20rpx 20rpx 0;
+	border-radius: 50%;
+}
+.list .item .info {
+	flex-direction: column;
+	width: 380rpx;
+	font-size: 26rpx;
+}
+.list .item .info .name {
+	padding: 20rpx 0 10rpx;
+	color: #ffdd74;
+	font-weight: bold;
+}
+.list .item .info .time {
+	color: #ccffff;
+}
+.list .item .info .big {
+  display: inline-block;
+  padding: 2rpx 10rpx;
+  background: #fff;
+  color: #fd414d;
+  border-radius: 4rpx;
+  margin-left: 20rpx;
+}
+
+.list .item .pri {
+	width: 150rpx;
+	padding-top: 20rpx;
+	text-align: right;
+	color: #ffdd74;
+	font-weight: bold;
+	font-size: 32rpx;
+}
+
+.rule {
+	width: 620rpx;
+	margin: 0 auto;
+	padding-bottom: 180rpx;
+	color: #ccffff;
+  font-size: 24rpx;
+  line-height: 1.5;
+}
+
+.btn-wrap {
+  position: fixed;
+  bottom: 0; left: 0;
+  width: 100%; height: 120rpx;
+  background: #fd414d;
+  z-index: 999;
+}
+.btn-wrap button {
+  width: 690rpx; height: 90rpx;
+  line-height: 90rpx;
+  margin: 15rpx 30rpx;
+  background: #ffdd74;
+  color: #ff2045;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 12rpx;
+}
+
+/* 红包失效 */
+.empty {
+  width: 100%; height: 800rpx;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f9;
+}
+.empty image {
+  width: 160rpx; height: 160rpx;
+}
+.empty view {
+  padding: 28rpx 0 20rpx;
+  font-size: 30rpx;
+  color: #999;
+}
+.empty navigator {
+  width: 210rpx; height: 80rpx;
+  line-height: 80rpx;
+  background: #f63e65;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  border-radius: 12rpx;
+}

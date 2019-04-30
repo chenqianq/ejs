@@ -1,0 +1,14 @@
+
+<!-- 支付成功 --> 
+<view class='success-wrap' wx:if="{{flag}}">
+  <image src='../../images/mp_pay_success@3x.png' class='success' />
+  <view class='tips1'>1.请准备好现金或者微信支付宝进行现场付款。</view>
+  <view class='tips2'>2.签收后请点击确认收货。</view>
+  <view class='price'>支付金额：{{order_amount}}元</view>
+  <view class='controlBtn'>
+    <button class='shop' bindtap="gotoIndex">继续选购</button>
+    <navigator url='../order/order?id={{order_sn}}'>
+      <button>查看订单详情</button>
+    </navigator>
+  </view>
+</view>

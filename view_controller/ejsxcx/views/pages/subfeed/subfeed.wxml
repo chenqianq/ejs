@@ -1,0 +1,33 @@
+<view class="subfeed">
+	
+	<!-- 提交反馈 -->
+	<form bindsubmit="subData">
+		<view class="line flex">
+			<text>标题: </text>
+			<input class="title" type="text" maxlength="30" name="feedback_title" />
+		</view>
+		<view class="line flex">
+			<text>提交人姓名: </text>
+			<input class="name" type="text" name="submit_name" maxlength="10" placeholder="(非必填)" />
+		</view>
+		<view class="line flex">
+			<text>提交人手机号: </text>
+			<input class="tel" type="number" name="submit_mobile" maxlength="11" placeholder="(非必填)" />
+		</view>
+		
+		<text class="tit">问题描述: (不超过500字)</text>
+		<textarea maxlength="500" auto-height="true" name="feedback_details"></textarea>
+		
+		<view class="pictit">添加图片(最多3张)</view>
+		<view class="picWrap">
+			<view wx:for="{{tempFilePaths}}" wx:key="{{index}}" class="wrap" >
+				<image class="addPic" src="{{item}}"></image>
+				<image class="delete" bindtap="delete" data-index="{{index}}" src="../../images/cancel_upload@3x.png"></image>
+			</view>
+			<image wx:if="{{tempFilePaths.length <3}}" bindtap="addPic" class="addPic" src="../../images/upload_picture@3x.png"></image>
+		</view>
+    <view class="btnWrap">
+		  <button class="fixBtn" form-type="submit">提交</button>
+    </view>
+	</form>
+</view>

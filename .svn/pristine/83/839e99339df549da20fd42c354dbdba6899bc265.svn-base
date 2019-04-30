@@ -1,0 +1,128 @@
+<view class="goods"  wx:if="{{flag}}">
+
+	<view class="fix">
+		<view class="shade" wx:if="{{showShade}}" bindtap="closeShade"></view>
+		<!-- 搜索 -->
+		<view class="search-wrap flex">
+			<input type="text" placeholder="请输入您要搜索的商品" bindinput="getSearchValue" value='{{inputValue}}' />
+
+      <image class="clear" src="../../images/mp_sraech_cancel@3x.png" bindtap="clearText" wx:if="{{inputValue}}"  ></image>
+
+			<image id="search" src="../../images/mp_icon_search_xl@3x.png" bindtap="selectFilter"></image>
+		</view>
+
+		<!-- 筛选 -->
+		<view class="filter-wrap flex">
+			<view bindtap="showOrder">
+				<text class="{{order_name=='默认排序'?'':'active'}}">{{order_name}}</text>
+				<image src="../../images/mp_class_down@3x.png"></image>
+			</view>
+			<view bindtap="showCat">
+				<text class="{{category_name=='分类'?'':'active'}}">{{category_name}}</text>
+				<image src="../../images/mp_class_down@3x.png"></image>
+			</view>
+			<view bindtap="showBrand">
+				<text class="{{brand_name=='品牌'?'':'active'}}">{{brand_name}}</text>
+				<image src="../../images/mp_class_down@3x.png"></image>
+			</view>
+			<view class="end" bindtap="showCon">
+				<text class="{{(numIndex == 0 && priIndex == 0)?'':'active'}}">{{con_name}}</text>
+				<image src="../../images/mp_screen@3x.png"></image>
+			</view>
+		</view>
+
+		<!-- 排序弹窗 -->
+		<scroll-view class="order-filter" wx:if="{{showOrderFilter}}">
+			<view wx:for="{{searchList.product_order_by_list}}" wx:key="index"
+				bindtap="selectFilter" data-order="{{item.order_by_code}}" data-name="{{item.order_by_name}}"
+				class="{{item.order_by_name == order_name?'active flex':'flex'}}" id="order">
+				<text>{{item.order_by_name}}</text>
+				<image src="../../images/mp_class_chosed@3x.png"></image>
+			</view>
+		</scroll-view>
+
+		<!-- 分类弹窗 -->
+		<view class="category-filter flex" wx:if="{{showCatFilter}}">
+			<scroll-view class="cat1">
+				<view wx:for="{{searchList.product_class_list}}" wx:key="{{index}}"
+					bindtap="changeCatIndex" data-index="{{index}}"
+					class="{{index == catIndex ? 'active':''}}">
+					{{item.goods_class_name}}
+				</view>
+			</scroll-view>
+			<scroll-view scroll-y class="cat2">
+				<view wx:for="{{searchList.product_class_list[catIndex].goods_child_class}}"
+					id="category" bindtap="selectFilter"
+					data-name="{{item.goods_class_name}}" data-index="{{index}}"
+					data-level="{{item.goods_class_level}}" data-brand="{{item.goods_class_id}}"
+					class="{{index == subCatIndex ? 'active flex' : 'flex'}}" >
+					<text>{{item.goods_class_name}}</text>
+					<image src="../../images/mp_class_chosed@3x.png"></image>
+				</view>
+			</scroll-view>
+		</view>
+
+		<!-- 品牌弹窗 -->
+		<view class="brand-filter flex" wx:if="{{showBrandFilter}}">
+			<scroll-view class="cat1">
+				<view wx:for="{{searchList.product_brand_list}}" wx:key="{{index}}"
+					bindtap="changeBrandIndex" data-index="{{index}}"
+					class="{{index == brandIndex ? 'active':''}}">
+					{{item.brand_initial}}
+				</view>
+			</scroll-view>
+			<scroll-view scroll-y class="cat2">
+				<view wx:for="{{searchList.product_brand_list[brandIndex].brand_initial_data}}" id="brand"
+					bindtap="selectFilter" class="{{ index == subBrandIndex ? 'active flex': 'flex' }}"
+					data-brand="{{item.brand_id}}" data-name="{{item.brand_name}}" data-index="{{index}}">
+					<text>{{item.brand_name}}</text>
+					<image src="../../images/mp_class_chosed@3x.png"></image>
+				</view>
+			</scroll-view>
+		</view>
+
+		<!-- 筛选弹窗 -->
+		<view class="con-filter" wx:if="{{showConFilter}}">
+			<view class="title">库存</view>
+			<view class="wrap">
+				<text wx:for="{{searchList.product_storage_model_list}}" wx:key="{{index}}"
+					bindtap="getNumActive" data-index="{{index}}" class="{{ index == numIndex ? 'active' : '' }}">{{item.model_name}}</text>
+			</view>
+			<view class="title">价格</view>
+			<view class="wrap">
+				<text wx:for="{{searchList.product_price_model_list}}" wx:key="{{index}}"
+					bindtap="getPriActive" data-index="{{index}}" class="{{ index == priIndex ? 'active' : '' }}" >{{item.model_name}}</text>
+			</view>
+			<view class="flex btn-wrap">
+				<button class="reset" bindtap="reset">重置</button>
+				<button bindtap="selectFilter" class="sure" id="content">确定</button>
+			</view>
+		</view>
+	</view>
+
+
+	<!-- 列表 -->
+	<view class="list-wrap">
+		<navigator class="flex item" wx:for="{{goodsList}}" wx:key="index" url="../detail/detail?id={{item.goods_id}}" hover-class="none" >
+			<image class="cover" src="{{item.goods_image_url}}"></image>
+			<view class="wrap">
+				<view class="tit"><text>{{item.goods_name}}</text></view>
+				<view class="flex cart-wrap">
+					<text class="price">
+            {{item.format_final_price}}
+          </text>
+					<text wx:if="{{item.list_price != ''}}" class="list_price">{{item.format_list_price}}</text>
+
+					<image  wx:if="{{item.goods_purchase_limit > 0}}" class="cart" src="../../images/mp_enter_car@3x.png"
+						catchtap="addCart" id="{{item.goods_id}}" lazy-load='true'></image>
+         			 <text wx:elif="{{item.storage <= 0}}" class="noCart">已售完</text>
+         			 <text wx:else class="noCart">已限购</text>
+
+				</view>
+			</view>
+		</navigator>
+	</view>
+
+	<view class="end-tip">直到世界尽头</view>
+
+</view>

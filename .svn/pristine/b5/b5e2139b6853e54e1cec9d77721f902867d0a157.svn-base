@@ -1,0 +1,126 @@
+page {
+  height: 100%;
+  background: #f5f5f9;
+}
+.coupon {
+  padding-bottom: 130rpx;
+}
+.no-coupon {
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.no-coupon image {
+  width: 160rpx; height: 160rpx;
+}
+.no-coupon text {
+  font-size: 30rpx;
+  color: #999;
+  padding-top: 27rpx;
+}
+
+.coupon .item {
+  position: relative;
+  padding: 0 30rpx 30rpx;
+}
+.coupon .item .bg {
+  position: absolute; right: 20rpx;
+  width: 630rpx; height: 180rpx;
+  z-index: -1;
+}
+.coupon .title {
+  height: 64rpx; line-height: 64rpx;
+  padding-left: 50rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+.coupon .item .icon {
+  width: 40rpx; height: 40rpx;
+  margin-top: 70rpx;
+  margin-right: 20rpx;
+}
+.coupon .item .detail {
+  width: 630rpx; height: 180rpx;
+}
+.coupon .item .detail .price {
+  width: 220rpx; height: 180rpx;
+  line-height: 180rpx;
+  text-align: center;
+}
+.coupon .item .detail .price text {
+  color: #f63e65;
+  font-weight: bold;
+}
+.coupon .item .detail .t1 {
+  position: relative;
+  font-size: 30rpx;
+  bottom: 32rpx;
+}
+.coupon .item .detail .t2 {
+  font-size: 66rpx;
+}
+.coupon .item .detail .type {
+  width: 410rpx;
+  margin-top: 40rpx;
+}
+.coupon .item .detail .type .v1 {
+  margin-bottom: 20rpx;
+  font-weight: bold;
+  font-size: 30rpx;
+  color: #333;
+}
+.coupon .item .detail .type .v2,
+.coupon .item .detail .type .v3 {
+  color: #999;
+  font-size: 22rpx;
+}
+.coupon .item .detail .type .v3{
+  justify-content: space-between;
+}
+.coupon .item .unvalid,
+.coupon .item .rule {
+  box-sizing: border-box;
+  width: 630rpx;
+  padding: 20rpx 40rpx;
+  margin: 10rpx 0 30rpx 70rpx;
+  background: #fff;
+  font-size: 22rpx;
+  color: #999;
+  border-radius: 12rpx;
+}
+.coupon .item .unvalid {
+  background-color: #fafafa;
+}
+
+/* 不可用优惠券 */
+.coupon .item.no .price text {
+  color: #f57893;
+}
+.coupon .item.no .type .v1,
+.coupon .item.no .type .v2,
+.coupon .item.no .type .v3{
+  color: #aaa;
+}
+.coupon .item.no .rule {
+  display: none;
+}
+
+.coupon .fixBtn {
+  position: fixed;
+  bottom: 0;
+  width: 100%; height: 130rpx;
+  background: #fff;
+}
+.coupon .fixBtn button {
+  width: 690rpx; height: 100rpx;
+  margin: 15rpx auto;
+  background: #f63a65;
+  border: none;
+  border-radius: 12rpx;
+  color: #fff;
+  font-size: 36rpx;
+}
+.coupon .fixBtn.no button {
+  background: #d3d3d3;
+}

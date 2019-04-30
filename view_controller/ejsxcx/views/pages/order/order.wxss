@@ -1,0 +1,138 @@
+.order {
+
+}
+.order .state-wrap {
+	position: relative;
+	width: 100%; height: 160rpx;
+}
+.order .state-wrap image {
+	width: 100%; height: 160rpx;
+}
+.order .state-wrap .state {
+	position: absolute;
+	top: 0; left: 70rpx;
+	width: 100%; height: 160rpx;
+	color: #fff;
+}
+.order .state .v1 {
+	margin: 40rpx 0 10rpx;
+	font-size: 32rpx;
+	color: #fefefe;
+}
+.order .state .v1 text {
+	font-size: 28rpx;
+}
+
+.order .site {
+	padding: 40rpx 30rpx; 
+}
+.order .site .v1 {
+	color: #333;
+	flex: 1;
+}
+.order .site .v1 image {
+	width: 40rpx; height: 48rpx;
+	margin-top: 20rpx;
+}
+.order .site .v2 {
+	flex: 9;
+	color: #333;
+}
+.order .site .v2 .t1 {
+	font-weight: bold;
+	font-size: 30rpx;
+	color: #000;
+	padding-bottom: 20rpx;
+}
+
+.order .list-wrap .title {
+	height: 90rpx; line-height: 90rpx;
+	margin: 0 20rpx 0 40rpx;
+	border-bottom: 2rpx solid #eee;
+	font-size: 28rpx;
+	color: #120609;
+  justify-content: space-between;
+}
+.order .list-wrap .title .orderNum {
+  padding-right: 30rpx;
+  font-size: 24rpx;
+  /* font-weight: bold; */
+  color: #665d5f;
+}
+.order .list-wrap .item{
+	height: 160rpx; width: 100%;
+	margin: 20rpx 30rpx;
+}
+.order .list-wrap image {
+	width: 160rpx; height: 160rpx;
+}
+.order .list-wrap .info {
+	position: relative;
+	width: 520rpx;
+	margin-top: 10rpx;
+	flex-direction: column;
+	font-size: 28rpx;
+}
+.order .list-wrap .info .size {
+	color: #999;
+	margin-top: 6rpx;
+}
+.order .list-wrap .price-wrap{
+	position: absolute;
+	bottom: 10rpx;
+	width: 520rpx;
+}
+.order .list-wrap .price-wrap .t1 {
+	font-weight: bold;
+	flex: 1;
+}
+.order .list-wrap .price-wrap .t2 {
+	color: #999;
+	flex: 1;
+	text-align: right;
+}
+
+.order .list-wrap .total {
+	height: 90rpx; line-height: 90rpx;
+	margin: 0 20rpx;
+	font-weight: bold;
+	border-top: 2rpx solid #eee;
+}
+.order .list-wrap .total text {
+	flex: 1;
+	color: #000;
+}
+.order .list-wrap .total .t2 {
+	text-align: right;
+}
+
+
+.is_shelf .v1{
+  height: 100rpx;
+   flex: 9;
+  border-bottom: 1rpx solid #eee;
+   display:flex;
+  display:-webkit-flex;
+}
+
+.is_shelf .v1 image{
+  width: 40rpx;
+  height: 40rpx;
+  margin: 30rpx 30rpx 0;
+
+  
+}
+.is_shelf .v1 .t1{
+  
+  margin-top: 35rpx;
+  font-size: 30rpx;
+  color: #211111;
+  font-weight: bold;
+}
+.is_shelf .v1 .t2{
+  
+  margin-top: 32rpx;
+  font-size: 26rpx;
+  color: #f63e65;
+  font-weight: bold;
+}

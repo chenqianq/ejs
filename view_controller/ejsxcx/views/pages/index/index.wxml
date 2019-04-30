@@ -1,0 +1,74 @@
+<!--index.wxml-->
+<view class="Index" wx:if="{{flag}}">
+
+  <!-- 轮播图 -->
+  <view class="banner">
+    <swiper class="swiper-wrap" indicator-dots="true" autoplay="ture" interval="3000">
+      <swiper-item wx:for="{{banner_box_info}}" wx:key="{{index}}">
+        <!-- 不跳转 -->
+        <navigator wx:if="{{item.adv_url_type == 0}}" url="">
+          <image src="{{item.adv_image}}"></image>
+        </navigator>
+
+        <!-- 跳转至活动 -->
+        <navigator wx:if="{{item.adv_url_type == 1}}" url="../activity/activity?id={{item.adv_url_id}}">
+          <image src="{{item.adv_image}}"></image>
+        </navigator>
+
+        <!-- 跳转至商品 -->
+        <navigator wx:elif="{{item.adv_url_type == 2}}" url="../detail/detail?id={{item.adv_url_id}}">
+          <image src="{{item.adv_image}}"></image>
+        </navigator>
+
+        <!-- 跳转至h5 -->
+        <navigator wx:elif="{{item.adv_url_type == 3}}"  url="../h5/h5">
+          <image src="{{item.adv_image}}"></image>
+        </navigator>
+
+        <!-- 跳转至抽奖页面 -->
+        <navigator wx:elif="{{item.adv_url_type == 4}}"  url="../game/game?title=抽奖啦">
+          <image src="{{item.adv_image}}"></image>
+        </navigator>
+
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 扫码跳转 -->
+  <view class='scanCode'>
+    <image src='../../images/mp_home_scan@3x.png' bindtap='toScanCode'></image>
+  </view>
+  <!-- 活动列表 -->
+  <view class="content">
+    <!-- 标题 -->
+    <view class="title">限时特价</view>
+    <!-- 内容 -->
+    <view class="item" wx:for="{{activity_box_info}}" wx:key="{{index}}">
+      <view class="time">
+        <text>{{remaining_time[index].day}} 天 </text>
+        <text class="t1">{{remaining_time[index].hour}}</text>
+        <text class="t2">:</text>
+        <text class="t1">{{remaining_time[index].min}}</text>
+        <text class="t2">:</text>
+        <text class="t1">{{remaining_time[index].sec}}</text>
+        结束
+      </view>
+      <navigator url="../activity/activity?id={{item.activity_id}}">
+        <image class="cover" src="{{item.activity_image}}"></image>
+      </navigator>
+      <!-- 商品列表 -->
+      <scroll-view scroll-x class="outer-wrap flex">
+          <view class="goods" wx:for="{{item.product_info_list}}" wx:for-item="goods" wx:key="{{index}}" >
+            <navigator url="../activity/activity?id={{item.activity_id}}" hover-class="none">
+              <image src="{{goods.goods_image}}"></image>
+              <text class="pri">¥<text>{{goods.activity_price}}</text></text>
+            </navigator>
+          </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <!-- 底部提示 -->
+  <view class="end-tip">直到世界尽头~</view>
+
+
+</view>

@@ -1,0 +1,346 @@
+
+.copyTips {
+  width: 100%;
+  height: 120rpx;
+  background-color: #f3f5f9;
+  font-size: 26rpx;
+  line-height: 36rpx;
+  color: #999999;
+  /* text-align: center; */
+  padding:  27rpx 63rpx 0 63rpx;
+  box-sizing: border-box;
+}
+.copyTips text {
+  color: #3883c5;
+  padding-left: 20rpx;
+}
+.user {
+  width: 720rpx;
+  height: 110rpx;
+  border-bottom: 1px solid #eeeeee;
+  /* border-bottom: 1px solid #eeeeee; */
+  display: flex;
+  font-size: 30rpx;
+  color: #222222;
+  line-height: 110rpx;
+  position: relative;
+  margin-left: 30rpx;
+}
+.user .phone ,
+.user .name {
+  width: 100%;
+}
+.user .phone input ,
+.user .name input {
+  width: 580rpx;
+  line-height: 110rpx;
+  height: 110rpx;
+  margin-left: 20rpx;
+  /* background-color: red; */
+  font-size: 30rpx;
+}
+.user .line {
+  position: absolute;
+  top: 22rpx;
+  left: 320rpx;
+  width: 0;
+  height: 67rpx;
+  border-left: 1px solid #eeeeee;
+}
+.tip {
+  height: 110rpx; line-height: 110rpx;
+  font-size: 30rpx;
+}
+.aaa {
+  color: #aaa;
+}
+.threeSelectAdd ,
+.twoSelectAdd ,
+.selectAdd {
+  width: 720rpx;
+  height: 110rpx;
+  margin-left: 30rpx;
+  border-bottom: 1px solid #eeeeee;
+  position: relative;
+}
+
+.selectAdd {
+  position: relative;
+}
+
+.threeSelectAdd {
+  border: none;
+}
+.threeSelectAdd input ,
+.twoSelectAdd input ,
+.selectAdd input {
+  line-height: 110rpx;
+  height: 110rpx;
+  width: 580rpx;
+  margin-left: 20rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size: 30rpx;
+  color: #222222;
+}
+.twoSelectAdd image ,
+.selectAdd image {
+  width: 36rpx;
+  height: 20rpx;
+  position: absolute;
+  top: 48rpx;
+  right: 50rpx;
+}
+.saveUser {
+  width: 100%;
+  height: 110rpx;
+  line-height: 110rpx;
+  font-size: 30rpx;
+  color: #999999;
+  text-indent: 96rpx;
+  position: relative;
+  background-color: #f3f5f9;
+}
+.saveUser image {
+  position: absolute;
+  top: 40rpx;
+  left: 50rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+.selectUser {
+  width: 100%;
+  height: 98rpx;
+  font-size: 30rpx;
+  text-indent: 50rpx;
+  line-height: 98rpx;
+  color: #666666;
+}
+
+.userItem {
+  width: 690rpx;
+  height: 180rpx;
+  margin: 0 auto 20rpx;
+  border: 1px solid #e6e6e6;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #666666;
+  position: relative;
+}
+.userItem:last-child {
+  margin-bottom: 0;
+}
+.userItem .name {
+  padding-left: 34rpx;
+  color: #222222;
+}
+.userItem .phone {
+  padding-left: 27rpx;
+}
+.userItem .userInfo {
+  margin-top: 30rpx;
+}
+.userItem .address {
+  width: 530rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  margin: 10rpx 0 0 34rpx;
+}
+.userItem.invalid .deleteItem ,
+.userItem .deleteItem {
+  font-size: 30rpx;
+  color: #ff658f;
+  position: absolute;
+  top: 75rpx;
+  right: 22rpx;
+}
+
+.userItem.invalid .invalidBk ,
+.invalidBk {
+  font-size: 24rpx;
+  line-height: 30rpx;
+  background-color: #d5d5d5;
+  color: #ffffff;
+  margin-left: 26rpx;
+  padding: 0 9rpx;
+}
+.userItem.invalid text ,
+.userItem.invalid view{
+  color: #aaaaaa;
+}
+
+.pageEnd {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 24rpx;
+  color: #aaaaaa;
+  text-align: center;
+}
+.selectUser.FIX {
+ position: fixed;
+ z-index: 998;
+ top: 0;
+ left: 0;
+ background-color: #ffffff;
+}
+.userS.top {
+  margin-top: 98rpx;
+}
+.selectDataW {
+  width: 100%;
+  height: 125rpx;
+  position: fixed;
+  background-color: #ffffff;
+  left: 0;
+  bottom: 0;  
+}
+.selectData {
+  width: 690rpx;
+  height: 100rpx;
+  margin: 12rpx auto 0;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 12rpx;
+  background-color: #f63a65;
+}
+.wrap {
+  padding-bottom: 120rpx;
+}
+
+/* 省市区地址选择 */
+
+.shade {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,.3);
+  z-index: 79;
+}
+.site-wrap {
+  position: fixed;
+
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+
+  width: 500rpx; 
+  height: 600rpx;
+  padding: 30rpx 0;
+  background: #fff;
+  z-index: 99;
+  text-align: center;
+}
+.site-wrap .province {
+  width: 500rpx;
+}
+.site-wrap .province view {
+  height: 60rpx; line-height: 60rpx;
+  color: #999;
+}
+.site-wrap .province .active {
+  color: #333; font-weight: bold;
+}
+
+.hide {
+  display: none;
+}
+
+/* 选择派送方式 */
+.selectType{
+  height: 110rpx;
+  border-top:1px solid #eeeeee;
+  position: relative;
+}
+.selectType .selectTypeTitle {
+  font-size: 30rpx;
+  color:#666666;
+  line-height: 110rpx;
+  margin-left: 50rpx;
+  display: inline;
+}
+.selectType .icon{
+	width: 20rpx; 
+  height: 34rpx;
+  position:absolute;
+  top:41rpx;
+	right:50rpx;
+}
+
+.selectTypeName{
+  font-size:30rpx;
+  color:#666666;
+  position:absolute;
+  top: 0;
+	right: 90rpx;
+  height: 100%;
+  font-weight: bold;
+  width:200px;
+  text-align:right;
+}
+.site-wrap .getType {
+  width: 500rpx;
+}
+.site-wrap .getType view {
+  height: 60rpx; line-height: 60rpx;
+  color: #999;
+}
+.site-wrap .getType .active {
+  color: #333; font-weight: bold;
+}
+
+.bySelf .parting{
+  background-color:#f3f5f9;
+  height: 20rpx;
+}
+
+.bySelf .shipping_name{
+  margin-left: 50rpx;
+  height: 110rpx;
+  border-bottom:1px solid #eeeeee;
+
+}
+.bySelf .shipping_name input{
+
+  line-height: 110rpx;
+  height: 110rpx;
+}
+.bySelf .shipping_phone{
+  height: 110rpx;
+  margin-left: 50rpx;
+}
+
+
+
+.bySelf .shipping_phone input{
+
+  line-height: 110rpx;
+  height: 110rpx;
+}
+
+.tips{
+  background-color:#f3f5f9;
+  padding: 120rpx 55rpx 0 50rpx;
+  height: 720rpx;
+}
+.tips .title{
+  font-weight: bold;
+  font-size: 40rpx;
+  color: #999999;
+  margin-bottom: 48rpx;
+}
+.tips .content{
+  font-size: 26rpx;
+  line-height: 50rpx;
+  color: #999999;
+}
+.phStyle {
+  color: #aaaaaa;
+  font-size: 30rpx;
+}

@@ -1,0 +1,91 @@
+<view wx:if="{{flag}}">
+<view class="detail" >
+	<view class="banner">
+   <view class="time" wx:if="{{remaining_time[0]}}" wx:if="{{detailList.type==1 || detailList.type==3 }}" >
+      <text>{{remaining_time[0].day}} 天 </text>
+      <text class="t1">{{remaining_time[0].hour}}</text>
+      <text class="t2">:</text>
+      <text class="t1">{{remaining_time[0].min}}</text>
+      <text class="t2">:</text>
+      <text class="t1">{{remaining_time[0].sec}}</text>
+      结束
+    </view>
+		<swiper class="swiper-wrap" indicator-dots="true" autoplay="ture" interval="3000">
+			<swiper-item wx:for="{{detailList.main_image_array}}" wx:key="{{index}}">
+				<image src="{{item}}"></image>
+			</swiper-item>
+		</swiper>
+	</view>
+
+	<view class="info"> 
+
+		<view class="title"><text>{{detailList.goods_name}}</text></view>
+
+    <view class="price" wx:if="{{detailList.type==0}}">
+			<text class="t1">¥</text><text class="t2">{{detailList.final_price}}</text>
+			<text class="t3">¥{{detailList.b_goods_normal_price}}</text>
+		</view>
+
+		<view class="price" wx:if="{{detailList.type==1 || detailList.type==3 }}">
+			<text class="t1">¥</text><text class="t2">{{detailList.final_price}}</text>
+			<text class="t3">¥{{detailList.b_goods_normal_price}}</text>
+		</view>
+
+		<!-- 好友助力价格,按钮 -->
+		<view class="friend" wx:if="{{detailList.type==2}}">
+			<view>
+				<text class="t1">¥</text><text class="t2">{{detailList.boost_after_price}}</text>
+				<text class="t3">目标: </text><text class="t4">¥{{detailList.boost_target_price}}</text>
+			</view>
+			<view class="flex btn-wrap">
+				<navigator class="btn1" wx:if="{{detailList.boost_status == 0}}"
+					url="../friendHelp/friendHelp?goods_id={{detailList.goods_id}}&activity_id={{detailList.activity_id}}">邀请好友助力</navigator>
+
+				<navigator class="success" wx:if="{{detailList.boost_status == 1}}"
+					url="../friendHelp/friendHelp?goods_id={{detailList.goods_id}}&activity_id={{detailList.activity_id}}">已达成目标</navigator>
+			</view>
+      <navigator url='../activity/activity?id={{detailList.activity_id}}' hover-class='none'>
+        <view class="end-time">
+          距离活动结束还有
+          <text>{{remaining_time[0].day}}</text>日
+          <text>{{remaining_time[0].hour}}</text>:
+          <text>{{remaining_time[0].min}}</text>:
+          <text>{{remaining_time[0].sec}}</text>
+          <image src="../../images/list_enter@3x.png"></image>
+        </view>
+      </navigator>
+		</view>
+
+		<view class="code flex">
+			<text>{{detailList.goods_shape_code}}</text>
+			<view class="copy" bindtap="copy">复制</view>
+		</view>
+	</view>
+	<view class="H10"></view>
+	<view class="wrap">
+		<image wx:for="{{detailList.detail_image_array}}" wx:key="index" src="{{item}}" mode='widthFix'></image>
+	</view>
+	<view class="H10Down"></view>
+</view>
+<!-- 页脚 -->
+<view class="shade" wx:if="{{showPop}}" bindtap="closeAll"></view>
+<view class="fixbar flex">
+	<view class="image-wrap" bindtap="toCart">
+		<image src="../../images/mp_car@3x.png"></image>
+		<!-- <text class="num">{{content.cart_num}}</text> -->
+	</view>
+	<button class="{{detailList.goods_purchase_limit > 0 ? 'btn1' : 'noBtn'}}" id="{{detailList.goods_id}}" bindtap="{{detailList.goods_purchase_limit > 0 ? 'showPop' : 'showTip'}}">加入购物车</button>
+
+	<view class="pop-wrap" wx:if="{{showPop}}">
+		<view class="tit">选择数量
+      <text class="that">（库存{{detailList.storage}} {{detailList.activity_goods_purchase_limit > 0 ? ',限购' + detailList.activity_goods_purchase_limit : ''}}）</text>
+    </view>
+		<view class="btn-wrap">
+			<text class="reduce {{num == 1 ? 'cant_add' : ''}}" bindtap="{{num == 1 ? '' : 'reduce'}}">-</text>
+			<text class="val">{{num}}</text>
+			<text class="add {{num < detailList.goods_purchase_limit ? '' : 'cant_add'}}" bindtap="add">+</text>
+		</view>
+		<button bindtap="addCart" id="{{activity_goods_box_info.goods_id}}">加入购物车</button>
+	</view>
+</view>
+</view>

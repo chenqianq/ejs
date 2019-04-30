@@ -1,0 +1,26 @@
+.success {
+	
+}
+.success image {
+	display: block;
+	width: 310rpx; height: 100rpx;
+	margin: 120rpx auto;
+}
+.success .tip {
+	padding: 0 90rpx 120rpx;
+	color: #111;
+}
+.success .wrap {
+	margin: 0 40rpx;
+	padding-top: 36rpx;
+	border-top: 1px solid #eee;
+}
+.success button {
+	width: 220rpx; height: 72rpx;
+	line-height: 72rpx;
+	border-radius: 72rpx;
+	color: #f63a65;
+	border: 1px solid #f63a65;
+	font-size: 24rpx;
+	background: #fff;
+}

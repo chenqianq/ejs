@@ -1,0 +1,252 @@
+/**index.wxss**/
+.detail {
+	padding-bottom: 90rpx;
+}
+.detail .banner .tag {
+	position: absolute;
+	top: 30rpx; left: 30rpx;
+	width: 64rpx; height: 72rpx;
+	z-index: 99;
+}
+
+.detail .swiper-wrap {
+	width: 100%; 
+  height: 750rpx;
+}
+.detail swipter-item {
+	width: 100%;
+}
+.detail .swiper-wrap image {
+	width: 100%; 
+  height: 100%;
+}
+.detail .info {
+	padding: 0 50rpx 40rpx 50rpx;
+}
+.detail .info .title {
+	/* font-size: 30rpx; */
+	color: #211111;
+	margin-bottom: 24rpx;
+}
+.detail .info .price {
+	margin-bottom: 30rpx;
+}
+.detail .info .price .t1{
+	color: #f63a65;
+}
+.detail .info .price .t2{
+	color: #f63a65;
+	font-size: 60rpx;
+	font-weight: bold;
+}
+.detail .info .price .t3{
+	margin-left: 24rpx;
+	color: #bbb;
+	text-decoration: line-through;
+}
+.detail .info {
+	color: #332d2e;
+}
+.detail .info .copy {
+	color: #3883c5;
+	margin-left: 33rpx;
+}
+
+.detail .wrap image {
+	display: block;
+	width: 100%;
+  height: 100%;
+}
+
+.fixbar {
+	position: fixed;
+	bottom: 0;
+	width: 100%; height: 90rpx;
+	background: #fff;
+}
+.fixbar .image-wrap {
+	position: relative;
+	width: 160rpx;
+	text-align: center;
+}
+.fixbar .image-wrap image {
+	width: 60rpx; height: 60rpx;
+	margin-top: 20rpx;
+}
+.fixbar .image-wrap .num {
+	position: absolute;
+	top: 10rpx; right: 40rpx;
+	width: 34rpx; height: 34rpx;
+	line-height: 34rpx;
+	text-align: center;
+	background: #ff658f;
+	color: #fff;
+	border-radius: 34rpx;
+}
+
+.fixbar button {
+	width: 590rpx; height: 90rpx;
+	line-height: 90rpx;
+	border-radius: 0;
+	color: #fff;
+	font-size: 30rpx;
+}
+.fixbar .btn1 {
+	background: #ff658f;
+}
+.fixbar .btn2 {
+	background: #f63a65;
+}
+.fixbar .noBtn {
+	background: #d3d3d3;
+  /* border: 2prx solid red; */
+  /* outline: none; */
+
+}
+.fixbar .noBtn::after{
+  border: none;
+}
+
+/* 弹窗 */
+.shade {
+	position: fixed;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	background: rgba(0,0,0,0.3);
+}
+.pop-wrap {
+	position: fixed;
+  left: 0;
+	bottom: 0;
+	width: 100%; height: 300rpx;
+	padding-top: 40rpx;
+	background: #fff;
+	z-index: 100;
+}
+.pop-wrap .tit {
+	padding-left: 40rpx;
+	padding-bottom: 30rpx;
+	font-size: 30rpx;
+	font-weight: bold;
+}
+.pop-wrap .tit .that {
+  font-size: 28rpx;
+  color: #999999;
+}
+.pop-wrap .btn-wrap {
+	padding-left: 40rpx;
+	margin-bottom: 30rpx;
+  display: flex;
+  justify-content: center;
+}
+.pop-wrap .btn-wrap text {
+	display: inline-block;
+	width: 120rpx; height: 60rpx;
+	line-height: 60rpx;
+	text-align: center;
+	border-radius: 12rpx;
+}
+.pop-wrap .btn-wrap .add,
+.pop-wrap .btn-wrap .reduce {
+	width: 80rpx;
+	border: 2rpx solid #999999;
+}
+.pop-wrap .btn-wrap .cant_add {
+  border-color: #eee;
+  color: #eee;
+}
+.pop-wrap button {
+	display: block;
+	width: 690rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+	color: #fff;
+	background: #f63a65;  
+}
+.H10Down {
+  background-color: #ffffff;
+}
+
+.detail .time {
+	line-height:64rpx;
+	text-align:right;
+	padding-right:20rpx;
+}
+
+.detail .time .t1 {
+	display: inline-block;
+	width: 38rpx; height: 34rpx;
+	line-height: 34rpx;
+	background: #ff7198;
+	color: #fff;
+	border-radius: 6rpx;
+	text-align: center;
+}
+.detail .time .t2 {
+	display: inline-block;
+	color: #ff7198;
+	padding: 0 6rpx;
+}
+
+/* 好友助力 */
+
+.detail .friend .t1 {
+	color: #f63a65;
+	font-size: 22rpx;
+}
+.detail .friend .t2 {
+	font-weight: bold;
+	font-size: 40rpx;
+	color: #f63a65;
+}
+.detail .friend .t3 {
+	margin-left: 20rpx;
+	font-size: 28rpx;
+	color: #999;
+}
+.detail .friend .t4 {
+	font-size: 48rpx;
+	color: #57c621;
+	font-weight: bold;
+}
+.detail .friend .btn-wrap {
+	margin-top: 48rpx;
+}
+.detail .friend .btn1 {
+	width: 650rpx; height: 80rpx;
+	line-height: 80rpx;
+	background: #f63a65;
+	font-size: 32rpx;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	border-radius: 12rpx;
+}
+.detail .friend .success {
+	width: 650rpx; height: 80rpx;
+	line-height: 80rpx;
+	background: #fcfffa;
+	font-size: 32rpx;
+	font-weight: bold;
+	color: #57c621;
+	text-align: center;
+	border-radius: 12rpx;
+	border: 2rpx solid #57c621;
+}
+
+.detail .friend .end-time {
+	margin: 20rpx 0 48rpx;
+	height: 52rpx; line-height: 52rpx;
+	border: 2px solid #e8e8e8;
+	text-align: center;
+	border-radius: 8px;
+	font-weight: bold;
+	color: #999;
+}
+.detail .friend .end-time text {
+	color: #f63e65;
+}
+.detail .friend .end-time image {
+	width: 13rpx; height: 23rpx;
+	margin-left: 10rpx;
+}

@@ -1,0 +1,114 @@
+
+<div id="common" class="common">
+	<form class="layui-form search_form" method="get" action="" >
+		<blockquote class="layui-elem-quote">
+			
+			<div class="layui-inline W160H26">
+				<label class="layui-form-label">商务名称:</label>
+				<div class="layui-input-inline">
+					<input type="text" value="<?php echo $_GET['bm_name']?>" name="bm_name"  placeholder="" class="layui-input search_input">
+				</div>
+			</div>
+            <div class="layui-inline W160H26">
+                <label class="layui-form-label">登录名称:</label>
+                <div class="layui-input-inline">
+                    <input type="text" value="<?php echo $_GET['login_name']?>" name="login_name"  placeholder="" class="layui-input search_input">
+                </div>
+            </div>
+			<div class="layui-inline W160H26">
+				<label class="layui-form-label">手机号:</label>
+				<div class="layui-input-inline">
+					<input type="text" value="<?php echo $_GET['bm_contact_phone']?>" name="bm_contact_phone"  placeholder="" class="layui-input search_input">
+				</div>
+			</div>
+   
+			<div class="layui-inline W200H30" >
+				<button class="layui-btn">查询</button>
+                <button class="layui-btn" type="button" onclick="$(this).parents('form').find('input').val('');$(this).parents('form').find('select').val('')">重置</button>
+			</div>
+		</blockquote>
+	
+	</form>
+	<div class="new-insert">
+		<button type="button" class="layui-btn add_new_client" onclick="window.location.href='<?php echo Zc::url(YfjRouteConst::addtBusinessManager);?>'">新增商务</button>
+	</div>
+	
+	<table class="layui-table">
+		<colgroup>
+			<col width="15%">
+			<col width="15%">
+			<col width="15%">
+			<col width="15%">
+			<col width="15%">
+			<col>
+			
+		</colgroup>
+		<thead>
+		<tr>
+			<th>商务经理名称</th>
+			<th>登录名</th>
+			<th>手机号</th>
+			<th>关联客户</th>
+			<th>关联商户</th>
+			<th>操作</th>
+		</tr>
+		</thead>
+		<tbody>
+		
+		<?php if($list){
+			foreach ($list as $info){
+				?>
+				
+				<tr>
+					<td><?php echo $info['bm_name'];?></td>
+					<td><?php echo $info['login_name'];?></td>
+					<td><?php echo $info['bm_contact_phone'];?></td>
+					<td><?php echo $info['client_num'];?></td>
+					<td><?php echo $info['marchat_num'];?></td>
+					
+					<td>
+						<div class="layui-inline">
+							<button type="button" class="layui-btn layui-btn-sm edit-btn-css edit-btn" onclick="window.location.href='<?php echo Zc::url(YfjRouteConst::editBusinessManager,['business_manager_id' => $info['business_manager_id']]);?>'">编辑</button>
+							<button type="button" class="layui-btn layui-btn-sm delete-btn-css layui-btn-danger delete-btn" bm-id = '<?php echo $info['business_manager_id'];?>'>删除</button>
+						</div>
+					
+					</td>
+				</tr>
+			
+			<?php  }
+		} else { ?>
+			<tr>
+				<td colspan="8" style="text-align: center"> 没有任何数据哦</td>
+			</tr>
+		<?php }?>
+		</tbody>
+	
+	</table>
+	<div id="page"><?php echo $pageHtml;?></div>
+</div>
+<script>
+    $(function () {
+        $('.delete-btn').click(function () {
+            var bmId = $(this).attr('bm-id');
+            layer.confirm('确认删除这条信息吗？',{btn:['确定','取消']},function(){
+
+                layer.closeAll();
+                $.ajax({
+                    url:'delete_business_manager?business_manager_id='+bmId,
+                    dataType:'json',
+                    success:function (res) {
+                        layer.msg(res.msg);
+                        if(res.status == 'success'){
+                            window.location.href='business_manager_list';
+                        }
+                    }
+
+                })
+            })
+        })
+
+    })
+
+
+
+</script>

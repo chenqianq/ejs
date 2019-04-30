@@ -1,0 +1,84 @@
+page {
+	height: auto;
+	background: #f3f3f6;
+	padding-bottom: 130rpx;
+}
+.feedback .item {
+	width: 630rpx;
+	padding: 0 30rpx;
+	margin: 20rpx auto;
+	background: #fff;
+	border-radius: 4rpx;
+}
+.feedback .item .time {
+	padding: 36rpx 0 26rpx;
+	color: #999;
+}
+.feedback .item .title{
+	padding-bottom: 26rpx;
+	font-size: 28rpx;
+	color: #333;
+	border-bottom: 1px solid #eee;
+}
+.feedback .item .noresponse {
+	line-height: 90rpx;
+	font-size: 28rpx;
+	color: #999;
+}
+.feedback .item .response {
+	line-height: 90rpx;
+	font-size: 28rpx;
+	color: #727272;
+	align-items: center;
+}
+.feedback .item .response view {
+	flex: 1;
+}
+.feedback .item .response text {
+	color: #576b95;
+}
+.feedback .item .response image {
+	width: 20rpx; height: 34rpx;
+}
+
+.feedback .subFeed {
+	position: fixed;
+	bottom: 0;
+	width: 100%; height: 130rpx;
+	align-items: center;
+	background: #fff;
+}
+.feedback .subFeed .btn {
+	width: 690rpx; height: 100rpx;
+	line-height: 100rpx;
+	margin: 0 auto;
+	background: #f63a65;
+	color: #fff;
+	font-size: 30rpx;
+	text-align: center;
+	border-radius: 6px;
+}
+
+.feedback .empty{
+	align-items: center;
+}
+.feedback .empty image {
+	display: block;
+	width: 160rpx; height: 160rpx;
+	margin: 125rpx auto 25rpx;
+}
+.feedback .empty .tit {
+	width: 630rpx;
+	margin: 0 auto;
+	padding-bottom: 50rpx;
+	font-size: 30rpx;
+	color: #aaa;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+}
+.feedback .empty .tip {
+	width: 570rpx;
+	margin: 40rpx auto;
+	color: #aaa;
+	font-size: 26rpx;
+}

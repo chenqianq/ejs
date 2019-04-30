@@ -1,0 +1,232 @@
+page {
+  height: auto;
+  padding-bottom: 160rpx;
+}
+.H20 { height: 20rpx; background: #f3f3f6; }
+.saleDetail .wrap {
+  height: 132rpx;
+  align-items: center;
+}
+.saleDetail .wrap .user {
+  width: 80rpx; height: 80rpx;
+  margin: 0 30rpx 0 40rpx;
+  border-radius: 50%;
+}
+
+.saleDetail .wrap .time {
+  height: 64rpx; line-height: 64rpx;
+  text-align: right;
+}
+.saleDetail .wrap .time .t1 {
+  display: inline-block;
+  width: 38rpx; height: 34rpx;
+  line-height: 34rpx;
+  background: #f63e65;
+  color: #fff;
+  border-radius: 6rpx;
+  text-align: center;
+}
+.saleDetail .wrap .time .t2 {
+  display: inline-block;
+  color: #ff7198;
+  padding: 0 6rpx;
+}
+.saleDetail .wrap .weight {
+  font-weight: bold;
+  padding: 0 6rpx;
+}
+.saleDetail .wrap .fail {
+  color: #aaa;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.saleDetail .wrap .success {
+  position: absolute;
+  top: 60rpx; right: 23rpx;
+  width: 258rpx; height: 152rpx;
+}
+
+.saleDetail .goods {
+  margin: 0 30rpx;
+  padding: 30rpx 30rpx 64rpx;
+  border: 2px solid #eee;
+  border-radius: 12rpx;
+}
+.saleDetail .goods image {
+  display: block;
+  width: 280rpx; height: 280rpx;
+  margin: auto;
+}
+.saleDetail .goods .title {
+  font-size: 28rpx;
+  color: #666;
+}
+.saleDetail .goods .pri-wrap {
+  margin-top: 50rpx;
+  justify-content: space-between;
+}
+.saleDetail .goods .pri {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: bold;
+  line-height: 64rpx;
+}
+.saleDetail .goods .final-pri {
+  color: #57c621;
+  font-size: 28rpx;
+}
+.saleDetail .goods .final-pri .t1 {
+  font-weight: bold;
+  font-size: 40rpx;
+}
+
+.saleDetail .progress {
+  width: 535rpx; height: 110rpx;
+  line-height: 110rpx;
+  margin: auto;
+  position: relative;
+}
+.saleDetail .progress progress {
+  margin-top: 110rpx;
+  activeColor: #f63a65;
+  height: 8rpx;
+}
+
+.saleDetail .history .title {
+  padding: 45rpx 0 30rpx;
+  font-size: 28rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #666;
+}
+
+.saleDetail .history .his-wrap {
+  width: 690rpx;
+  margin: 0 auto;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+.saleDetail .history .item {
+  width: 690rpx; height: 110rpx;
+  line-height: 110rpx;
+  background: #fafafb;
+}
+.saleDetail .history .user {
+  width: 80rpx; height: 80rpx;
+  margin-left: 22rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+  font-size: 26rpx;
+}
+.saleDetail .history .t1 {
+  padding:0 14rpx 0 20rpx;
+  font-weight: bold;
+  color: #222;
+}
+.saleDetail .history .t2 {
+  color: #666;
+}
+.saleDetail .history .t3 {
+  font-weight: bold;
+  color: #f63e65;
+}
+.saleDetail .history .no-his{
+  width: 690rpx; height: 60rpx;
+  margin: auto;
+  line-height: 60rpx;
+  background: #fafafb;
+  text-align: center;
+  border-radius: 12rpx;
+}
+
+.saleDetail .rule .title {
+  padding: 45rpx 0 30rpx;
+  font-size: 28rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #666;
+}
+.saleDetail .rule .rule-wrap {
+  box-sizing: border-box;
+  width: 690rpx;
+  margin: auto;
+  padding: 40rpx 30rpx 60rpx;
+  border-radius: 12rpx;
+  background: #fafafb;
+  line-height: 1.5;
+}
+.saleDetail .btn-wrap {
+  position: fixed;
+  bottom: 0; left: 0;
+  z-index: 99;
+  width: 750rpx; height: 130rpx;
+  background: #fff;
+}
+.saleDetail .btn-wrap .btn {
+  width: 690rpx; height: 100rpx;
+  line-height: 100rpx;
+  margin: 15rpx auto;
+  background: #f63a65;
+  color: #fff;
+  font-size: 32rpx;
+}
+.saleDetail .btn-wrap .btn.isFail {
+  background: #d3d3d3;
+}
+.saleDetail .btn-wrap .btn.isFail::after{
+  border: none;
+}
+.saleDetail .progress .circle {
+  width: 18rpx;
+  height: 18rpx;
+  background: #f63a65;
+  position: absolute;
+  top: -4rpx;
+  left: -12rpx;
+  border-radius: 50%;
+}
+.saleDetail .progress .circle.right {
+  background: #e8e8e8;
+  right: -6rpx;
+  left: auto;
+}
+.saleDetail .progress .boostPrice {
+  position: absolute;
+  width: 177rpx;
+  height: 58rpx;
+  top: -82rpx;
+  left: -88rpx;
+}
+.saleDetail .progress .moveBlock {
+  width: 177rpx;
+  height: 58rpx;
+  position: relative;
+  left: 0rpx;
+}
+.saleDetail .progress .boostPrice image {
+  width: 177rpx;
+  height: 58rpx;
+}
+.saleDetail .progress .spreadPrice {
+  position: absolute;
+  font-size: 24rpx;
+  width: 177rpx;
+  line-height: 70rpx;
+  height: 70rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #f0fefe;
+}
+.saleDetail .progress .startPrice ,
+.saleDetail .progress .targetPrice {
+  position: absolute;
+  color: #f63e65;
+  font-size: 24rpx;
+  font-weight: bold;
+  top: -8rpx;
+  left: -22rpx;
+}
+.saleDetail .progress .targetPrice {
+  left: auto;
+  right: -22rpx;
+}

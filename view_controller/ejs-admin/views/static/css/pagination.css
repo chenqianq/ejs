@@ -1,0 +1,46 @@
+.pageListInfo span {
+    padding: 0 6px;
+}
+.pageListInfo {
+    float: left;
+    line-height: 28px;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+    padding: 0 6px;
+}
+.pageList {
+    float: left;
+}
+.pageListInfo .PD {
+    padding: 0 24px 0 0;
+}
+.pageList span.curr:hover ,
+.pageList .curr {
+    background-color: #009688;
+    color: #ffffff;
+    border: 1px solid #009688;
+}
+.pageList span  {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    line-height: 28px;
+    vertical-align: middle;
+    padding: 0 15px;
+    height: 28px;
+    line-height: 28px;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+    border: 1px solid #e2e2e2;
+    border-right: none;
+    float: left;
+    cursor: pointer;
+}
+.pageList span.end{
+    border: 1px solid #e2e2e2;
+}
+.pageList span:hover {
+    color: #009688;
+}

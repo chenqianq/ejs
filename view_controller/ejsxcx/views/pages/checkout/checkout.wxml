@@ -1,0 +1,105 @@
+
+<view class="checkout" wx:if="{{flag}}">
+	<navigator class="address flex" url="../consignee/consignee?invitation={{invitationCode}}&authen={{isAuthen}}">
+		<text class="t1">配送方式与信息</text>
+    <text  class="text2" >{{address.typeName}}</text>
+		<text class="text3">{{address.name}}</text>
+		<image class="icon" src="../../images/list_enter@3x.png"></image>
+	</navigator>
+
+  <view class="authentication" wx:if = "{{authentication==0}}">
+    <view class="t1">
+      <view class="v1">是否实名认证</view>
+      <view class="v2" wx:if = "{{hasEnvelope==1}}">实名认证可得优惠券</view>
+    </view>
+    <view class="aCSwitch flex" >
+      <view class="{{(1==switchIndex)?'is':''}}" data-index = "1" bindtap="setSwith">是</view>
+      <view class="{{(2==switchIndex)?'is':''}}" data-index = "2" bindtap="setSwith">否</view>
+    </view>
+  </view>
+
+  <navigator class="isAuthentication flex" wx:if = "{{authentication!=0}}" url="../certificate/certificate?id={{id}}&name={{address.name}}&&tel={{address.tel}}&type={{address.type}}&invitation={{invitationCode}}&authen={{isAuthen}}">
+    <view class="t1">是否实名认证</view>
+    
+    <text class="t2"  wx:if = "{{authentication==1}}" >已认证</text>
+    <text class="t2"  wx:if = "{{authentication==2}}" >认证中</text>
+    <image class="icon" src="../../images/list_enter@3x.png"></image>
+  
+  </navigator>
+
+	<view class="list-wrap">
+		<!-- 标题 -->
+		<view class="title">商品明细</view>
+		<view class="item flex" wx:for="{{productInfos}}" wx:key="index">
+			<image src="{{item.goods_image}}"></image>
+			<view class="info flex">
+				<text class="tit one-line">{{item.goods_name}}</text>
+				<view class="price-wrap flex">
+					<text class="t1">¥{{item.goods_price}}</text>
+					<text class="t2">x{{item.goods_num}}</text>
+				</view>
+			</view>
+		</view>
+		<!-- 小计 -->
+		<view class="total flex">
+			<text class="t1">小计</text>
+			<text class="t2">¥{{cartTotal}}</text>
+		</view>
+	</view>
+
+	<!-- 优惠券 -->
+	<navigator class="voucher flex" url="../coupon/coupon?id={{id}}&name={{address.name}}&&tel={{address.tel}}&type={{address.type}}&invitation={{invitationCode}}&authen={{isAuthen}}">
+		<text class="t1">优惠券</text>
+		<view class="t2">
+			<text>{{voucher_msg}}</text>
+			<image class="icon" src="../../images/list_enter@3x.png"></image>
+		</view>
+	</navigator>
+<form bindsubmit='submitOrder'>
+  <view class="inviteCode flex">
+    
+      <text class='t1'>邀请码</text>
+      <view class='t2'>
+        <input type="text" placeholder-class="phStyle" maxlength='5' name="inviteCodeName" placeholder="请输入邀请码"  bindinput='inputInvitation' value='{{invitationCode}}'></input>
+      </view>
+   
+  </view>
+
+	<!-- 提交订单 -->
+	<view class="pay-wrap flex">
+		<view class="pay">
+			<view class="t1">合计: <text class="t2">¥{{order_total}}</text></view>
+			<view class="t3">共{{total_goods_num}}件商品, 货到付款</view>
+		</view>
+		<button form-type="submit">提交订单</button>
+    
+	</view>
+ </form>
+  <view class='shade'  wx:if="{{isShow}}">
+    <form  bindsubmit='submitOrderWithAuthen'>
+      <view class="box">
+        <image src="../../images/mp_sraech_cancel@3x@3x.png" class="closeIcon" bindtap="closeBox"></image>
+        <view class='title'>实名认证</view>
+        <view class='inputBox'>
+          <view class='nameBox flex'>
+            <text>姓名</text>
+            <input type='text' name="cardName" maxlength='20'  placeholder-class='phStyle' placeholder="请输入身份证上的姓名"></input>
+          </view>
+          <view class='numberBox flex'>
+            <text>身份证</text>
+            <input type='text' name="cardNum" maxlength='18' placeholder-class='phStyle' placeholder="请输入身份证号码" length='18'></input>
+          </view>
+          <view class='errorInfo'>
+            <view wx:if="{{isError}}">姓名或者身份证信息错误</view>
+          </view>
+          <view class='tips'>证件信息仅用于跨境商品的通关申报，不会用于其他地方</view>
+        </view>
+        <button class='submitAc'  form-type="submit" wx:if = "{{hasEnvelope==1}}" >提交实名认证得红包</button>
+        <button class='submitAc'  form-type="submit" wx:if = "{{hasEnvelope==0}}" >提交实名认证</button>
+        <button class='noSubmitAc' bindtap='processOrderBtn' wx:if = "{{hasEnvelope==1}}">不认证,不要红包直接提交</button>
+         <button class='noSubmitAc' bindtap='processOrderBtn' wx:if = "{{hasEnvelope==0}}">不认证,直接提交</button>
+      </view>
+    </form>
+  </view>
+
+</view>

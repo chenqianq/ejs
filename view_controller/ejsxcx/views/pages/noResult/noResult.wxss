@@ -1,0 +1,18 @@
+ page {
+  background-color: #f5f5f9;
+} 
+.icon {
+  margin: 334rpx 0 34rpx;
+  display:flex;
+  justify-content:center;
+}
+.icon image {
+  width: 160rpx;
+  height: 160rpx;
+  margin: 0 auto;
+}
+.tips {
+  font-size: 30rpx;
+  color: #999;
+  text-align: center;
+}

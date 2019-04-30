@@ -1,0 +1,66 @@
+<view wx:if="{{flag}}">
+<!-- 为空 -->
+<view class="no-coupon flex" wx:if="{{isEmpty}}">
+  <image src="../../images/nulvalue_coupon@3x.png" ></image>
+  <text>暂无可用优惠券哦</text>
+</view>
+<!-- 不为空 -->
+<view class="coupon" wx:else>
+
+  <view class="title" wx:if="{{valid_voucher.length}}">可用优惠券</view>
+
+  <view class="item" wx:for="{{valid_voucher}}" wx:key="index" id="{{index}}" bindtap="toggleCheck">
+
+    <image class="bg" src="../../images/mp_coupon@3x.png"></image>
+
+    <view class="flex">
+      <image wx:if="{{ isCheck == index }}" class="icon check" src="../../images/icon_check_selected@3x.png"></image>
+      <image wx:else class="icon no-check" src="../../images/icon_check_default@3x.png"></image>
+      <view class="detail flex">
+        <view class="price">
+          <text class="t1">¥</text>
+          <text class="t2">{{item.price}}</text>
+        </view>
+        <view class="type">
+          <view class="v1">{{item.title}}</view>
+          <view class="v2">{{item.condition}}</view>
+          <view class="v3 flex">
+            <text>{{item.end_time}}前有效</text>
+            <text  data-type="ok_click" catchtap="toggleRule" id="{{index}}">使用规则</text></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="rule" wx:if="{{ruleList[index]}}">{{item.use_str}}</view>
+
+  </view>
+
+  <view class="title" wx:if="{{unvalid_voucher.length}} ">不可用优惠券</view>
+
+  <view class="item no" wx:for="{{unvalid_voucher}}" wx:key="index" id="{{index}}">
+    <image class="bg" src="../../images/mp_coupon_gray@3x.png"></image>
+    <view class="flex">
+      <image class="icon no-check" src="../../images/icon_check_default@3x.png"></image>
+      <view class="detail flex">
+        <view class="price">
+          <text class="t1">¥</text>
+          <text class="t2">{{item.price}}</text>
+        </view>
+        <view class="type">
+          <view class="v1">{{item.title}}</view>
+          <view class="v2">{{item.condition}}</view>
+          <view class="v3 flex">
+            <text>{{item.end_time}}前有效</text>
+            <text id="{{index}}" data-type="no_click" catchtap="toggleRule">使用规则</text></view>
+        </view>
+      </view>
+    </view>
+    <view class="unvalid" wx:if="{{noRuleList[index]}}">{{item.use_str}}</view>
+  </view>
+
+  <view class="fixBtn">
+    <button bindtap="select">选定</button>
+  </view>
+
+</view>
+</view>

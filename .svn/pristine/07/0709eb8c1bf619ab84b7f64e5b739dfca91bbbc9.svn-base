@@ -1,0 +1,55 @@
+<!--index.wxml-->
+<view wx:if="{{flag}}">
+  <image  class="tlBanner" mode='aspectFill' src='{{activity_box_info.special_image}}'></image>
+
+  <!-- 普通项 -->
+  <view class='items' wx:if="{{ type == 1 || type == 3 }}">
+    <navigator wx:for='{{activity_goods_box_info}}' wx:key="index"
+    		 url="../detail/detail?id={{item.goods_id}}" class='item' hover-class="none" >
+      <image src='{{item.goods_image}}' class='goodsImg' ></image>
+      <view class='goodsInfo'>
+        <view class='goodsName'>{{item.goods_name}}</view>
+        <view class='price'>¥ {{item.activity_price}}
+          <text wx:if="{{item.list_price != ''}}" class="Nlist_price" >{{item.format_list_price}}</text>
+        </view>
+
+		<image wx:if='{{item.goods_purchase_limit > 0}}' class='car' src='../../images/car_icon.png' id="{{item.goods_id}}" catchtap='addCart'></image>
+        <span wx:elif="{{item.storage <= 0}}" class='noCar'>已售完</span>
+        <span wx:else class='noCar'>已限购</span>
+      </view>
+    </navigator>
+  </view>
+
+  <!-- 助力团 -->
+  <view class="items friend-help" wx:if="{{ type == 2 }}">
+    <navigator class="item" wx:for="{{activity_goods_box_info}}" wx:key="index"
+      url="../detail/detail?id={{item.goods_id}}" hover-class="none">
+      <image src='{{item.goods_image}}'></image>
+      <view class="goodsInfo">
+        <view class="goodsName">{{item.goods_name}}</view>
+        <view class="wrap flex">
+          <view class="pri">
+            <view><text>目标: ¥</text><text class="t2">{{item.target_price}}</text></view>
+            <view><text class="t3">现价¥{{item.original_price}}</text></view>
+          </view>
+          <!-- 助力 -->
+          <view class="btn-wrap" wx:if="{{item.boost_status == 1}}">
+            <view class="btn">减¥{{item.reduce_price}}元</view>
+          </view>
+          <view class="btn-wrap" wx:if="{{item.boost_status == 2}}">
+            <text class="t1">进行中{{item.complete_schedule}}%</text>
+            <progress percent="{{item.complete_schedule}}" color="#f63e65"></progress>
+            <view class="dot"></view>
+          </view>
+          <!-- 成功 -->
+          <view class="btn-wrap" wx:if="{{item.boost_status == 3}}">
+            <view class="success">助力成功<image src="../../images/mp_hel_suc@3x.png"></image></view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+
+  <view class='pageEnd'>直到世界尽头~</view>
+</view>
+ 

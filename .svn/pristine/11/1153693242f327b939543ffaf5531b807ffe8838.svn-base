@@ -1,0 +1,9 @@
+User-agent: * 
+Disallow: /alipay-acquire-customs/
+Disallow: /class_ignore/
+Disallow: /classes/
+Disallow: /configure/
+Disallow: /data/
+Disallow: /logs/
+Disallow: /zc-framework/
+Allow:  /sitemap.xml

@@ -1,0 +1,90 @@
+
+<div>
+	<div class="site-title">
+		<fieldset><legend>商务经理信息</legend></fieldset>
+	</div>
+	<div class="site-text site-block">
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<label class="layui-form-label w160">*商务经理名称：</label>
+				<div class="layui-input-inline">
+					<input type="text" name="bm_name" required="" lay-verify="required" value="<?php echo $businessInfo['bm_name'];?>" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label w160">*登录名：</label>
+				<div class="layui-input-inline">
+					<input type="text" name="login_name" required="" lay-verify="required" value="<?php echo $businessInfo['login_name'];?>" placeholder="" autocomplete="off" class="layui-input" <?php echo $businessInfo?'disabled':'';?>>
+				</div>
+			
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label w160">手机号：</label>
+				<div class="layui-input-inline">
+					<input type="text" name="bm_contact_phone" maxlength="11" value="<?php echo $businessInfo['bm_contact_phone'];?>" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			
+			</div>
+			
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<input type="hidden" value="<?php echo $businessInfo['bm_id'];?>" name="bm_id" id="bm_id">
+                    <button class="layui-btn" type="button" onclick="history.go(-1)">返回</button>
+					<button class="layui-btn" type="button" submit-num="0" lay-submit lay-filter="formDemo">立即提交</button>
+				</div>
+			</div>
+   
+		</form>
+	</div>
+
+
+</div>
+
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+          
+            var submit_num = parseInt($(this).attr('submit-num'));
+          
+            if(submit_num>0){
+                return false;
+            }
+            var that = $(this);
+            layer.confirm('确认保存当前内容',{btn:['确定','取消']},function(){
+
+                that.attr('submit-num','1');
+                
+                var bm_id = $('#bm_id').val();
+                if(!bm_id){
+                    var url = 'save_add_business';
+                }else{
+                    var url = 'save_edit_business?bm_id'+bm_id;
+                }
+                layer.closeAll();
+                $.ajax({
+                    url:url,
+                    data:data.field,
+                    type:'post',
+                    dataType:'json',
+                    success:function (res) {
+                       
+                        if(res.status == 'success'){
+                            layer.alert(res.msg,{yes:function () {
+                                window.location.href='business_manager_list';
+                            }});
+                           
+                        }else{
+                            that.attr('submit-num',0);
+                            layer.msg(res.msg);
+                        }
+                    }
+
+                })
+            })
+        });
+    });
+</script>

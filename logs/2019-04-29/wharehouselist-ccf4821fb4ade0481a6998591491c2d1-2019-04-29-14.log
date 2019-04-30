@@ -1,0 +1,27 @@
+[2019-04-29T14:33:25+08:00] -- Start 2019-04-29 Log --
+[2019-04-29T14:33:25+08:00] 127.0.0.1 INFO: ==================仓库的数组=======================
+
+[2019-04-29T14:33:25+08:00] 127.0.0.1 INFO: Array
+(
+    [appkey] => 06216632
+    [appSecret] => 36fh2a138h803lk3m4m7g7531l1la9og
+    [accesstoken] => 7e1d85ca34774943974586e4d0e18616
+    [format] => json
+    [versions] => 1.1
+    [timestamp] => 1556519605
+    [pageno] => 1
+    [pagesize] => 100
+    [method] => wdgj.warehouse.list.get
+    [sign] => 8bc66575a7b93e26ef8c3834f3a380a9
+)
+
+
+[2019-04-29T14:33:25+08:00] 127.0.0.1 INFO: ==================仓库的post=======================
+
+[2019-04-29T14:33:25+08:00] 127.0.0.1 INFO: appkey=06216632&appSecret=36fh2a138h803lk3m4m7g7531l1la9og&accesstoken=7e1d85ca34774943974586e4d0e18616&format=json&versions=1.1&timestamp=1556519605&pageno=1&pagesize=100&method=wdgj.warehouse.list.get&sign=8bc66575a7b93e26ef8c3834f3a380a9
+
+[2019-04-29T14:33:25+08:00] 127.0.0.1 INFO: ==================仓库的返回=======================
+
+[2019-04-29T14:33:25+08:00] 127.0.0.1 INFO: { "datalist": [ { "warehouseno": "35012619BA", "warehouseid": "1000", "warehousename": "日货生活馆", "warehousetype": "0", "bblockup": "False", "country": "", "province": "", "city": "", "town": "", "adr": "", "linkman": "", "zip": "", "tel": "", "bnegativestock": "0", "bautoaddgoods": "0" }, { "warehouseno": "", "warehouseid": "1004", "warehousename": "测试店铺名称", "warehousetype": "0", "bblockup": "False", "country": "", "province": "", "city": "", "town": "", "adr": "", "linkman": "", "zip": "", "tel": "", "bnegativestock": "0", "bautoaddgoods": "0" }, { "warehouseno": "", "warehouseid": "1005", "warehousename": "日本跨境本铺", "warehousetype": "0", "bblockup": "False", "country": "", "province": "", "city": "", "town": "", "adr": "", "linkman": "", "zip": "", "tel": "", "bnegativestock": "0", "bautoaddgoods": "0" }, { "warehouseno": "", "warehouseid": "1008", "warehousename": "总仓", "warehousetype": "0", "bblockup": "False", "country": "", "province": "", "city": "", "town": "", "adr": "", "linkman": "", "zip": "", "tel": "", "bnegativestock": "0", "bautoaddgoods": "0" }, { "warehouseno": "", "warehouseid": "1010", "warehousename": "胖猫茶叶", "warehousetype": "0", "bblockup": "False", "country": "", "province": "", "city": "", "town": "", "adr": "", "linkman": "", "zip": "", "tel": "", "bnegativestock": "0", "bautoaddgoods": "0" } ], "returncode": "0", "returninfo": "5" }
+[2019-04-29T14:33:25+08:00] 127.0.0.1 INFO: ==================结速=======================
+

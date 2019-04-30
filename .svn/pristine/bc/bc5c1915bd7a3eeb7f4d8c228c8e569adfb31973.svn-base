@@ -1,0 +1,11 @@
+
+<!-- 授权页面 -->
+<view class="authorization" catchtouchmove="myCatchTouch">
+<view class='bg'>
+  <view class='logo'>
+    <image src='../../images/xrt_logo140@3x.png'></image>
+  </view>
+  <view class='text'>欢迎来到二加三小程序</view>
+  <button class='btn-auth' open-type='getUserInfo' bindgetuserinfo='authInfo'>允许微信授权</button>
+</view>
+</view>

@@ -1,0 +1,86 @@
+
+<div class="site-content">
+	<div class="site-title">
+		<fieldset><legend>小程序绑定</legend></fieldset>
+	</div>
+	<div class="site-text site-block">
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<label class="layui-form-label w240">*AppID（小程序ID）：</label>
+				<div class="layui-input-inline">
+					<input type="text" name="xcx_appid" required="" lay-verify="required" value="<?php echo $info['xcx_appid'];?>" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label w240">*App Secret（小程序密匙）：</label>
+				<div class="layui-input-inline">
+					<input type="text" name="xcx_app_secret" required="" lay-verify="required" value="<?php echo $info['xcx_app_secret'];?>" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label w240">*商户号：</label>
+				<div class="layui-input-inline">
+					<input type="text" name="xcx_merc_id" required="" lay-verify="required" value="<?php echo $info['xcx_merc_id'];?>" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label w240">*小程序名称：</label>
+				<div class="layui-input-inline">
+					<input type="text" name="xcx_name" required="" lay-verify="required" value="<?php echo $info['xcx_name'];?>" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label w240">*行业标签：</label>
+				<div class="layui-input-inline">
+					<input type="text" name="xcx_industry_label" required="" lay-verify="required" value="<?php echo $info['xcx_industry_label'];?>" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label w240">支付证书：</label>
+				<div class="layui-input-inline">
+					<input type="file" name=""  value="<?php echo $clientInfo['client_name'];?>" placeholder="" autocomplete="off" >
+					<input type="file" name=""  value="<?php echo $clientInfo['client_name'];?>" placeholder="" autocomplete="off" >
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label w240"></label>
+				<div class="layui-input-block">
+					<input type="hidden" value="<?php echo $info['merchant_id'];?>" name="merchant_id" id="merchant_id">
+					<button class="layui-btn" type="button" onclick="history.go(-1)">返回</button>
+					<button class="layui-btn" type="button" lay-submit lay-filter="formDemo">立即提交</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+</div>
+
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            layer.confirm('确认保存当前内容',{btn:['确定','取消']},function(){
+                var merchant_id = $('#merchant_id').val();
+	            var url = 'save_edit_merchant_xcx?merchant_id='+merchant_id;
+                
+                layer.closeAll();
+                $.ajax({
+                    url:url,
+                    data:data.field,
+                    type:'post',
+                    dataType:'json',
+                    success:function (res) {
+                        layer.msg(res.msg);
+                        if(res.status == 'success'){
+                            window.location.href='';
+                        }
+                    }
+
+                })
+            })
+        });
+    });
+</script>

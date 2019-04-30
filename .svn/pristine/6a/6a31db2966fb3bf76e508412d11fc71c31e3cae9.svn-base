@@ -1,0 +1,713 @@
+<?php
+ 
+if( !defined('IS_ACCESS') ){
+    die('Illegal Access');
+    exit;
+}
+
+ 
+class DaoFactory {
+	
+	//缓存对象仓库
+	private static $object_repos = array();
+	
+	/**
+	 * 获取Service类对象
+	 * @param  $module
+	 * @param  $service_class
+	 * @throws Exception
+	 */
+	private static function innerGetService($module, $class_name, $singleton) {
+	   
+		$php_path = Zc::C('dao.dir.fs');
+		if(!empty($module)){
+			$php_path .= $module . '/';
+		}
+		$php_path .= "class." . $class_name . ".php";
+		
+		//定义单例的key
+		$php_path_key = md5($php_path);
+		
+		//如果是单例的，并且已经缓存该对象了，直接返回
+		if($singleton && isset(self::$object_repos[$php_path_key])) {
+			return self::$object_repos[$php_path_key];
+		} 
+
+		if (require_once ($php_path)) {
+ 	 	  
+            $obj =  new $class_name;
+          
+            //如果是单例的，需要缓存对象
+            if ($singleton) {
+            	self::$object_repos[$php_path_key] = $obj;
+            }
+            return $obj;
+        } else {
+            throw new Exception ($class_name . ' not found');
+        }
+	}
+	
+	
+	/**
+	 * @param bool $singleton = true 单例
+	 * @return Promotion978Dao
+	 */
+	public static function getPromotion978Dao($singleton = true){
+		return self::innerGetService('', 'Promotion978Dao', $singleton);
+	}
+	
+	/**
+	 * 广告
+	 * @param string $singleton
+	 */
+	public static function getAdvertisementDao($singleton = true){
+	    return self::innerGetService('', 'AdvertisementDao', $singleton);
+	}
+	
+	/**
+	 * UserDao
+	 * @param string $singleton
+	 */
+	public static function getUserDao($singleton = true){
+	    return self::innerGetService('', 'UserDao', $singleton);
+	}
+
+	/**
+	 * BUserDao
+	 * @param string $singleton
+     * @return BUserDao
+	 */
+	public static function getBUserDao($singleton = true){
+	    return self::innerGetService('', 'BUserDao', $singleton);
+	}
+
+	/**
+	 * UserDao广告
+	 * @param string $singleton
+	 */
+	public static function getAuthenticationDao($singleton = true){
+		return self::innerGetService('', 'AuthenticationDao', $singleton);
+	}
+	
+	/**
+	 * MemberAppEquipmentDao
+	 * @param string $singleton
+	 */
+	public static function getMemberAppEquipmentDao($singleton = true){
+	    return self::innerGetService('', 'MemberAppEquipmentDao', $singleton);
+	}
+	
+	/**
+	 * VoucherDao
+	 * @param string $singleton
+	 */
+	public static function getVoucherDao($singleton = true){
+	    return self::innerGetService('', 'VoucherDao', $singleton);
+	}
+	
+	/**
+	 * BannerDao
+	 * @param string $singleton
+     * @return BannerDao
+	 */
+	public static function getBannerDao($singleton = true){
+	    return self::innerGetService('', 'BannerDao', $singleton);
+	}
+	
+	/**
+	 * ProductDao
+	 * @param string $singleton
+     * @return ProductDao
+	 */
+	public static function getProductDao($singleton = true){
+	    return self::innerGetService('', 'ProductDao', $singleton);
+	}
+
+    /**
+     * Xianshi
+     * @param string $singleton
+     * @return XianshiDao
+     */
+    public static function getXianshiDao($singleton = true){
+        return self::innerGetService('', 'XianshiDao', $singleton);
+    }
+
+	/**
+	 * CategorieDao
+	 * @param string $singleton
+	 */
+	public static function getCategorieDao($singleton = true){
+	    return self::innerGetService('', 'CategorieDao', $singleton);
+	}
+	
+	
+	/**
+	 * ShoppingCartDao
+	 * @param string $singleton
+     * @return ShoppingCartDao
+	 */
+	public static function getShoppingCartDao($singleton = true){
+	    return self::innerGetService('', 'ShoppingCartDao', $singleton);
+	}
+	
+	/**
+	 * ArticleDao
+	 * @param string $singleton
+	 */
+	public static function getArticleDao($singleton = true){
+	    return self::innerGetService('', 'ArticleDao', $singleton);
+	}
+	
+	/**
+	 * AddressDao
+	 * @param string $singleton
+	 * @return AddressDao
+	 */
+	public static function getAddressDao($singleton = true){
+	    return self::innerGetService('', 'AddressDao', $singleton);
+	}
+
+	/**
+	 * FeedBack
+	 * @param string $singleton
+	 */
+	public static function getFeedBackDao($singleton = true){
+		return self::innerGetService('', 'FeedBackDao', $singleton);
+	}
+
+	/**
+	 * EntrepotPostageDao
+	 * @param string $singleton
+	 */
+	public static function getEntrepotPostageDao($singleton = true){
+	    return self::innerGetService('', 'EntrepotPostageDao', $singleton);
+	}
+	
+	/**
+	 * CouponDao
+	 * @param string $singleton
+	 */
+	public static function getCouponDao($singleton = true){
+	    return self::innerGetService('', 'CouponDao', $singleton);
+	}
+	
+	/**
+	 * OrderDao
+	 * @param string $singleton
+     * @return OrderDao
+	 */
+	public static function getOrderDao($singleton = true){
+	    return self::innerGetService('', 'OrderDao', $singleton);
+	}
+	/**
+	 * OrderStatusDao
+	 * @param string $singleton
+	 */
+	public static function getOrderStatusDao($singleton = true){
+		return self::innerGetService('', 'OrderStatusDao', $singleton);
+	}
+	/**
+	 * OrderDao
+	 * @param string $singleton
+	 */
+	public static function getRefundReturnDao($singleton = true){
+		return self::innerGetService('', 'RefundReturnDao', $singleton);
+
+	}
+
+	/**
+	 * BrandDao
+	 * @param string $singleton
+	 */
+	public static function getBrandDao($singleton = true){
+	    return self::innerGetService('', 'BrandDao', $singleton);
+	}
+	
+	
+		/**
+	 * AdminDao
+	 * @param string $singleton
+	 */
+	public static function getAdminDao($singleton = true){
+	    return self::innerGetService('', 'AdminDao', $singleton);
+	}
+ 
+
+	/**
+ * GoodsEvaluate
+ * @param string $singleton
+ */
+	public static function getGoodsEvaluateDao($singleton = true){
+		return self::innerGetService('', 'GoodsEvaluateDao', $singleton);
+	}
+
+	/**
+	 * GoodsBrowse
+	 * @param string $singleton
+	 */
+	public static function getGoodsBrowseDao($singleton = true){
+		return self::innerGetService('', 'GoodsBrowseDao', $singleton);
+	}
+	/**
+	 * GoodsBrowse
+	 * @param string $singleton
+	 */
+	public static function getSettingDao($singleton = true){
+		return self::innerGetService('', 'SettingDao', $singleton);
+	}
+
+	/**
+	 * MemberPoints
+	 * @param string $singleton
+	 */
+	public static function getMemberPointsDao($singleton = true){
+		return self::innerGetService('', 'MemberPointsDao', $singleton);
+	}
+	/**
+	 * MemberPoints
+	 * @param string $singleton
+	 */
+	public static function getFavoritesDao($singleton = true){
+		return self::innerGetService('', 'FavoritesDao', $singleton);
+	}
+	/**
+	 * yfj_refund_reason
+	 * @param string $singleton
+	 */
+	public static function getRefundReasonDao($singleton = true){
+		return self::innerGetService('', 'RefundReasonDao', $singleton);
+	}
+	/**
+	 * yfj_refund_reason
+	 * @param string $singleton
+	 */
+	public static function getExpressDao($singleton = true){
+		return self::innerGetService('', 'ExpressDao', $singleton);
+	}
+
+	/**
+	 *
+	 * @param string $singleton
+	 */
+	public static function getAlbumDao($singleton = true){
+		return self::innerGetService('', 'AlbumDao', $singleton);
+	}
+
+    /**
+     * binding
+     * @param bool $singleton
+     * @return mixed
+     */
+    public static function getBindingDao($singleton = true){
+        return self::innerGetService('', 'BindingDao', $singleton);
+    }
+
+    /**
+     * @param bool $singleton
+     * @return mixed
+     */
+    public static function getDiscountDao($singleton = true){
+        return self::innerGetService('', 'DiscountDao', $singleton);
+    }
+
+    /**
+     * @param bool $singleton
+     * @return mixed
+     */
+    public static function getPreSaleDao($singleton = true)
+    {
+        return self::innerGetService('', 'PreSaleDao', $singleton);
+    }
+
+	/**
+	 * TypeDao
+     * @param bool $singleton
+     * @return mixed
+	 */
+	public static function getTypeDao($singleton = true) {
+		return self::innerGetService('', 'TypeDao', $singleton);
+	}
+	    
+	/**
+	 * OrderPaymentDao
+	 * @param bool $singleton
+	 * @return mixed
+	 */
+	public static function getOrderPaymentDao($singleton = true) {
+	    return self::innerGetService('', 'OrderPaymentDao', $singleton);
+	}
+	
+	/**
+	 * BaseTransferDao
+	 * @param bool $singleton
+	 * @return mixed
+	 */
+	public static function getBaseTransferDao($singleton = true) {
+	    return self::innerGetService('', 'BaseTransferDao', $singleton);
+	}
+	
+	/**
+	 * DcOrderDao
+	 * @param bool $singleton
+	 * @return mixed
+	 */
+	public static function getDcOrderDao($singleton = true) {
+	    return self::innerGetService('', 'DcOrderDao', $singleton);
+	}
+	
+
+	/**
+	 * DcLogisticDao
+	 * @param bool $singleton
+	 * @return mixed
+	 */
+	public static function getDcLogisticDao($singleton = true) {
+	    return self::innerGetService('', 'DcLogisticDao', $singleton);
+	}
+	
+	/**
+	 * DcImportListDao
+	 * @param bool $singleton
+	 * @return mixed
+	 */
+	public static function getDcImportListDao($singleton = true) {
+	    return self::innerGetService('', 'DcImportListDao', $singleton);
+	}
+
+
+
+	/**
+	 * CpaAdminDao
+	 * @param string $singleton
+	 */                    
+	public static function getCpaAdminDao($singleton = true){
+	    return self::innerGetService('cpa', 'CpaAdminDao', $singleton);
+	}
+	/**
+	 * CpaAdminDao
+	 * @param string $singleton
+	 */
+	public static function getOrderListDao($singleton = true){
+		return self::innerGetService('cpa', 'CpaOrderListDao', $singleton);
+	}
+	/**
+	 * PromoterDao
+	 * @param string $singleton	 
+	 * @return mixed	 
+	 */
+	public static function getPromoterDao($singleton = true) {
+		return self::innerGetService('cpa','PromoterDao', $singleton);
+	}
+
+	/**
+	 * PromoterDao
+	 * @param string $singleton
+	 * @return mixed
+	 */
+	public static function getHonorListDao($singleton = true) {
+		return self::innerGetService('cpa','HonorListDao', $singleton);
+	}
+
+	/**
+	 * CommissionDao
+	 * @param string $singleton
+	 * @return mixed	 
+	 */
+	public static function getCommissionDao($singleton = true) {
+		return self::innerGetService('cpa','CommissionDao', $singleton);	
+	}
+
+	/**
+	 * TaskDao
+	 * @param string $singleton
+	 * @return mixed
+	 */
+	public static function getTaskDao($singleton = true) {
+		return self::innerGetService('cpa','TaskDao', $singleton);
+	}
+
+	/**
+	 * TaskDao
+	 * @param string $singleton
+	 * @return mixed
+	 */
+	public static function getWholePeopleInviteDao($singleton = true) {
+		return self::innerGetService('cpa','WholePeopleInviteDao', $singleton);
+	}
+
+
+	/**
+	 * SystemNotifyDao
+	 * @param bool $singleton
+	 * @return mixed
+	 */
+	public static function getSystemNotifyDao($singleton = true) {
+	    return self::innerGetService('', 'SystemNotifyDao', $singleton);
+	}
+	
+	/**
+	 * NewItemsRecommendDao
+	 * @param bool $singleton
+	 * @return mixed
+	 */
+	public static function getNewItemsRecommendDao($singleton = true) {
+	    return self::innerGetService('', 'NewItemsRecommendDao', $singleton);
+	}
+	/**
+	 * NewItemsRecommendLabelDao
+	 * @param bool $singleton
+	 * @return mixed
+	 */
+	public static function getNewItemsRecommendLabelDao($singleton = true) {
+	    return self::innerGetService('', 'NewItemsRecommendLabelDao', $singleton);
+	}
+	
+	/**
+	 * RecommendItemsDemoDao
+	 * @param bool $singleton
+	 * @return mixed
+	 */
+	public static function getRecommendItemsDemoDao($singleton = true) {
+	    return self::innerGetService('', 'RecommendItemsDemoDao', $singleton);
+	}
+	/**
+	 * RecommendReviewsDao
+	 * @param bool $singleton
+	 * @return mixed
+	 */
+	public static function getRecommendReviewsDao($singleton = true) {
+	    return self::innerGetService('', 'RecommendReviewsDao', $singleton);
+	}
+
+
+	/**
+	 * BannerFrameDao
+	 * @param string $singleton
+	 */
+	public static function getBannerFrameDao($singleton = true){
+	    return self::innerGetService('', 'BannerFrameDao', $singleton);
+	}	
+	
+	/**
+	 * SolrIncrementDao
+	 * @param string $singleton
+	 */
+	public static function getSolrIncrementDao($singleton = true){
+	    return self::innerGetService('', 'SolrIncrementDao', $singleton);
+	}
+	
+	/**
+	 * BusinessManagerDao
+	 * @param string $singleton
+	 */
+	public static function getBusinessManagerDao($singleton = true){
+	    return self::innerGetService('', 'BusinessManagerDao', $singleton);
+	}
+
+	/**
+	 * StatisticsDao
+	 * @param string $singleton
+     * @return StatisticsDao
+	 */
+	public static function getStatisticsDao($singleton = true){
+	    return self::innerGetService('', 'StatisticsDao', $singleton);
+	}
+	
+	/**
+	 * PointDao
+	 * @param string $singleton
+	 */
+	public static function getPointDao($singleton = true){
+	    return self::innerGetService('', 'PointDao', $singleton);
+	}	
+
+	/**
+	 * PaySnDao
+	 * @param string $singleton
+	 */
+	public static function getPaySnDao($singleton = true){
+	    return self::innerGetService('', 'PaySnDao', $singleton);
+	}
+
+	/**
+	 * SettingLogDao
+	 * @param string $singleton
+	 */
+	public static function getSettingLogDao($singleton = true){
+	    return self::innerGetService('', 'SettingLogDao', $singleton);
+	}
+	
+	/**
+	 * StorageDao
+	 * @param string $singleton
+	 */
+	public static function getStorageDao($singleton = true){
+	    return self::innerGetService('', 'StorageDao', $singleton);
+	}
+
+	/**
+	 * GoodsServiceDao
+	 * @param string $singleton
+	 */
+	public static function getGoodsServiceDao($singleton = true){
+	    return self::innerGetService('', 'GoodsServiceDao', $singleton);
+	}
+
+	/**
+	 * GoodsRecommendDao
+	 * @param string $singleton
+	 */
+	public static function getGoodsRecommendDao($singleton = true){
+	    return self::innerGetService('', 'GoodsRecommendDao', $singleton);
+	}
+	
+	/**
+	 * HomePageModuleDao
+	 * @param string $singleton
+	 */
+	public static function getHomePageModuleDao($singleton = true){
+	    return self::innerGetService('', 'HomePageModuleDao', $singleton);
+	}
+	
+	/**
+	 * SpecialSubjectDao
+	 * @param string $singleton
+	 */
+	public static function getSpecialSubjectDao($singleton = true) {
+		return self::innerGetService('', 'SpecialSubjectDao', $singleton);
+	}
+
+	/**
+	 * DisplaySiteDao
+	 * @param bool $singleton
+	 * @return Object
+	 */
+	public static function getDisplaySiteDao($singleton = true) {
+		return self::innerGetService('', 'DisplaySiteDao', $singleton);
+	}
+
+	/**
+	 * ActivityModularDao
+	 * @param bool $singleton
+	 * @return Object
+	 */
+	public static function getActivityModularDao($singleton = true) {
+		return self::innerGetService('', 'ActivityModularDao', $singleton);
+	}
+
+	/**
+	 * BLockOrderDao
+	 * @param bool $singleton
+	 * @return Object
+	 */
+	public static function getLockOrderDao($singleton = true) {
+		return self::innerGetService('', 'LockOrderDao', $singleton);
+	}
+
+	/**
+	 * BLockOrderDao
+	 * @param bool $singleton
+	 * @return Object
+	 */
+	public static function getBeautyDao($singleton = true) {
+		return self::innerGetService('', 'BeautyDao', $singleton);
+	}
+
+	/**
+	 * DrpCategorieDao
+	 * @param string $singleton
+     * @return DrpCategorieDao
+	 */
+	public static function getDrpCategorieDao($singleton = true){
+	    return self::innerGetService('', 'DrpCategorieDao', $singleton);
+	}
+
+	/**
+	 * DrpProductDao
+	 * @param string $singleton
+     * @return DrpProductDao
+	 */
+	public static function getDrpProductDao($singleton = true){
+	    return self::innerGetService('', 'DrpProductDao', $singleton);
+	}
+
+	/**
+	 * AfterSaleDao
+	 * @param bool $singleton
+	 * @return AfterSaleDao
+	 */
+	public static function getAfterSaleDao($singleton = true) {
+		return self::innerGetService('', 'AfterSaleDao', $singleton);
+	}
+
+	
+
+    /**直邮作业发货系统
+     * @param bool $singleton
+     * @return DirectMailDao
+     */
+    public static function getDirectMailDao($singleton = true) {
+        return self::innerGetService('', 'DirectMailDao', $singleton);
+    }
+    
+    /**
+     * 小程序商品管理
+     * @param string $singleton
+     * @return XrtGoodsDao
+     */
+    public static function getXrtGoodsDao($singleton = true) {
+        return self::innerGetService('', 'XrtGoodsDao', $singleton);
+    }
+	
+	/**
+	 * @param bool $singleton
+	 * @return CloudStoreHouseDao
+	 */
+	public static function getCloudStoreHouseDao($singleton = true) {
+		return self::innerGetService('', 'CloudStoreHouseDao', $singleton);
+	}
+
+
+    /**
+     * @param bool $singleton
+     * @return QinkaintDcOrderDao
+     */
+    public static function getQinkaintDcOrderDao($singleton = true) {
+        return self::innerGetService('', 'QinkaintDcOrderDao', $singleton);
+    }
+	
+	
+	/**B端优惠券包括红包
+	 * @param bool $singleton
+	 * @return BVoucherDao
+	 */
+	public static function getBVoucherDao($singleton = true) {
+		return self::innerGetService('', 'BVoucherDao', $singleton);
+	}
+
+    /**
+     * @param bool $singleton
+     * @return WinningOrderDao
+     */
+    public static function getWinningOrderDao($singleton = true) {
+        return self::innerGetService('', 'WinningOrderDao', $singleton);
+    }
+
+    /**
+     * QinkaintDcPayExchangeDao
+     * @param bool $singleton
+     * @return QinkaintDcPayExchangeDao
+     */
+    public static function getQinkaintDcPayExchangeDao($singleton = true) {
+        return self::innerGetService('qinkaint', 'QinkaintDcPayExchangeDao', $singleton);
+    }
+
+    /**
+     * SmsLogDao
+     * @param bool $singleton
+     * @return SmsLogDao
+     */
+    public static function getSmsLogDao($singleton = true) {
+        return self::innerGetService('', 'SmsLogDao', $singleton);
+    }
+}

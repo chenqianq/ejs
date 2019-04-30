@@ -1,0 +1,26 @@
+page {
+  background-color: #f5f5f9;
+}
+.invalid {
+  text-align: center;
+}
+.invalid .icon {
+  width: 160rpx;
+  height: 160rpx;
+  margin-top: 354rpx;
+}
+.invalid .tips {
+  font-size: 30rpx;
+  color: #999;
+  text-align: center;
+  margin-top: 27rpx;
+}
+.invalid button {
+  margin-top: 20rpx;
+  width: 210rpx;
+  height: 80rpx;
+  background-color: #f63e65;
+  color: #fff;
+  line-height: 80rpx;
+  font-size: 30rpx;
+}
